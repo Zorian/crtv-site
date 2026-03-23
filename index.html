@@ -798,14 +798,10 @@ document.getElementById('mob-close').addEventListener('click',()=>{ document.get
     let done=false;
     const circle=p.querySelector('#preloader-circle');
     function playClick(){
-      try{
-        const a=new Audio('https://pub-a9f22cf5804840608cb8ba43afc33a34.r2.dev/click-sound.mp3');
-        a.volume=0.8; a.play();
-      }catch(e){}
+      try{ const a=new Audio('https://pub-a9f22cf5804840608cb8ba43afc33a34.r2.dev/click-sound.mp3'); a.volume=0.8; a.play(); }catch(e){}
     }
     function exit(){
-      if(done)return; done=true;
-      playClick();
+      if(done)return; done=true; playClick();
       circle.style.pointerEvents='none';
       p.classList.add('slide-exit');
       setTimeout(()=>{ p.classList.add('fade-out'); setTimeout(()=>p.remove(),400); },900);
