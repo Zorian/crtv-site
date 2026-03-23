@@ -6,90 +6,243 @@
 <link rel="icon" href="assets/favicon.png" type="image/png">
 <link rel="stylesheet" href="styles.css">
 <style>
-.hf{min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:0 80px 110px;background:#000;position:relative;overflow:hidden;}
-.hf-bg{position:absolute;inset:0;background-size:cover;background-position:center;filter:brightness(0.3);}
-.hc{position:relative;z-index:2;}
-.hc h1{font-family:var(--font);font-size:clamp(38px,8vw,110px);font-weight:400;letter-spacing:0.02em;text-transform:uppercase;color:#fff;line-height:0.95;}
-.feat{background:var(--blue);padding:90px 80px;}
-.feat-in{max-width:1300px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
-.feat-in img{width:100%;aspect-ratio:4/5;object-fit:cover;}
-.ebtn{display:inline-block;font-family:var(--font);font-size:11px;letter-spacing:0.25em;text-transform:uppercase;padding:13px 26px;border:1.5px solid #fff;color:#fff;margin-right:12px;margin-bottom:10px;transition:background 0.2s,color 0.2s;}
-.ebtn:hover,.ebtn.fill{background:#fff;color:var(--blue);}
-.evl{padding:80px 80px;max-width:1300px;margin:0 auto;}
-.evl h2{font-family:var(--font);font-size:clamp(24px,3.5vw,46px);font-weight:400;letter-spacing:0.04em;text-transform:uppercase;margin-bottom:44px;}
-.evc{display:grid;grid-template-columns:1fr auto;gap:36px;align-items:start;padding:30px 0;border-bottom:1px solid rgba(0,0,0,0.07);}
-.evc:first-of-type{border-top:1px solid rgba(0,0,0,0.07);}
-.evtag{font-family:var(--font);font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:var(--blue);margin-bottom:8px;}
-.evtit{font-family:var(--font);font-size:clamp(15px,2vw,24px);font-weight:400;letter-spacing:0.03em;text-transform:uppercase;margin-bottom:9px;}
-.evdesc{font-family:var(--font);font-size:14px;color:#666;line-height:1.7;max-width:580px;}
-.evmeta{text-align:right;}
-.evloc{font-family:var(--font);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#aaa;margin-bottom:6px;}
-.evdate{font-family:var(--font);font-size:11px;color:#999;margin-bottom:14px;}
-.evlink{font-family:var(--font);font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--blue);border-bottom:1px solid rgba(16,118,248,0.3);padding-bottom:2px;}
-.past{background:#f5f5f5;padding:80px 80px;}
-.past-in{max-width:1300px;margin:0 auto;}
-.past-in h2{font-family:var(--font);font-size:clamp(24px,3.5vw,46px);font-weight:400;letter-spacing:0.04em;text-transform:uppercase;margin-bottom:44px;}
-.pgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:3px;}
-.pc{position:relative;aspect-ratio:3/4;overflow:hidden;}
-.pc img{width:100%;height:100%;object-fit:cover;filter:brightness(0.7);transition:transform 0.5s,filter 0.4s;}
-.pc:hover img{transform:scale(1.04);filter:brightness(0.5);}
-.pinfo{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:18px;background:linear-gradient(to top,rgba(0,0,0,0.8) 0%,transparent 55%);}
-.ptit{font-family:var(--font);font-size:clamp(11px,1.2vw,15px);font-weight:400;letter-spacing:0.04em;text-transform:uppercase;color:#fff;}
-.pdate{font-family:var(--font);font-size:10px;color:rgba(255,255,255,0.55);margin-top:4px;}
-@media(max-width:900px){.hf{padding:0 24px 90px;}.feat{padding:60px 24px;}.feat-in{grid-template-columns:1fr;gap:36px;}.evl,.past{padding:60px 24px;}.evc{grid-template-columns:1fr;gap:14px;}.evmeta{text-align:left;}.pgrid{grid-template-columns:repeat(2,1fr);}}
+/* EVENTS HERO — video background, centred title */
+.events-hero {
+  position: relative; width: 100%; min-height: 80vh; overflow: hidden;
+  display: flex; align-items: center; justify-content: center; background: #001138;
+}
+.events-hero-video {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; z-index: 0; pointer-events: none;
+}
+.events-hero-overlay {
+  position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(180deg, #001138 0%, rgba(0,17,56,0.3) 50%, #1076F8 100%);
+}
+.events-hero-content {
+  position: relative; z-index: 2; text-align: center; padding: 0 60px;
+  max-width: 900px;
+}
+.events-hero h1 {
+  font-family: 'StrechPro', sans-serif;
+  font-size: clamp(36px, 6vw, 80px);
+  font-weight: 600; text-transform: uppercase; color: #fff;
+  line-height: 1.05; margin: 0;
+}
+
+/* FEATURED EVENT — white bg, image left, text right */
+.featured-event {
+  display: flex; flex-direction: row; min-height: 100vh;
+  overflow: hidden; background: #fff;
+}
+.feat-img {
+  width: 50%; position: relative; min-height: 500px; overflow: hidden;
+}
+.feat-img img {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+}
+.feat-text {
+  width: 50%; padding: 80px 60px;
+  display: flex; flex-direction: column; justify-content: center; gap: 20px;
+  background: #fff;
+}
+.feat-label {
+  font-family: 'MadeOuter', sans-serif; font-size: 11px; font-weight: 400;
+  letter-spacing: 0.4em; text-transform: uppercase; color: #888; margin: 0;
+}
+.feat-title {
+  font-family: 'StrechPro', sans-serif; font-size: clamp(32px,4vw,60px);
+  font-weight: 600; text-transform: uppercase; color: #1076F8;
+  line-height: 1.0; margin: 0;
+}
+.feat-date {
+  font-family: 'StrechPro', sans-serif; font-size: 18px; font-weight: 600;
+  color: #1076F8; margin: 0;
+}
+.feat-desc {
+  font-family: 'MadeOuter', sans-serif; font-size: 15px; font-weight: 400;
+  letter-spacing: 0.5px; color: #333; line-height: 1.75; margin: 0;
+}
+.feat-btns { display: flex; flex-direction: column; gap: 12px; align-items: flex-start; }
+.feat-btn {
+  font-family: 'MadeOuter', sans-serif; font-size: 13px; font-weight: 500;
+  letter-spacing: 0.12em; text-transform: uppercase; color: #fff;
+  background: #1076F8; border: none; padding: 14px 28px; cursor: pointer;
+  text-decoration: none; transition: background 0.2s;
+}
+.feat-btn:hover { background: #0560d4; }
+
+/* UPCOMING EVENTS */
+.upcoming-section {
+  background: #fff; padding: 80px 60px;
+}
+.upcoming-section h2 {
+  font-family: 'StrechPro', sans-serif; font-size: 38px; font-weight: 600;
+  text-transform: uppercase; color: #1076F8; margin: 0 0 40px 0;
+}
+.events-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px;
+}
+.event-card {
+  position: relative; overflow: hidden; aspect-ratio: 3/4;
+  background: #111;
+}
+.event-card img {
+  width: 100%; height: 100%; object-fit: cover;
+  filter: brightness(0.55); transition: transform 0.5s, filter 0.4s;
+}
+.event-card:hover img { transform: scale(1.04); filter: brightness(0.35); }
+.event-card-info {
+  position: absolute; inset: 0; display: flex; flex-direction: column;
+  justify-content: flex-end; padding: 28px;
+  background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 55%);
+}
+.event-card-title {
+  font-family: 'StrechPro', sans-serif; font-size: clamp(16px,2vw,24px);
+  font-weight: 600; text-transform: uppercase; color: #fff; margin: 0 0 6px 0;
+  line-height: 1.1;
+}
+.event-card-date {
+  font-family: 'MadeOuter', sans-serif; font-size: 12px; font-weight: 400;
+  color: rgba(255,255,255,0.7); letter-spacing: 0.1em; margin: 0 0 12px 0;
+}
+.event-card-btn {
+  display: inline-block; font-family: 'MadeOuter', sans-serif; font-size: 11px;
+  letter-spacing: 0.15em; text-transform: uppercase; color: #fff;
+  border: 1.5px solid rgba(255,255,255,0.5); padding: 8px 16px;
+  text-decoration: none; transition: border-color 0.2s; align-self: flex-start;
+}
+.event-card-btn:hover { border-color: #fff; }
+
+@media (max-width: 900px) {
+  .featured-event { flex-direction: column; }
+  .feat-img, .feat-text { width: 100%; }
+  .feat-text { padding: 50px 24px; }
+  .events-hero-content { padding: 0 24px; }
+  .upcoming-section { padding: 60px 24px; }
+  .events-grid { grid-template-columns: 1fr 1fr; }
+}
 </style>
 </head>
-<body><div id="preloader"><div class="preloader-inner"><div id="preloader-circle" role="button" tabindex="0" aria-label="Enter"><img id="preloader-logo" src="assets/logo.png" alt="CRTV Hub"></div><p id="preloader-instruction">Click to enter</p></div></div><nav id="nav"><ul class="nav-links"><li><a href="index.html">HOME</a></li><li><a href="about.html">ABOUT</a></li><li><a href="events.html" class="active">EVENTS</a></li><li><a href="media.html">MEDIA</a></li><li><a href="join.html">JOIN/SIGN UP</a></li></ul><button class="nav-burger" id="burger"><span></span><span></span><span></span></button></nav>
-<div id="mobile-nav"><a href="index.html">HOME</a><a href="about.html">ABOUT</a><a href="events.html">EVENTS</a><a href="media.html">MEDIA</a><a href="join.html">JOIN / SIGN UP</a></div>
-<section class="hf">
-  <div class="hf-bg" style="background-image:url('https://lh3.googleusercontent.com/d/1oNATfEX5LlIQRVqjQEvv7wBvxZlhWP_1')"></div>
-  <div class="hc"><h1>Where culture<br>meets the crowd.</h1></div>
+<body>
+
+<!-- NAV -->
+<div id="nav-outer" style="justify-content:space-between;padding:20px 30px;">
+  <div id="nav-logo">
+    <a href="index.html"><img src="https://crtv.axocreate.com/wp-content/uploads/2026/01/Image-1-e1769234730649.png" alt="THE CRTV HUB" style="width:90px;height:90px;object-fit:contain;"></a>
+  </div>
+  <div id="nav-pill">
+    <a href="index.html" class="nav-link">HOME</a>
+    <a href="about.html" class="nav-link">ABOUT</a>
+    <a href="events.html" class="nav-link active">EVENTS</a>
+    <a href="media.html" class="nav-link">MEDIA</a>
+    <a href="join.html" class="nav-link">JOIN/SIGN UP</a>
+  </div>
+</div>
+<button id="nav-burger" aria-label="Menu"><span></span><span></span><span></span></button>
+<div id="mobile-nav">
+  <button id="mob-close">✕</button>
+  <a href="index.html">HOME</a><a href="about.html">ABOUT</a>
+  <a href="events.html">EVENTS</a><a href="media.html">MEDIA</a>
+  <a href="join.html">JOIN / SIGN UP</a>
+</div>
+
+<!-- EVENTS HERO — recap video background -->
+<section class="events-hero">
+  <video class="events-hero-video" autoplay muted loop playsinline preload="auto"
+    poster="https://crtv.axocreate.com/wp-content/uploads/2026/03/WhatsApp-Image-2026-03-13-at-17.36.48-scaled.jpeg">
+    <source src="https://pub-a9f22cf5804840608cb8ba43afc33a34.r2.dev/events-hero.mp4" type="video/mp4">
+  </video>
+  <div class="events-hero-overlay"></div>
+  <div class="events-hero-content">
+    <h1>WHERE CULTURE<br>MEETS THE CROWD.</h1>
+  </div>
 </section>
-<section class="feat"><div class="feat-in">
-  <div>
-    <p style="font-family:var(--font);font-size:11px;letter-spacing:0.35em;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-bottom:14px;">Featured Event</p>
-    <h2 style="font-family:var(--font);font-size:clamp(30px,5vw,70px);font-weight:400;letter-spacing:0.02em;text-transform:uppercase;color:#fff;line-height:1;margin-bottom:14px;">Creating Our Motion</h2>
-    <p style="font-family:var(--font);font-size:13px;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.7);margin-bottom:16px;">Summer 2026 (August 2026)</p>
-    <p style="font-family:var(--font);font-size:15px;color:rgba(255,255,255,0.75);line-height:1.8;margin-bottom:30px;">A high-energy summer dance competition bringing together top crews and soloists to showcase creativity, skill, and stage presence. Expect electrifying performances, fierce battles, and a vibrant community atmosphere with a cash prize to be won.</p>
-    <a href="#" class="ebtn fill">Buy Tickets — Spectators</a><a href="#" class="ebtn">Buy Tickets — Competitors</a>
+
+<!-- FEATURED EVENT — Creating Our Motion -->
+<section class="featured-event">
+  <div class="feat-img">
+    <img src="https://crtv.axocreate.com/wp-content/uploads/2026/01/5d48ba_899aac31126942a7abcc551174d97398mv2.avif" alt="Creating Our Motion"
+      onerror="this.src='https://crtv.axocreate.com/wp-content/uploads/2026/01/SnapVideo.app_466473470_18472038748039053_5530893430317293006_n.jpg'">
   </div>
-  <img src="https://lh3.googleusercontent.com/d/1pqOFkVcH80DctXoOm6y9LVcX8AKNSmqK" alt="Creating Our Motion">
-</div></section>
-<section><div class="evl">
-  <h2>UPCOMING Events</h2>
-  <div class="evc"><div><p class="evtag">The CRTV Hub X-Mas Party (19 December 2026)</p><h3 class="evtit">The CRTV Hub X-Mas Party</h3><p class="evdesc">A festive end-of-year gathering and celebration. Crews and soloists come together to vibe, closing out the year with performances, prizes, and a community party feel.</p></div><div class="evmeta"><p class="evloc">London</p><p class="evdate">29/08/2026</p><a href="#" class="evlink">View Event</a></div></div>
-  <div class="evc"><div><p class="evtag">The CRTV Camp '26 (1 October 2026)</p><h3 class="evtit">The CRTV Camp '26</h3><p class="evdesc">Spend the day networking with creatives, taking part in different activities and meeting pioneers in the creative field.</p></div><div class="evmeta"><p class="evloc">Boxpark</p><p class="evdate">28/02/2026</p><a href="#" class="evlink">View Event</a></div></div>
-  <div class="evc"><div><p class="evtag">Creating Our Motion – Tour 2027 (February 2027)</p><h3 class="evtit">Creating Our Motion — Tour 2027</h3><p class="evdesc">A multi-city qualifying tour for the London main stage, spotlighting emerging and established dancers across regions.</p></div><div class="evmeta"><p class="evloc">TBC</p><p class="evdate">15/02/2026</p><a href="#" class="evlink">View Event</a></div></div>
-  <div class="evc"><div><p class="evtag">Creating Our Motion – Summer 2026 (August 2026)</p><h3 class="evtit">Creating Our Motion — Summer 2026</h3><p class="evdesc">A high-energy summer dance competition bringing together top crews and soloists with a cash prize to be won.</p></div><div class="evmeta"><p class="evloc">Box Park</p><p class="evdate">21/02/2026</p><a href="#" class="evlink">View Event</a></div></div>
-</div></section>
-<section class="past"><div class="past-in">
-  <h2>Past Events</h2>
-  <div class="pgrid">
-    <div class="pc"><img src="https://lh3.googleusercontent.com/d/1HVEzxJFb1SY_jhy335GnRWWg_4wDhA5H" alt="" loading="lazy"><div class="pinfo"><p class="ptit">The CRTV Hub X-Mas Party</p><p class="pdate">19 December 2026</p></div></div>
-    <div class="pc"><img src="https://lh3.googleusercontent.com/d/1wCAzACw6_mVfiYk3XsxUSOggCMQdDaYl" alt="" loading="lazy"><div class="pinfo"><p class="ptit">The CRTV Hub X-Mas Party</p><p class="pdate">19 December 2026</p></div></div>
-    <div class="pc"><img src="https://lh3.googleusercontent.com/d/1EIOhSgI9xyolDzMYG6gFDzOKsWc7RK3z" alt="" loading="lazy"><div class="pinfo"><p class="ptit">The CRTV Hub X-Mas Party</p><p class="pdate">19 December 2026</p></div></div>
-    <div class="pc"><img src="https://lh3.googleusercontent.com/d/1-oGd9ZyjbCTSTKLgLZZJtEjYLc5RTy92" alt="" loading="lazy"><div class="pinfo"><p class="ptit">The CRTV Hub X-Mas Party</p><p class="pdate">19 December 2026</p></div></div>
+  <div class="feat-text">
+    <p class="feat-label">FEATURED EVENT</p>
+    <h2 class="feat-title">CREATING<br>OUR MOTION</h2>
+    <p class="feat-date">Summer 2026 (August 2026)</p>
+    <p class="feat-desc">A high-energy summer dance competition bringing together top crews and soloists to showcase creativity, skill, and stage presence. Expect electrifying performances, fierce battles, and a vibrant community atmosphere with a cash prize to be won.</p>
+    <div class="feat-btns">
+      <a href="join.html" class="feat-btn">Buy Tickets — Spectators</a>
+      <a href="join.html" class="feat-btn">Buy Tickets — Competitors</a>
+    </div>
   </div>
-</div></section>
-<div class="brand-ticker"><div class="ticker-track"><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span></div></div><footer><div class="footer-main"><div><div class="footer-logo"><img src="assets/logo.png" alt="THE CRTV HUB"></div></div><div class="footer-col"><h5>Quick Links</h5><a href="index.html">HOME</a><a href="media.html">MEDIA</a><a href="events.html">EVENTS</a><a href="join.html">JOIN/SIGNUP</a></div><div class="footer-col"><h5>Stay Connected</h5><a href="http://tiktok.com/@thecreativehubagency" target="_blank">TIKTOK</a><a href="https://www.instagram.com/thecrtvhubuk" target="_blank">INSTAGRAM</a><a href="https://www.youtube.com/@thecrtvhub" target="_blank">YOUTUBE</a></div></div><div class="footer-bottom"><span>© 2026 The CRTV Hub. All rights reserved.</span><span>Built by Creatives. Powered by Culture.</span></div></footer><script>
-(function(){
-  var p=document.getElementById("preloader");
-  if(!p)return;
-  if(sessionStorage.getItem("crtvEntered")){p.style.display="none";return;}
-  var c=document.getElementById("preloader-circle");
-  setTimeout(function(){p.classList.add("show-logo");},50);
-  var done=false;
-  function exit(){
-    if(done)return;done=true;
-    sessionStorage.setItem("crtvEntered","1");
-    c.style.pointerEvents="none";
-    p.classList.add("slide-exit");
-    setTimeout(function(){p.classList.add("fade-out");setTimeout(function(){p.remove();},400);},900);
-  }
-  c.addEventListener("click",exit);
-  c.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" ")exit();});
-})();
-window.addEventListener("scroll",function(){document.getElementById("nav").classList.toggle("scrolled",window.scrollY>60);});
-document.getElementById("burger").addEventListener("click",function(){document.getElementById("mobile-nav").classList.toggle("open");});
+</section>
+
+<!-- UPCOMING EVENTS -->
+<section class="upcoming-section">
+  <h2>UPCOMING EVENTS</h2>
+  <div class="events-grid">
+
+    <div class="event-card">
+      <img src="https://crtv.axocreate.com/wp-content/uploads/2026/01/DSF3202-1.avif" alt=""
+        onerror="this.src='https://lh3.googleusercontent.com/d/1TCdJFRc-kWsEtQjTbjs2-QFNNWDxLddB'">
+      <div class="event-card-info">
+        <h3 class="event-card-title">The CRTV Camp '26</h3>
+        <p class="event-card-date">October 2026 — Boxpark</p>
+        <a href="#" class="event-card-btn">View Event</a>
+      </div>
+    </div>
+
+    <div class="event-card">
+      <img src="https://crtv.axocreate.com/wp-content/uploads/2026/01/SnapVideo.app_367930339_235172796173067_3660039563008462228_n.jpg" alt="">
+      <div class="event-card-info">
+        <h3 class="event-card-title">Creating Our Motion — Tour 2027</h3>
+        <p class="event-card-date">February 2027 — Multiple Cities</p>
+        <a href="#" class="event-card-btn">View Event</a>
+      </div>
+    </div>
+
+    <div class="event-card">
+      <img src="https://crtv.axocreate.com/wp-content/uploads/2026/01/SnapVideo.app_466473470_18472038748039053_5530893430317293006_n.jpg" alt="">
+      <div class="event-card-info">
+        <h3 class="event-card-title">The CRTV Hub X-Mas Party</h3>
+        <p class="event-card-date">19 December 2026 — London</p>
+        <a href="#" class="event-card-btn">View Event</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="background:#000;padding:40px 30px 50px;">
+  <div style="display:grid;grid-template-columns:1fr auto 1fr;align-items:start;max-width:1400px;margin:0 auto;gap:20px;">
+    <div>
+      <h5 style="font-family:'StrechPro',sans-serif;font-size:22px;font-weight:600;text-transform:uppercase;color:#fff;margin:0 0 16px 0;">QUICK LINKS</h5>
+      <div style="display:flex;gap:18px;flex-wrap:wrap;">
+        <a href="index.html" style="font-family:'MadeOuter',sans-serif;font-size:13px;color:#fff;text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;">HOME</a>
+        <a href="media.html" style="font-family:'MadeOuter',sans-serif;font-size:13px;color:#fff;text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;">MEDIA</a>
+        <a href="events.html" style="font-family:'MadeOuter',sans-serif;font-size:13px;color:#fff;text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;">EVENTS</a>
+        <a href="join.html" style="font-family:'MadeOuter',sans-serif;font-size:13px;color:#fff;text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;">JOIN/SIGNUP</a>
+      </div>
+    </div>
+    <div style="display:flex;justify-content:center;align-items:center;">
+      <img src="https://crtv.axocreate.com/wp-content/uploads/2026/01/Image-1-e1769234730649.png" alt="THE CRTV HUB" style="width:120px;height:auto;">
+    </div>
+    <div style="text-align:right;">
+      <h5 style="font-family:'StrechPro',sans-serif;font-size:22px;font-weight:600;text-transform:uppercase;color:#fff;margin:0 0 16px 0;">STAY CONNECTED</h5>
+      <div style="display:flex;gap:18px;justify-content:flex-end;flex-wrap:wrap;">
+        <a href="http://tiktok.com/@thecreativehubagency" target="_blank" style="font-family:'MadeOuter',sans-serif;font-size:13px;color:#fff;text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;">TIKTOK</a>
+        <a href="https://www.instagram.com/thecrtvhubuk" target="_blank" style="font-family:'MadeOuter',sans-serif;font-size:13px;color:#fff;text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;">INSTAGRAM</a>
+        <a href="https://www.youtube.com/@thecrtvhub" target="_blank" style="font-family:'MadeOuter',sans-serif;font-size:13px;color:#fff;text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;">YOUTUBE</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+window.addEventListener('scroll',()=>{ document.getElementById('nav-outer').classList.toggle('scrolled',window.scrollY>60); });
+document.getElementById('nav-burger').addEventListener('click',()=>{ document.getElementById('mobile-nav').classList.add('open'); });
+document.getElementById('mob-close').addEventListener('click',()=>{ document.getElementById('mobile-nav').classList.remove('open'); });
 </script>
-</body></html>
+</body>
+</html>
