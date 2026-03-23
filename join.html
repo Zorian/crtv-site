@@ -6,119 +6,72 @@
 <link rel="icon" href="assets/favicon.png" type="image/png">
 <link rel="stylesheet" href="styles.css">
 <style>
-.join-hero {
-  min-height: 60vh; display: flex; flex-direction: column; justify-content: flex-end;
-  padding: 0 60px 80px; background: #000; position: relative; overflow: hidden;
-}
-.join-hero-bg {
-  position: absolute; inset: 0;
-  background-image: url('https://lh3.googleusercontent.com/d/1GcnALGsntqPNPD0bc6Mo1KHPrZ0AZ-83');
-  background-size: cover; background-position: center; filter: brightness(0.3);
-}
-.join-hero-content { position: relative; z-index: 2; }
-.join-hero h1 { font-family: var(--font-main); font-size: clamp(38px,7vw,100px); font-weight: 300; letter-spacing: 0.02em; text-transform: uppercase; color: #fff; line-height: 1; }
-.join-hero-sub { font-family: var(--font-main); font-size: 15px; font-weight: 300; color: rgba(255,255,255,0.55); margin-top: 16px; }
-
-.join-content { padding: 100px 60px; max-width: 1200px; margin: 0 auto; }
-.join-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
-
-.join-form { display: flex; flex-direction: column; gap: 16px; }
-.form-group { display: flex; flex-direction: column; gap: 6px; }
-.form-group label { font-family: var(--font-main); font-size: 11px; font-weight: 300; letter-spacing: 0.2em; text-transform: uppercase; color: #777; }
-.form-group input, .form-group select, .form-group textarea {
-  font-family: var(--font-main); font-size: 14px; font-weight: 300;
-  border: 1.5px solid rgba(0,0,0,0.15); background: #fff; padding: 14px 16px;
-  color: var(--text); outline: none; transition: border-color 0.2s; appearance: none;
-}
-.form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--blue); }
-.form-group textarea { resize: vertical; min-height: 120px; }
-.form-submit {
-  font-family: var(--font-main); font-size: 12px; font-weight: 300;
-  letter-spacing: 0.25em; text-transform: uppercase;
-  background: var(--blue); color: #fff; border: none; padding: 16px 32px;
-  cursor: pointer; margin-top: 8px; transition: background 0.2s; align-self: flex-start;
-}
-.form-submit:hover { background: #0560d4; }
-
-.join-info .info-item { padding: 24px 0; border-bottom: 1px solid rgba(0,0,0,0.07); }
-.join-info .info-item:first-child { border-top: 1px solid rgba(0,0,0,0.07); }
-.info-label { font-family: var(--font-main); font-size: 10px; font-weight: 300; letter-spacing: 0.3em; text-transform: uppercase; color: var(--blue); margin-bottom: 8px; }
-.info-title { font-family: var(--font-main); font-size: 18px; font-weight: 300; letter-spacing: 0.04em; text-transform: uppercase; color: var(--text); margin-bottom: 8px; }
-.info-text { font-family: var(--font-main); font-size: 14px; font-weight: 300; color: #666; line-height: 1.7; }
-
-@media (max-width: 900px) {
-  .join-hero { padding: 0 24px 60px; }
-  .join-content { padding: 60px 24px; }
-  .join-grid { grid-template-columns: 1fr; gap: 48px; }
-}
+.hf{min-height:70vh;display:flex;flex-direction:column;justify-content:flex-end;padding:0 80px 100px;background:#000;position:relative;overflow:hidden;}
+.hf-bg{position:absolute;inset:0;background-size:cover;background-position:center;filter:brightness(0.3);}
+.hc{position:relative;z-index:2;}
+.hc h1{font-family:var(--font);font-size:clamp(38px,8vw,110px);font-weight:400;letter-spacing:0.02em;text-transform:uppercase;color:#fff;line-height:0.95;}
+.js{padding:100px 80px;max-width:1300px;margin:0 auto;}
+.jg{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;}
+.jf{display:flex;flex-direction:column;gap:16px;}
+.fg{display:flex;flex-direction:column;gap:6px;}
+.fg label{font-family:var(--font);font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#888;}
+.fg input,.fg select,.fg textarea{font-family:var(--font);font-size:14px;border:1.5px solid rgba(0,0,0,0.13);background:#fff;padding:13px 15px;color:var(--text);outline:none;transition:border-color 0.2s;appearance:none;}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--blue);}
+.fg textarea{resize:vertical;min-height:110px;}
+.fsub{font-family:var(--font);font-size:12px;letter-spacing:0.25em;text-transform:uppercase;background:var(--blue);color:#fff;border:none;padding:14px 28px;cursor:pointer;transition:background 0.2s;align-self:flex-start;}
+.fsub:hover{background:#0560d4;}
+.ii{padding:22px 0;border-bottom:1px solid rgba(0,0,0,0.07);}
+.ii:first-child{border-top:1px solid rgba(0,0,0,0.07);}
+.il{font-family:var(--font);font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:var(--blue);margin-bottom:7px;}
+.it{font-family:var(--font);font-size:17px;letter-spacing:0.04em;text-transform:uppercase;margin-bottom:7px;}
+.id{font-family:var(--font);font-size:14px;color:#666;line-height:1.7;}
+@media(max-width:900px){.hf{padding:0 24px 80px;}.js{padding:60px 24px;}.jg{grid-template-columns:1fr;gap:48px;}}
 </style>
 </head>
-<body>
-
-<!-- PRELOADER -->
-<!-- PRELOADER -->
-<div id="preloader">
-  <div class="preloader-inner">
-    <div id="preloader-circle" role="button" tabindex="0" aria-label="Enter">
-      <img id="preloader-logo" src="assets/logo.png" alt="CRTV Hub">
-    </div>
-    <p id="preloader-instruction">Click to enter</p>
-  </div>
-</div>
-
-<!-- NAV PILL -->
-<div id="nav-outer">
-  <div id="nav-pill">
-    <a href="index.html" class="nav-link">HOME</a>
-    <a href="about.html" class="nav-link">ABOUT</a>
-    <a href="events.html" class="nav-link">EVENTS</a>
-    <a href="media.html" class="nav-link">MEDIA</a>
-    <a href="join.html" class="nav-link nav-cta active">JOIN/SIGN UP</a>
-  </div>
-</div>
-<button id="nav-burger" aria-label="Menu"><span></span><span></span><span></span></button>
-<div id="mobile-nav">
-  <button id="mob-close">✕</button>
-  <a href="index.html">HOME</a><a href="about.html">ABOUT</a>
-  <a href="events.html">EVENTS</a><a href="media.html">MEDIA</a>
-  <a href="join.html">JOIN / SIGN UP</a>
-</div>
-    </div>
-  </div>
+<body><div id="preloader"><div class="preloader-inner"><div id="preloader-circle" role="button" tabindex="0" aria-label="Enter"><img id="preloader-logo" src="assets/logo.png" alt="CRTV Hub"></div><p id="preloader-instruction">Click to enter</p></div></div><nav id="nav"><ul class="nav-links"><li><a href="index.html">HOME</a></li><li><a href="about.html">ABOUT</a></li><li><a href="events.html">EVENTS</a></li><li><a href="media.html">MEDIA</a></li><li><a href="join.html" class="active">JOIN/SIGN UP</a></li></ul><button class="nav-burger" id="burger"><span></span><span></span><span></span></button></nav>
+<div id="mobile-nav"><a href="index.html">HOME</a><a href="about.html">ABOUT</a><a href="events.html">EVENTS</a><a href="media.html">MEDIA</a><a href="join.html">JOIN / SIGN UP</a></div>
+<section class="hf">
+  <div class="hf-bg" style="background-image:url('https://lh3.googleusercontent.com/d/1GcnALGsntqPNPD0bc6Mo1KHPrZ0AZ-83')"></div>
+  <div class="hc"><h1>Join the<br>movement.</h1></div>
 </section>
-
-<!-- BRAND TICKER -->
-<div class="ticker-row ticker-row-brand" style="background:#000;">
-  <div class="ticker-track"><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span></div>
-</div>
-
-<footer>
-  <div class="footer-main">
-    <div><div class="footer-logo"><img src="assets/logo.png" alt="THE CRTV HUB"></div></div>
-    <div class="footer-col"><h5>Quick Links</h5><a href="index.html">HOME</a><a href="media.html">MEDIA</a><a href="events.html">EVENTS</a><a href="join.html">JOIN/SIGNUP</a></div>
-    <div class="footer-col"><h5>Stay Connected</h5><a href="http://tiktok.com/@thecreativehubagency" target="_blank">TIKTOK</a><a href="https://www.instagram.com/thecrtvhubuk" target="_blank">INSTAGRAM</a><a href="https://www.youtube.com/@thecrtvhub" target="_blank">YOUTUBE</a></div>
+<section><div class="js"><div class="jg">
+  <div>
+    <span class="section-eyebrow">Get Involved</span>
+    <h2 class="section-heading" style="font-size:clamp(30px,4vw,60px);margin-bottom:28px;">JOIN / SIGN UP</h2>
+    <form class="jf" onsubmit="event.preventDefault();alert('Thank you! We\'ll be in touch.');">
+      <div class="fg"><label>Full Name</label><input type="text" placeholder="Your name" required></div>
+      <div class="fg"><label>Email Address</label><input type="email" placeholder="your@email.com" required></div>
+      <div class="fg"><label>Instagram Handle</label><input type="text" placeholder="@yourhandle"></div>
+      <div class="fg"><label>How do you want to get involved?</label><select><option value="">Select an option</option><option>Film Production</option><option>Events &amp; Live</option><option>Creative &amp; Content</option><option>Dance / Performance</option><option>Community / Volunteering</option><option>Other</option></select></div>
+      <div class="fg"><label>Tell us about yourself</label><textarea placeholder="A brief intro..."></textarea></div>
+      <button type="submit" class="fsub">SUBMIT →</button>
+    </form>
   </div>
-  <div class="footer-bottom">
-    <span>© 2026 The CRTV Hub. All rights reserved.</span>
-    <span>Built by Creatives. Powered by Culture.</span>
+  <div>
+    <div class="ii"><p class="il">Film Production</p><h3 class="it">CREATE WITH US</h3><p class="id">Work alongside our team on music videos, short films, and documentary storytelling. Open to directors, DPs, editors, and all crew roles.</p></div>
+    <div class="ii"><p class="il">Events</p><h3 class="it">BUILD WITH US</h3><p class="id">Be part of our live events — from global dance competitions to community gatherings. Performers, organisers, and volunteers welcome.</p></div>
+    <div class="ii"><p class="il">Community</p><h3 class="it">MOVE WITH US</h3><p class="id">Join our growing network of creatives, entrepreneurs, and cultural movers. Stay informed, stay connected, stay inspired.</p></div>
   </div>
-</footer>
-
-<script>
-/* PRELOADER — first visit only */
+</div></div></section>
+<div class="brand-ticker"><div class="ticker-track"><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span></div></div><footer><div class="footer-main"><div><div class="footer-logo"><img src="assets/logo.png" alt="THE CRTV HUB"></div></div><div class="footer-col"><h5>Quick Links</h5><a href="index.html">HOME</a><a href="media.html">MEDIA</a><a href="events.html">EVENTS</a><a href="join.html">JOIN/SIGNUP</a></div><div class="footer-col"><h5>Stay Connected</h5><a href="http://tiktok.com/@thecreativehubagency" target="_blank">TIKTOK</a><a href="https://www.instagram.com/thecrtvhubuk" target="_blank">INSTAGRAM</a><a href="https://www.youtube.com/@thecrtvhub" target="_blank">YOUTUBE</a></div></div><div class="footer-bottom"><span>© 2026 The CRTV Hub. All rights reserved.</span><span>Built by Creatives. Powered by Culture.</span></div></footer><script>
 (function(){
-  if(sessionStorage.getItem('crtv_seen')){ const p=document.getElementById('preloader'); if(p) p.remove(); return; }
-  const preloader=document.getElementById('preloader'), circle=document.getElementById('preloader-circle');
-  setTimeout(()=>preloader.classList.add('show-logo'),50);
-  let done=false;
-  function exit(){ if(done)return; done=true; sessionStorage.setItem('crtv_seen','1'); circle.style.pointerEvents='none'; preloader.classList.add('slide-exit'); setTimeout(()=>{ preloader.classList.add('fade-out'); setTimeout(()=>preloader.remove(),400); },900); }
-  circle.addEventListener('click',exit);
-  circle.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' ')exit(); });
+  var p=document.getElementById("preloader");
+  if(!p)return;
+  if(sessionStorage.getItem("crtvEntered")){p.style.display="none";return;}
+  var c=document.getElementById("preloader-circle");
+  setTimeout(function(){p.classList.add("show-logo");},50);
+  var done=false;
+  function exit(){
+    if(done)return;done=true;
+    sessionStorage.setItem("crtvEntered","1");
+    c.style.pointerEvents="none";
+    p.classList.add("slide-exit");
+    setTimeout(function(){p.classList.add("fade-out");setTimeout(function(){p.remove();},400);},900);
+  }
+  c.addEventListener("click",exit);
+  c.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" ")exit();});
 })();
-window.addEventListener('scroll',()=>{ document.getElementById('nav-outer').classList.toggle('scrolled',window.scrollY>60); });
-document.getElementById('nav-burger').addEventListener('click',()=>{ document.getElementById('mobile-nav').classList.add('open'); });
-document.getElementById('mob-close').addEventListener('click',()=>{ document.getElementById('mobile-nav').classList.remove('open'); });
-function handleSubmit(e) { e.preventDefault(); alert('Thank you! We\'ll be in touch soon.'); e.target.reset(); }
+window.addEventListener("scroll",function(){document.getElementById("nav").classList.toggle("scrolled",window.scrollY>60);});
+document.getElementById("burger").addEventListener("click",function(){document.getElementById("mobile-nav").classList.toggle("open");});
 </script>
-</body>
-</html>
+</body></html>
