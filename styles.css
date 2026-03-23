@@ -82,8 +82,8 @@ ul { list-style: none; }
 #nav-outer {
   position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
   height: var(--nav-h);
-  display: flex; align-items: center; justify-content: center;
-  padding: 0 40px;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 20px 30px;
   pointer-events: none;
 }
 /* The pill container — exactly matching axocreate */
@@ -224,3 +224,8 @@ footer { background: #fff; border-top: 1px solid rgba(0,0,0,0.06); }
 
 /* ─── SHARED PRELOADER SCRIPT UTILITY ─── */
 /* sessionStorage key: crtv_preloader_seen */
+
+#nav-logo {
+  display: flex; align-items: center; pointer-events: all;
+  flex-shrink: 0;
+}
