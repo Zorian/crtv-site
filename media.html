@@ -6,30 +6,38 @@
 <link rel="icon" href="assets/favicon.png" type="image/png">
 <link rel="stylesheet" href="styles.css">
 <style>
-/* ── MEDIA HERO (video background) ── */
+/* ── MEDIA HERO ── */
 .media-hero {
-  min-height: 65vh; display: flex; flex-direction: column; justify-content: flex-end;
-  padding: 0 60px 90px; background: #000; position: relative; overflow: hidden;
+  min-height: 70vh; display: flex; flex-direction: column;
+  justify-content: flex-end; padding: 0 60px 90px;
+  background: #000; position: relative; overflow: hidden;
 }
 .media-hero-video {
   position: absolute; inset: 0; width: 100%; height: 100%;
-  object-fit: cover; filter: brightness(0.3); z-index: 0; pointer-events: none;
+  object-fit: cover; filter: brightness(0.35); z-index: 0; pointer-events: none;
 }
-.media-hero-content { position: relative; z-index: 2; }
+.media-hero-content { position: relative; z-index: 2; max-width: 900px; }
 .media-hero h1 {
-  font-family: var(--font); font-size: clamp(38px,7vw,100px);
-  font-weight: 300; letter-spacing: 0.02em; text-transform: uppercase;
-  color: #fff; line-height: 1;
+  font-family: var(--font-display); font-size: clamp(42px, 7vw, 108px);
+  font-weight: 400; letter-spacing: 0.01em; text-transform: uppercase;
+  color: #fff; line-height: 0.95; margin-bottom: 18px;
 }
 .media-hero-sub {
   font-family: var(--font); font-size: 15px; font-weight: 300;
-  color: rgba(255,255,255,0.55); margin-top: 16px; letter-spacing: 0.06em;
+  color: rgba(255,255,255,0.55); letter-spacing: 0.06em; text-transform: uppercase;
 }
 
 /* ── OUR WORK ── */
 .our-work { padding: 100px 60px; max-width: 1200px; margin: 0 auto; }
 .ow-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
-.ow-list li { font-family: var(--font); font-size: 15px; font-weight: 300; padding: 12px 0; border-bottom: 1px solid rgba(0,0,0,0.07); color: #555; }
+.ow-list { margin-top: 14px; }
+.ow-list li {
+  font-family: var(--font); font-size: 15px; font-weight: 300;
+  padding: 13px 0; border-bottom: 1px solid rgba(0,0,0,0.08); color: #555;
+  letter-spacing: 0.02em;
+}
+.ow-list li:first-child { border-top: 1px solid rgba(0,0,0,0.08); }
+.ow-body { font-family: var(--font); font-size: 15px; font-weight: 300; color: #666; line-height: 1.75; }
 
 /* ── TRUSTED ── */
 .trusted-media { background: #0a0a0a; padding: 80px 0 10px; }
@@ -38,13 +46,18 @@
 /* ── CREATIVE APPROACH ── */
 .creative-approach { padding: 100px 60px; max-width: 1200px; margin: 0 auto; }
 .ca-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.ca-img { width: 100%; aspect-ratio: 4/5; object-fit: cover; display: block; }
 
 /* ── GALLERY ── */
 .gallery-section { padding: 20px 60px 100px; }
-.gallery-label { font-family: var(--font); font-size: 11px; font-weight: 300; letter-spacing: 0.35em; text-transform: uppercase; color: #aaa; margin-bottom: 24px; }
+.gallery-label {
+  font-family: var(--font); font-size: 11px; font-weight: 300;
+  letter-spacing: 0.35em; text-transform: uppercase; color: #aaa; margin-bottom: 24px;
+}
 
+/* ── MEDIA RESPONSIVE ── */
 @media (max-width: 900px) {
-  .media-hero { padding: 0 24px 60px; }
+  .media-hero { padding: 0 24px 60px; min-height: 60vh; }
   .our-work, .creative-approach, .gallery-section { padding-left: 24px; padding-right: 24px; }
   .trusted-media-inner { padding-left: 24px; padding-right: 24px; }
   .ow-grid, .ca-grid { grid-template-columns: 1fr; gap: 40px; }
@@ -63,14 +76,17 @@
   </div>
 </div>
 
-<!-- NAV PILL -->
+<!-- NAV -->
 <div id="nav-outer" style="justify-content:space-between;padding:20px 30px;">
+  <div id="nav-logo">
+    <a href="index.html"><img src="https://crtv.axocreate.com/wp-content/uploads/2026/01/Image-1-e1769234730649.png" alt="THE CRTV HUB" style="width:90px;height:90px;object-fit:contain;"></a>
+  </div>
   <div id="nav-pill">
     <a href="index.html" class="nav-link">HOME</a>
     <a href="about.html" class="nav-link">ABOUT</a>
     <a href="events.html" class="nav-link">EVENTS</a>
     <a href="media.html" class="nav-link active">MEDIA</a>
-    <a href="join.html" class="nav-link nav-cta">JOIN/SIGN UP</a>
+    <a href="join.html" class="nav-link">JOIN/SIGN UP</a>
   </div>
 </div>
 <button id="nav-burger" aria-label="Menu"><span></span><span></span><span></span></button>
@@ -81,14 +97,13 @@
   <a href="join.html">JOIN / SIGN UP</a>
 </div>
 
-<!-- MEDIA HERO — WeTransfer video background -->
+<!-- MEDIA HERO -->
 <section class="media-hero">
   <video class="media-hero-video" autoplay muted loop playsinline preload="auto">
     <source src="https://pub-a9f22cf5804840608cb8ba43afc33a34.r2.dev/media-hero.mov" type="video/mp4">
-    <source src="https://pub-a9f22cf5804840608cb8ba43afc33a34.r2.dev/media-hero.mov" type="video/quicktime">
   </video>
   <div class="media-hero-content">
-    <h1>We tell stories that<br>move culture.</h1>
+    <h1>We tell stories<br>that move culture.</h1>
     <p class="media-hero-sub">Explore the creativity of our talented creators.</p>
   </div>
 </section>
@@ -99,18 +114,17 @@
     <div class="ow-grid">
       <div>
         <span class="eyebrow">OUR WORK</span>
-        <h2 class="h-lg" style="margin-bottom:16px;">Film, fashion,<br>music &amp; movement.</h2>
-        <p class="italic-quote">"Film, fashion, music &amp; movement."</p>
+        <h2 class="h-lg" style="margin-bottom:16px;">"Film, fashion,<br>music &amp; movement."</h2>
       </div>
       <div>
-        <p class="body-text" style="margin-bottom:8px;">We produce high-impact visual content across:</p>
+        <p class="ow-body" style="margin-bottom:8px;">We produce high-impact visual content across:</p>
         <ul class="ow-list">
           <li>Music videos</li>
           <li>Commercials</li>
           <li>Short films</li>
           <li>Documentary storytelling</li>
         </ul>
-        <p class="body-text" style="margin-top:16px;">Our work is driven by authenticity, emotion, and cultural relevance</p>
+        <p class="ow-body" style="margin-top:18px;">Our work is driven by authenticity, emotion, and cultural relevance.</p>
       </div>
     </div>
   </div>
@@ -120,7 +134,9 @@
 <section class="trusted-media">
   <div class="trusted-media-inner">
     <h2 class="h-md" style="color:#fff;margin-bottom:14px;">Trusted by global brands &amp; platforms.</h2>
-    <p class="body-text" style="color:rgba(255,255,255,0.5);max-width:600px;margin-bottom:0;">We've worked with artists, brands, and organisations that align with culture, creativity, and innovation, delivering stories that resonate worldwide.</p>
+    <p class="body-text" style="color:rgba(255,255,255,0.5);max-width:600px;margin-bottom:0;">
+      We've worked with artists, brands, and organisations that align with culture, creativity, and innovation, delivering stories that resonate worldwide.
+    </p>
   </div>
   <div class="brands-carousel">
     <div class="brands-track">
@@ -142,9 +158,9 @@
   </div>
 </section>
 
-<!-- TICKER -->
-<div class="ticker-row"><div class="ticker-track"><span class="ticker-item">Podcast</span><span class="ticker-item">*</span><span class="ticker-item">Music</span><span class="ticker-item">*</span><span class="ticker-item">Live</span><span class="ticker-item">*</span><span class="ticker-item">Podcast</span><span class="ticker-item">*</span><span class="ticker-item">Music</span><span class="ticker-item">*</span><span class="ticker-item">Live</span><span class="ticker-item">*</span><span class="ticker-item">Podcast</span><span class="ticker-item">*</span><span class="ticker-item">Music</span><span class="ticker-item">*</span><span class="ticker-item">Live</span><span class="ticker-item">*</span><span class="ticker-item">Podcast</span><span class="ticker-item">*</span><span class="ticker-item">Music</span><span class="ticker-item">*</span><span class="ticker-item">Live</span><span class="ticker-item">*</span><span class="ticker-item">Podcast</span><span class="ticker-item">*</span><span class="ticker-item">Music</span><span class="ticker-item">*</span><span class="ticker-item">Live</span><span class="ticker-item">*</span><span class="ticker-item">Podcast</span><span class="ticker-item">*</span><span class="ticker-item">Music</span><span class="ticker-item">*</span><span class="ticker-item">Live</span><span class="ticker-item">*</span></div></div>
-<div class="ticker-row reverse"><div class="ticker-track"><span class="ticker-item">Podcast</span><span class="ticker-item">*</span><span class="ticker-item">Music</span><span class="ticker-item">*</span><span class="ticker-item">Live</span><span class="ticker-item">*</span><span class="ticker-item">Podcast</span><span class="ticker-item">*</span><span class="ticker-item">Music</span><span class="ticker-item">*</span><span class="ticker-item">Live</span><span class="ticker-item">*</span><span class="ticker-item">Podcast</span><span class="ticker-item">*</span><span class="ticker-item">Music</span><span class="ticker-item">*</span><span class="ticker-item">Live</span><span class="ticker-item">*</span><span class="ticker-item">Podcast</span><span class="ticker-item">*</span><span class="ticker-item">Music</span><span class="ticker-item">*</span><span class="ticker-item">Live</span><span class="ticker-item">*</span><span class="ticker-item">Podcast</span><span class="ticker-item">*</span><span class="ticker-item">Music</span><span class="ticker-item">*</span><span class="ticker-item">Live</span><span class="ticker-item">*</span><span class="ticker-item">Podcast</span><span class="ticker-item">*</span><span class="ticker-item">Music</span><span class="ticker-item">*</span><span class="ticker-item">Live</span><span class="ticker-item">*</span></div></div>
+<!-- PODCAST TICKER -->
+<div class="ticker-row"><div class="ticker-track"><span class="ticker-item">Podcast</span><span class="ticker-item">*</span><span class="ticker-item">Music</span><span class="ticker-item">*</span><span class="ticker-item">Live</span><span class="ticker-item">*</span><span class="ticker-item">Podcast</span><span class="ticker-item">*</span><span class="ticker-item">Music</span><span class="ticker-item">*</span><span class="ticker-item">Live</span><span class="ticker-item">*</span><span class="ticker-item">Podcast</span><span class="ticker-item">*</span><span class="ticker-item">Music</span><span class="ticker-item">*</span><span class="ticker-item">Live</span><span class="ticker-item">*</span><span class="ticker-item">Podcast</span><span class="ticker-item">*</span><span class="ticker-item">Music</span><span class="ticker-item">*</span><span class="ticker-item">Live</span><span class="ticker-item">*</span><span class="ticker-item">Podcast</span><span class="ticker-item">*</span><span class="ticker-item">Music</span><span class="ticker-item">*</span><span class="ticker-item">Live</span><span class="ticker-item">*</span></div></div>
+<div class="ticker-row reverse"><div class="ticker-track"><span class="ticker-item">Podcast</span><span class="ticker-item">*</span><span class="ticker-item">Music</span><span class="ticker-item">*</span><span class="ticker-item">Live</span><span class="ticker-item">*</span><span class="ticker-item">Podcast</span><span class="ticker-item">*</span><span class="ticker-item">Music</span><span class="ticker-item">*</span><span class="ticker-item">Live</span><span class="ticker-item">*</span><span class="ticker-item">Podcast</span><span class="ticker-item">*</span><span class="ticker-item">Music</span><span class="ticker-item">*</span><span class="ticker-item">Live</span><span class="ticker-item">*</span><span class="ticker-item">Podcast</span><span class="ticker-item">*</span><span class="ticker-item">Music</span><span class="ticker-item">*</span><span class="ticker-item">Live</span><span class="ticker-item">*</span><span class="ticker-item">Podcast</span><span class="ticker-item">*</span><span class="ticker-item">Music</span><span class="ticker-item">*</span><span class="ticker-item">Live</span><span class="ticker-item">*</span></div></div>
 
 <!-- CREATIVE APPROACH -->
 <section>
@@ -152,12 +168,12 @@
     <div class="ca-grid">
       <div>
         <span class="eyebrow">CREATIVE APPROACH</span>
-        <h2 class="h-lg" style="margin-bottom:16px;">Story first.<br>Always.</h2>
-        <p class="italic-quote" style="margin-bottom:20px;">"Story first. Always."</p>
-        <p class="body-text">Every project starts with intention. We don't chase trends, we document moments, people, and movements that matter.</p>
+        <h2 class="h-lg" style="margin-bottom:16px;">"Story first.<br>Always."</h2>
+        <p class="body-text">Every project starts with intention.<br>
+        We don't chase trends, we document moments, people, and movements that matter.</p>
       </div>
       <div>
-        <img src="https://lh3.googleusercontent.com/d/1DfiYjBxVvfvsBYZ3hebJWX6kGAhgN-LS" alt="" style="width:100%;aspect-ratio:4/5;object-fit:cover;">
+        <img class="ca-img" src="https://lh3.googleusercontent.com/d/1DfiYjBxVvfvsBYZ3hebJWX6kGAhgN-LS" alt="CRTV Hub Creative">
       </div>
     </div>
   </div>
@@ -220,22 +236,36 @@
 
 <!-- BRAND TICKER -->
 <div class="ticker-row" style="background:#000;"><div class="ticker-track"><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span></div></div>
+<div class="ticker-row reverse" style="background:#000;"><div class="ticker-track"><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span></div></div>
 
 <!-- FOOTER -->
-<footer>
-  <div class="footer-main">
-    <div><div class="footer-logo"><img src="assets/logo.png" alt="THE CRTV HUB"></div></div>
-    <div class="footer-col"><h5>Quick Links</h5><a href="index.html">HOME</a><a href="media.html">MEDIA</a><a href="events.html">EVENTS</a><a href="join.html">JOIN/SIGNUP</a></div>
-    <div class="footer-col"><h5>Stay Connected</h5><a href="http://tiktok.com/@thecreativehubagency" target="_blank">TIKTOK</a><a href="https://www.instagram.com/thecrtvhubuk" target="_blank">INSTAGRAM</a><a href="https://www.youtube.com/@thecrtvhub" target="_blank">YOUTUBE</a></div>
-  </div>
-  <div class="footer-bottom">
-    <span>© 2026 The CRTV Hub. All rights reserved.</span>
-    <span>Built by Creatives. Powered by Culture.</span>
+<footer style="background:#000;padding:40px 30px 50px;">
+  <div style="display:grid;grid-template-columns:1fr auto 1fr;align-items:start;max-width:1400px;margin:0 auto;gap:20px;">
+    <div>
+      <h5 style="font-family:'StrechPro',sans-serif;font-size:22px;font-weight:600;text-transform:uppercase;color:#fff;margin:0 0 16px 0;letter-spacing:0.05em;">QUICK LINKS</h5>
+      <div style="display:flex;gap:18px;flex-wrap:wrap;">
+        <a href="index.html" style="font-family:'MadeOuter',sans-serif;font-size:13px;color:#fff;text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;">HOME</a>
+        <a href="media.html" style="font-family:'MadeOuter',sans-serif;font-size:13px;color:#fff;text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;">MEDIA</a>
+        <a href="events.html" style="font-family:'MadeOuter',sans-serif;font-size:13px;color:#fff;text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;">EVENTS</a>
+        <a href="join.html" style="font-family:'MadeOuter',sans-serif;font-size:13px;color:#fff;text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;">JOIN/SIGNUP</a>
+      </div>
+    </div>
+    <div style="display:flex;justify-content:center;align-items:center;">
+      <img src="https://crtv.axocreate.com/wp-content/uploads/2026/01/Image-1-e1769234730649.png" alt="THE CRTV HUB" style="width:120px;height:auto;">
+    </div>
+    <div style="text-align:right;">
+      <h5 style="font-family:'StrechPro',sans-serif;font-size:22px;font-weight:600;text-transform:uppercase;color:#fff;margin:0 0 16px 0;letter-spacing:0.05em;">STAY CONNECTED</h5>
+      <div style="display:flex;gap:18px;justify-content:flex-end;flex-wrap:wrap;">
+        <a href="http://tiktok.com/@thecreativehubagency" target="_blank" style="font-family:'MadeOuter',sans-serif;font-size:13px;color:#fff;text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;">TIKTOK</a>
+        <a href="https://www.instagram.com/thecrtvhubuk" target="_blank" style="font-family:'MadeOuter',sans-serif;font-size:13px;color:#fff;text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;">INSTAGRAM</a>
+        <a href="https://www.youtube.com/@thecrtvhub" target="_blank" style="font-family:'MadeOuter',sans-serif;font-size:13px;color:#fff;text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;">YOUTUBE</a>
+      </div>
+    </div>
   </div>
 </footer>
 
 <script>
-/* PRELOADER — first visit only */
+/* PRELOADER */
 (function(){
   if(sessionStorage.getItem('crtv_seen')){ const p=document.getElementById('preloader'); if(p)p.remove(); return; }
   const preloader=document.getElementById('preloader'), circle=document.getElementById('preloader-circle');
