@@ -172,6 +172,45 @@
 window.addEventListener('scroll',()=>{ document.getElementById('nav-outer').classList.toggle('scrolled',window.scrollY>60); });
 document.getElementById('nav-burger').addEventListener('click',()=>{ document.getElementById('mobile-nav').classList.add('open'); });
 document.getElementById('mob-close').addEventListener('click',()=>{ document.getElementById('mobile-nav').classList.remove('open'); });
+/* LOGO CLICK — re-triggers preloader */
+(function(){
+  const logo = document.getElementById('nav-logo');
+  if(!logo) return;
+  logo.addEventListener('click', function(e){
+    e.preventDefault();
+    // Re-create and show preloader
+    const existing = document.getElementById('preloader');
+    if(existing) existing.remove();
+    const p = document.createElement('div');
+    p.id = 'preloader';
+    p.innerHTML = '<div class="preloader-inner"><div id="preloader-circle" role="button" tabindex="0" aria-label="Enter"><img id="preloader-logo" src="assets/logo.png" alt="CRTV Hub"></div><p id="preloader-instruction">Click to enter</p></div>';
+    document.body.appendChild(p);
+    setTimeout(()=>p.classList.add('show-logo'),50);
+    let done=false;
+    const circle=p.querySelector('#preloader-circle');
+    function playClick(){
+      try{
+        const ctx=new(window.AudioContext||window.webkitAudioContext)();
+        const osc=ctx.createOscillator(); const gain=ctx.createGain();
+        osc.connect(gain); gain.connect(ctx.destination);
+        osc.frequency.setValueAtTime(800,ctx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(200,ctx.currentTime+0.08);
+        gain.gain.setValueAtTime(0.4,ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001,ctx.currentTime+0.1);
+        osc.start(ctx.currentTime); osc.stop(ctx.currentTime+0.1);
+      }catch(e){}
+    }
+    function exit(){
+      if(done)return; done=true;
+      playClick();
+      circle.style.pointerEvents='none';
+      p.classList.add('slide-exit');
+      setTimeout(()=>{ p.classList.add('fade-out'); setTimeout(()=>p.remove(),400); },900);
+    }
+    circle.addEventListener('click',exit);
+    circle.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' ')exit(); });
+  });
+})();
 </script>
 </body>
 </html>
