@@ -56,6 +56,7 @@
 <body>
 
 <!-- PRELOADER -->
+<!-- PRELOADER -->
 <div id="preloader">
   <div class="preloader-inner">
     <div id="preloader-circle" role="button" tabindex="0" aria-label="Enter">
@@ -65,20 +66,19 @@
   </div>
 </div>
 
-<!-- NAV -->
-<nav id="nav">
-  <div class="nav-pill">
-    <ul class="nav-links">
-      <li><a href="index.html" class="">HOME</a></li>
-      <li><a href="about.html" class="">ABOUT</a></li>
-      <li><a href="events.html" class="">EVENTS</a></li>
-      <li><a href="media.html" class="">MEDIA</a></li>
-      <li><a href="join.html" class="active">JOIN/SIGN UP</a></li>
-    </ul>
-    <button class="nav-burger" id="burger"><span></span><span></span><span></span></button>
+<!-- NAV PILL -->
+<div id="nav-outer">
+  <div id="nav-pill">
+    <a href="index.html" class="nav-link">HOME</a>
+    <a href="about.html" class="nav-link">ABOUT</a>
+    <a href="events.html" class="nav-link">EVENTS</a>
+    <a href="media.html" class="nav-link">MEDIA</a>
+    <a href="join.html" class="nav-link nav-cta active">JOIN/SIGN UP</a>
   </div>
-</nav>
+</div>
+<button id="nav-burger" aria-label="Menu"><span></span><span></span><span></span></button>
 <div id="mobile-nav">
+  <button id="mob-close">✕</button>
   <a href="index.html">HOME</a><a href="about.html">ABOUT</a>
   <a href="events.html">EVENTS</a><a href="media.html">MEDIA</a>
   <a href="join.html">JOIN / SIGN UP</a>
@@ -105,17 +105,19 @@
 </footer>
 
 <script>
+/* PRELOADER — first visit only */
 (function(){
-  const preloader = document.getElementById('preloader');
-  const circle = document.getElementById('preloader-circle');
-  setTimeout(() => preloader.classList.add('show-logo'), 50);
-  let done = false;
-  function exit() { if(done) return; done=true; circle.style.pointerEvents='none'; preloader.classList.add('slide-exit'); setTimeout(() => { preloader.classList.add('fade-out'); setTimeout(() => preloader.remove(), 400); }, 900); }
-  circle.addEventListener('click', exit);
-  circle.addEventListener('keydown', e => { if(e.key==='Enter'||e.key===' ') exit(); });
+  if(sessionStorage.getItem('crtv_seen')){ const p=document.getElementById('preloader'); if(p) p.remove(); return; }
+  const preloader=document.getElementById('preloader'), circle=document.getElementById('preloader-circle');
+  setTimeout(()=>preloader.classList.add('show-logo'),50);
+  let done=false;
+  function exit(){ if(done)return; done=true; sessionStorage.setItem('crtv_seen','1'); circle.style.pointerEvents='none'; preloader.classList.add('slide-exit'); setTimeout(()=>{ preloader.classList.add('fade-out'); setTimeout(()=>preloader.remove(),400); },900); }
+  circle.addEventListener('click',exit);
+  circle.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' ')exit(); });
 })();
-window.addEventListener('scroll', () => { document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 40); });
-document.getElementById('burger').addEventListener('click', () => { document.getElementById('mobile-nav').classList.toggle('open'); });
+window.addEventListener('scroll',()=>{ document.getElementById('nav-outer').classList.toggle('scrolled',window.scrollY>60); });
+document.getElementById('nav-burger').addEventListener('click',()=>{ document.getElementById('mobile-nav').classList.add('open'); });
+document.getElementById('mob-close').addEventListener('click',()=>{ document.getElementById('mobile-nav').classList.remove('open'); });
 function handleSubmit(e) { e.preventDefault(); alert('Thank you! We\'ll be in touch soon.'); e.target.reset(); }
 </script>
 </body>
