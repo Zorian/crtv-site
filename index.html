@@ -195,7 +195,7 @@
   .hs-content { bottom: 40px; padding: 0 20px; }
   .hs-btn { font-size: 12px; padding: 10px 18px; }
 }
-/* Homepage only: show logo top-left on mobile */
+/* Homepage mobile: logo top-left, burger top-right, logo hides on scroll */
 @media (max-width: 900px) {
   #nav-outer {
     display: flex !important;
@@ -214,18 +214,13 @@
     width: auto !important;
   }
   #nav-outer > * { pointer-events: all; }
-  #nav-outer.scrolled {
-    background: transparent !important;
-    border-radius: 0 !important;
-    box-shadow: none !important;
-    padding: 14px 20px !important;
-    width: auto !important;
-  }
+  #nav-outer.scrolled { background: transparent !important; border-radius: 0 !important; box-shadow: none !important; padding: 14px 20px !important; }
   #nav-outer.scrolled #nav-pill { display: none !important; }
+  #nav-outer.scrolled #nav-logo { opacity: 0; pointer-events: none; }
   #nav-pill { display: none !important; }
-  #nav-logo { display: flex !important; }
+  #nav-logo { display: flex !important; opacity: 1; transition: opacity 0.3s; }
   #nav-logo img { width: 60px; height: 60px; }
-  #nav-burger { display: flex !important; position: relative; z-index: 10001; }
+  #nav-burger { display: flex !important; position: fixed; top: 16px; right: 16px; z-index: 10001; }
 }
 </style>
 
