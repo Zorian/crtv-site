@@ -78,35 +78,55 @@ ul { list-style: none; }
 #preloader.fade-out { opacity: 0; }
 
 /* ─── NAV ─── */
-/* Outer fixed wrapper - full width, positioned at top */
+/* Outer fixed wrapper */
 #nav-outer {
   position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-  height: var(--nav-h);
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 20px 30px;
+  display: flex; align-items: center; justify-content: flex-end;
+  padding: 16px 24px;
   pointer-events: none;
+  transition: padding 0.4s ease, background 0.4s ease, justify-content 0.4s ease;
 }
-/* The pill container — exactly matching axocreate */
+/* Logo — hidden by default, shown when scrolled */
+#nav-logo {
+  pointer-events: all;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+#nav-outer.scrolled #nav-logo {
+  opacity: 1; pointer-events: all;
+}
+/* The pill container */
 #nav-pill {
   pointer-events: all;
   display: flex; align-items: center; justify-content: center;
-  gap: 0;
+  gap: 36px;
   background: rgba(255,255,255,0.15);
   backdrop-filter: blur(16px) saturate(160%);
   -webkit-backdrop-filter: blur(16px) saturate(160%);
   border: 1px solid rgba(255,255,255,0.3);
   border-radius: 45px;
   box-shadow: 0 8px 32px rgba(0,0,0,0.15);
-  padding: 0 40px;
-  height: 62px;
-  gap: 36px;
-  transition: background 0.3s, border-color 0.3s;
+  padding: 0 32px;
+  height: 58px;
+  transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
 }
-/* Scrolled state — darken the pill */
-#nav-outer.scrolled #nav-pill {
+/* Scrolled state — full-width blue bar */
+#nav-outer.scrolled {
+  justify-content: space-between;
+  padding: 0 30px;
   background: #1076F8;
-  border-color: #1076F8;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.2);
+  height: 70px;
+}
+#nav-outer.scrolled #nav-pill {
+  background: transparent;
+  border-color: transparent;
   box-shadow: none;
+  border-radius: 0;
+  padding: 0;
+  height: 70px;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
 }
 .nav-link {
   font-family: var(--font); font-size: 16px; font-weight: 400;
