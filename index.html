@@ -71,6 +71,11 @@
 .project-card:hover .project-watch { opacity: 1; transform: translateY(0); }
 
 @media (max-width: 900px) {
+  /* WWA 50/50 stacks on mobile */
+  section[style*="min-height:700px"] { flex-direction: column !important; }
+  section[style*="min-height:700px"] > div[style*="width:50%"] { width: 100% !important; }
+  section[style*="min-height:700px"] > div[style*="width:50%"]:first-child { padding: 50px 24px !important; }
+  section[style*="min-height:700px"] > div[style*="width:50%"]:last-child { min-height: 350px !important; }
   .wwa-grid, .wwd-grid { grid-template-columns: 1fr; gap: 40px; }
   .projects-grid { grid-template-columns: repeat(2,1fr); }
   .wwa, .wwd, .explore { padding: 60px 24px; }
@@ -210,26 +215,30 @@
   <div class="slider-dots" id="sl-dots"></div>
 </section>
 
-<!-- WHAT WE ARE -->
-<section>
-  <div class="wwa">
-    <div class="wwa-grid">
-      <div>
-        <span class="eyebrow">What we are?</span>
-        <h2 class="h-xl" style="margin-bottom:20px;">THE<br>CRTV HUB</h2>
-        <p class="italic-quote" style="margin-bottom:24px;">"Built by creatives. Powered by culture."</p>
-        <p class="body-text">THE CRTV HUB is a creative media house and cultural platform specialising in film production, live events, and creative storytelling. We exist to create opportunities, spotlight talent, and build spaces where creativity can thrive without limits.</p>
-      </div>
-      <div>
-        <img src="https://lh3.googleusercontent.com/d/1wCAzACw6_mVfiYk3XsxUSOggCMQdDaYl" alt="" style="width:100%;aspect-ratio:4/5;object-fit:cover;">
-      </div>
-    </div>
+<!-- WHAT WE ARE — 50/50 split, text left, video right, no animations -->
+<section style="min-height:700px;display:flex;flex-direction:row;overflow:hidden;">
+
+  <!-- LEFT: text, white background, 50% width -->
+  <div style="width:50%;background:#fff;padding:80px 30px;display:flex;flex-direction:column;justify-content:center;gap:20px;">
+    <h2 style="font-family:'StrechPro',sans-serif;font-size:45px;font-weight:600;text-transform:uppercase;color:#1076F8;line-height:1.05;max-width:383px;margin:0;">What we are?</h2>
+    <p style="font-family:'StrechPro',sans-serif;font-size:18px;font-weight:600;color:#1076F8;margin:0;">"Built by creatives. Powered by culture."</p>
+    <p style="font-family:'MadeOuter',sans-serif;font-size:17px;font-weight:300;color:#333;line-height:1.75;letter-spacing:1.2px;max-width:574px;margin:0;">THE CRTV HUB is a creative media house and cultural platform specialising in film production, live events, and creative storytelling. We exist to create opportunities, spotlight talent, and build spaces where creativity can thrive without limits</p>
   </div>
+
+  <!-- RIGHT: video background, 50% width -->
+  <div style="width:50%;position:relative;min-height:500px;overflow:hidden;background:#000;">
+    <video autoplay muted loop playsinline preload="auto" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+      <source src="https://crtv.axocreate.com/wp-content/uploads/2026/01/AQNk5DDBanbZ_5ca6dYW4zZmnkV2MVF9vWKB6gdslWZVXk_CK9Uagk4rt4cz4wS-GXzwSVwH-Vq3ETXyG8LVCDGDNEJv7eDUdEbj2_4.mp4" type="video/mp4">
+    </video>
+  </div>
+
 </section>
 
-<!-- TICKER -->
-<div class="ticker-row"><div class="ticker-track"><span class="ticker-item">Podcast</span><span class="ticker-item">*</span><span class="ticker-item">Music</span><span class="ticker-item">*</span><span class="ticker-item">Live</span><span class="ticker-item">*</span><span class="ticker-item">Podcast</span><span class="ticker-item">*</span><span class="ticker-item">Music</span><span class="ticker-item">*</span><span class="ticker-item">Live</span><span class="ticker-item">*</span><span class="ticker-item">Podcast</span><span class="ticker-item">*</span><span class="ticker-item">Music</span><span class="ticker-item">*</span><span class="ticker-item">Live</span><span class="ticker-item">*</span><span class="ticker-item">Podcast</span><span class="ticker-item">*</span><span class="ticker-item">Music</span><span class="ticker-item">*</span><span class="ticker-item">Live</span><span class="ticker-item">*</span><span class="ticker-item">Podcast</span><span class="ticker-item">*</span><span class="ticker-item">Music</span><span class="ticker-item">*</span><span class="ticker-item">Live</span><span class="ticker-item">*</span><span class="ticker-item">Podcast</span><span class="ticker-item">*</span><span class="ticker-item">Music</span><span class="ticker-item">*</span><span class="ticker-item">Live</span><span class="ticker-item">*</span></div></div>
-<div class="ticker-row reverse"><div class="ticker-track"><span class="ticker-item">Podcast</span><span class="ticker-item">*</span><span class="ticker-item">Music</span><span class="ticker-item">*</span><span class="ticker-item">Live</span><span class="ticker-item">*</span><span class="ticker-item">Podcast</span><span class="ticker-item">*</span><span class="ticker-item">Music</span><span class="ticker-item">*</span><span class="ticker-item">Live</span><span class="ticker-item">*</span><span class="ticker-item">Podcast</span><span class="ticker-item">*</span><span class="ticker-item">Music</span><span class="ticker-item">*</span><span class="ticker-item">Live</span><span class="ticker-item">*</span><span class="ticker-item">Podcast</span><span class="ticker-item">*</span><span class="ticker-item">Music</span><span class="ticker-item">*</span><span class="ticker-item">Live</span><span class="ticker-item">*</span><span class="ticker-item">Podcast</span><span class="ticker-item">*</span><span class="ticker-item">Music</span><span class="ticker-item">*</span><span class="ticker-item">Live</span><span class="ticker-item">*</span><span class="ticker-item">Podcast</span><span class="ticker-item">*</span><span class="ticker-item">Music</span><span class="ticker-item">*</span><span class="ticker-item">Live</span><span class="ticker-item">*</span></div></div>
+<!-- TICKER — LIVE * PODCAST * MUSIC * (exact axocreate order) -->
+<div class="ticker-row"><div class="ticker-track"><span class="ticker-item">LIVE</span><span class="ticker-item">*</span><span class="ticker-item">PODCAST</span><span class="ticker-item">*</span><span class="ticker-item">MUSIC</span><span class="ticker-item">*</span><span class="ticker-item">LIVE</span><span class="ticker-item">*</span><span class="ticker-item">PODCAST</span><span class="ticker-item">*</span><span class="ticker-item">MUSIC</span><span class="ticker-item">*</span><span class="ticker-item">LIVE</span><span class="ticker-item">*</span><span class="ticker-item">PODCAST</span><span class="ticker-item">*</span><span class="ticker-item">MUSIC</span><span class="ticker-item">*</span><span class="ticker-item">LIVE</span><span class="ticker-item">*</span><span class="ticker-item">PODCAST</span><span class="ticker-item">*</span><span class="ticker-item">MUSIC</span><span class="ticker-item">*</span><span class="ticker-item">LIVE</span><span class="ticker-item">*</span><span class="ticker-item">PODCAST</span><span class="ticker-item">*</span><span class="ticker-item">MUSIC</span><span class="ticker-item">*</span><span class="ticker-item">LIVE</span><span class="ticker-item">*</span><span class="ticker-item">PODCAST</span><span class="ticker-item">*</span><span class="ticker-item">MUSIC</span><span class="ticker-item">*</span></div></div>
+<div class="ticker-row reverse"><div class="ticker-track"><span class="ticker-item">LIVE</span><span class="ticker-item">*</span><span class="ticker-item">PODCAST</span><span class="ticker-item">*</span><span class="ticker-item">MUSIC</span><span class="ticker-item">*</span><span class="ticker-item">LIVE</span><span class="ticker-item">*</span><span class="ticker-item">PODCAST</span><span class="ticker-item">*</span><span class="ticker-item">MUSIC</span><span class="ticker-item">*</span><span class="ticker-item">LIVE</span><span class="ticker-item">*</span><span class="ticker-item">PODCAST</span><span class="ticker-item">*</span><span class="ticker-item">MUSIC</span><span class="ticker-item">*</span><span class="ticker-item">LIVE</span><span class="ticker-item">*</span><span class="ticker-item">PODCAST</span><span class="ticker-item">*</span><span class="ticker-item">MUSIC</span><span class="ticker-item">*</span><span class="ticker-item">LIVE</span><span class="ticker-item">*</span><span class="ticker-item">PODCAST</span><span class="ticker-item">*</span><span class="ticker-item">MUSIC</span><span class="ticker-item">*</span><span class="ticker-item">LIVE</span><span class="ticker-item">*</span><span class="ticker-item">PODCAST</span><span class="ticker-item">*</span><span class="ticker-item">MUSIC</span><span class="ticker-item">*</span></div></div>
+
+
 
 <!-- TRUSTED BY + BRAND LOGOS -->
 <section class="trusted">
