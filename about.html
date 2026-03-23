@@ -6,52 +6,156 @@
 <link rel="icon" href="assets/favicon.png" type="image/png">
 <link rel="stylesheet" href="styles.css">
 <style>
-.hf{min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:0 80px 110px;background:#000;position:relative;overflow:hidden;}
-.hf-bg{position:absolute;inset:0;background-size:cover;background-position:center;filter:brightness(0.32);}
-.hc{position:relative;z-index:2;}
-.hc h1{font-family:var(--font);font-size:clamp(38px,8vw,110px);font-weight:400;letter-spacing:0.02em;text-transform:uppercase;color:#fff;line-height:0.95;}
-.hc .hs{font-family:var(--font);font-size:18px;font-style:italic;color:rgba(255,255,255,0.6);margin-top:20px;}
-.sp{padding:100px 80px;max-width:1300px;margin:0 auto;}
-.two{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
-.two img{width:100%;aspect-ratio:4/5;object-fit:cover;}
-.vl li{font-family:var(--font);font-size:16px;padding:18px 0;border-bottom:1px solid rgba(255,255,255,0.08);color:#ccc;}
-.vl li::before{content:"—";color:var(--blue);margin-right:14px;}
-@media(max-width:900px){.hf{padding:0 24px 90px;}.sp{padding:60px 24px;}.two{grid-template-columns:1fr;gap:36px;}}
+/* About page sections — all 100vh, 50/50, navy left + image right */
+.about-section {
+  display: flex; flex-direction: row; min-height: 100vh; overflow: hidden;
+}
+.about-section.reverse { flex-direction: row-reverse; }
+.about-left {
+  width: 50%; background: #001138;
+  display: flex; flex-direction: column; justify-content: center;
+  gap: 20px; padding: 50px;
+}
+.about-right {
+  width: 50%; min-height: 500px; position: relative; overflow: hidden;
+}
+.about-right img {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+}
+.about-h {
+  font-family: 'StrechPro', sans-serif; font-size: 45px; font-weight: 600;
+  text-transform: uppercase; color: #1076F8; line-height: 1.05;
+  max-width: 383px; margin: 0;
+}
+.about-quote {
+  font-family: 'StrechPro', sans-serif; font-size: 18px; font-weight: 600;
+  color: #fff; margin: 0;
+}
+.about-body {
+  font-family: 'MadeOuter', sans-serif; font-size: 15px; font-weight: 400;
+  letter-spacing: 0.9px; color: rgba(255,255,255,0.85); line-height: 1.8; margin: 0;
+}
+@media (max-width: 900px) {
+  .about-section, .about-section.reverse { flex-direction: column; }
+  .about-left, .about-right { width: 100%; }
+  .about-right { min-height: 400px; }
+  .about-left { padding: 50px 30px; }
+  .about-h { font-size: 30px; }
+}
 </style>
 </head>
-<body><div id="preloader"><div class="preloader-inner"><div id="preloader-circle" role="button" tabindex="0" aria-label="Enter"><img id="preloader-logo" src="assets/logo.png" alt="CRTV Hub"></div><p id="preloader-instruction">Click to enter</p></div></div><nav id="nav"><ul class="nav-links"><li><a href="index.html">HOME</a></li><li><a href="about.html" class="active">ABOUT</a></li><li><a href="events.html">EVENTS</a></li><li><a href="media.html">MEDIA</a></li><li><a href="join.html">JOIN/SIGN UP</a></li></ul><button class="nav-burger" id="burger"><span></span><span></span><span></span></button></nav>
-<div id="mobile-nav"><a href="index.html">HOME</a><a href="about.html">ABOUT</a><a href="events.html">EVENTS</a><a href="media.html">MEDIA</a><a href="join.html">JOIN / SIGN UP</a></div>
-<section class="hf">
-  <div class="hf-bg" style="background-image:url('https://lh3.googleusercontent.com/d/1wCAzACw6_mVfiYk3XsxUSOggCMQdDaYl')"></div>
-  <div class="hc">
-    <p style="font-family:var(--font);font-size:11px;letter-spacing:0.4em;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-bottom:18px;">GET TO KNOW US</p>
-    <h1>By the young.<br>For the young.</h1>
-    <p class="hs">"Only rebels recreate the world."</p>
+<body>
+
+<!-- NAV -->
+<div id="nav-outer">
+  <div id="nav-logo">
+    <a href="index.html"><img src="https://crtv.axocreate.com/wp-content/uploads/2026/01/Image-1-e1769234730649.png" alt="THE CRTV HUB" style="width:90px;height:90px;object-fit:contain;"></a>
+  </div>
+  <div id="nav-pill">
+    <a href="index.html" class="nav-link">HOME</a>
+    <a href="about.html" class="nav-link active">ABOUT</a>
+    <a href="events.html" class="nav-link">EVENTS</a>
+    <a href="media.html" class="nav-link">MEDIA</a>
+    <a href="join.html" class="nav-link">JOIN/SIGN UP</a>
+  </div>
+</div>
+<button id="nav-burger" aria-label="Menu"><span></span><span></span><span></span></button>
+<div id="mobile-nav">
+  <button id="mob-close">✕</button>
+  <a href="index.html">HOME</a><a href="about.html">ABOUT</a>
+  <a href="events.html">EVENTS</a><a href="media.html">MEDIA</a>
+  <a href="join.html">JOIN / SIGN UP</a>
+</div>
+
+<!-- SECTION 1: GET TO KNOW US — navy left, image right -->
+<section class="about-section" style="margin-top:0;">
+  <div class="about-left">
+    <h2 class="about-h">GET TO<br>KNOW US</h2>
+    <p class="about-quote">By the young. For the young.</p>
+    <p class="about-body">THE CRTV HUB is a media house with expertise in film production, branding, and creative strategy.</p>
+    <p class="about-body">Our mission is to inspire creatives to create their own world, adding innovation, culture, and purpose to everything we touch.</p>
+    <p class="about-quote" style="font-size:15px;color:rgba(255,255,255,0.7);">"Only rebels recreate the world."</p>
+  </div>
+  <div class="about-right">
+    <img src="https://crtv.axocreate.com/wp-content/uploads/2026/01/398143622_6735031366575353_3516649951948309757_n-e1773412953687.jpg" alt="">
   </div>
 </section>
-<section><div class="sp"><div class="two"><div><img src="https://lh3.googleusercontent.com/d/1EIOhSgI9xyolDzMYG6gFDzOKsWc7RK3z" alt=""></div><div><span class="section-eyebrow">Who We Are</span><h2 class="section-heading" style="font-size:clamp(32px,4.5vw,66px);margin-bottom:22px;">THE CRTV HUB</h2><p class="section-body">THE CRTV HUB is a media house with expertise in film production, branding, and creative strategy. Our mission is to inspire creatives to create their own world, adding innovation, culture, and purpose to everything we touch.</p></div></div></div></section>
-<section style="background:#f8f8f8;"><div class="sp"><div class="two"><div style="order:2"><img src="https://lh3.googleusercontent.com/d/1GcnALGsntqPNPD0bc6Mo1KHPrZ0AZ-83" alt=""></div><div style="order:1"><span class="section-eyebrow">OUR MISSION</span><h2 class="section-heading" style="font-size:clamp(32px,4.5vw,66px);margin-bottom:20px;">What we strive for?</h2><p class="section-body">Changing the narrative for creatives. We aim to dismantle the culture of fear, pressure, and isolation within the creative industry. By building platforms rooted in empathy, opportunity, and community, we help creatives move forward without sacrificing their passion.</p></div></div></div></section>
-<section><div class="sp"><div class="two"><div><img src="https://lh3.googleusercontent.com/d/1-oGd9ZyjbCTSTKLgLZZJtEjYLc5RTy92" alt=""></div><div><span class="section-eyebrow">The Journey</span><h2 class="section-heading" style="font-size:clamp(32px,4.5vw,66px);margin-bottom:20px;">How it all began?</h2><p class="section-body">From the streets to the world stage. What started in 2019 as a small local dance cypher with five people grew into a global creative platform reaching tens of thousands across cities worldwide. From London to Ghana, from community events to international film production, THE CRTV HUB has always been about giving back, creating access, and pushing culture forward.</p></div></div></div></section>
-<section style="background:#0a0a0a;"><div class="sp"><span class="section-eyebrow">OUR VALUES</span><h2 class="section-heading" style="color:#fff;font-size:clamp(32px,4.5vw,66px);margin-bottom:44px;">What matters the most to us?</h2><ul class="vl"><li>Community first</li><li>Culture over clout</li><li>Impact over noise</li><li>Creativity without compromise</li></ul></div></section>
-<div class="brand-ticker"><div class="ticker-track"><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span></div></div><footer><div class="footer-main"><div><div class="footer-logo"><img src="assets/logo.png" alt="THE CRTV HUB"></div></div><div class="footer-col"><h5>Quick Links</h5><a href="index.html">HOME</a><a href="media.html">MEDIA</a><a href="events.html">EVENTS</a><a href="join.html">JOIN/SIGNUP</a></div><div class="footer-col"><h5>Stay Connected</h5><a href="http://tiktok.com/@thecreativehubagency" target="_blank">TIKTOK</a><a href="https://www.instagram.com/thecrtvhubuk" target="_blank">INSTAGRAM</a><a href="https://www.youtube.com/@thecrtvhub" target="_blank">YOUTUBE</a></div></div><div class="footer-bottom"><span>© 2026 The CRTV Hub. All rights reserved.</span><span>Built by Creatives. Powered by Culture.</span></div></footer><script>
-(function(){
-  var p=document.getElementById("preloader");
-  if(!p)return;
-  if(sessionStorage.getItem("crtvEntered")){p.style.display="none";return;}
-  var c=document.getElementById("preloader-circle");
-  setTimeout(function(){p.classList.add("show-logo");},50);
-  var done=false;
-  function exit(){
-    if(done)return;done=true;
-    sessionStorage.setItem("crtvEntered","1");
-    c.style.pointerEvents="none";
-    p.classList.add("slide-exit");
-    setTimeout(function(){p.classList.add("fade-out");setTimeout(function(){p.remove();},400);},900);
-  }
-  c.addEventListener("click",exit);
-  c.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" ")exit();});
-})();
-window.addEventListener("scroll",function(){document.getElementById("nav").classList.toggle("scrolled",window.scrollY>60);});
-document.getElementById("burger").addEventListener("click",function(){document.getElementById("mobile-nav").classList.toggle("open");});
+
+<!-- SECTION 2: MISSION — image left, navy right (row-reverse) -->
+<section class="about-section reverse">
+  <div class="about-left">
+    <h2 class="about-h">MISSION</h2>
+    <p class="about-quote">What we strive for?</p>
+    <p class="about-body">Changing the narrative for creatives.</p>
+    <p class="about-body">We aim to dismantle the culture of fear, pressure, and isolation within the creative industry. By building platforms rooted in empathy, opportunity, and community, we help creatives move forward without sacrificing their passion.</p>
+  </div>
+  <div class="about-right">
+    <img src="https://crtv.axocreate.com/wp-content/uploads/2026/03/OBDOCX-136-Large.jpeg" alt="">
+  </div>
+</section>
+
+<!-- SECTION 3: THE JOURNEY — navy left, image right -->
+<section class="about-section">
+  <div class="about-left">
+    <h2 class="about-h">THE<br>JOURNEY</h2>
+    <p class="about-quote">How it all began?</p>
+    <p class="about-body">From the streets to the world stage.</p>
+    <p class="about-body">What started in 2019 as a small local dance cypher with five people grew into a global creative platform reaching tens of thousands across cities worldwide.</p>
+    <p class="about-body">From London to Ghana, from community events to international film production, THE CRTV HUB has always been about giving back, creating access, and pushing culture forward.</p>
+  </div>
+  <div class="about-right">
+    <img src="https://crtv.axocreate.com/wp-content/uploads/2026/01/DSC00526.avif" alt="">
+  </div>
+</section>
+
+<!-- SECTION 4: VALUES — image left, navy right (row-reverse) -->
+<section class="about-section reverse">
+  <div class="about-left">
+    <h2 class="about-h">VALUES</h2>
+    <p class="about-quote">What matters the most to us?</p>
+    <p class="about-body" style="display:flex;flex-direction:column;gap:12px;">
+      <span>— Community first</span>
+      <span>— Culture over clout</span>
+      <span>— Impact over noise</span>
+      <span>— Creativity without compromise</span>
+    </p>
+  </div>
+  <div class="about-right">
+    <img src="https://crtv.axocreate.com/wp-content/uploads/2026/03/WhatsApp-Image-2026-03-13-at-17.36.59-1-scaled.jpeg" alt="">
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="background:#000;padding:50px 20px;">
+  <div style="display:flex;flex-direction:row;align-items:flex-start;justify-content:space-between;max-width:1400px;margin:0 auto;gap:40px;flex-wrap:wrap;">
+    <div style="flex:1;min-width:200px;">
+      <h5 style="font-family:'StrechPro',sans-serif;font-size:25px;font-weight:600;text-transform:uppercase;color:#fff;margin:0 0 20px 0;">QUICK LINKS</h5>
+      <div style="display:flex;gap:20px;flex-wrap:wrap;">
+        <a href="index.html" style="font-family:'MadeOuter',sans-serif;font-size:14px;color:#fff;text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;">HOME</a>
+        <a href="media.html" style="font-family:'MadeOuter',sans-serif;font-size:14px;color:#fff;text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;">MEDIA</a>
+        <a href="events.html" style="font-family:'MadeOuter',sans-serif;font-size:14px;color:#fff;text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;">EVENTS</a>
+        <a href="join.html" style="font-family:'MadeOuter',sans-serif;font-size:14px;color:#fff;text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;">JOIN/SIGNUP</a>
+      </div>
+    </div>
+    <div style="display:flex;justify-content:center;align-items:center;order:-1;width:50%;">
+      <img src="assets/logo.png" alt="THE CRTV HUB" style="width:90px;height:auto;margin-top:-25px;">
+    </div>
+    <div style="flex:1;min-width:200px;text-align:right;">
+      <h5 style="font-family:'StrechPro',sans-serif;font-size:25px;font-weight:600;text-transform:uppercase;color:#fff;margin:0 0 20px 0;">STAY CONNECTED</h5>
+      <div style="display:flex;gap:20px;justify-content:flex-end;flex-wrap:wrap;">
+        <a href="http://tiktok.com/@thecreativehubagency" target="_blank" style="font-family:'MadeOuter',sans-serif;font-size:14px;color:#fff;text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;">TIKTOK</a>
+        <a href="https://www.instagram.com/thecrtvhubuk" target="_blank" style="font-family:'MadeOuter',sans-serif;font-size:14px;color:#fff;text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;">INSTAGRAM</a>
+        <a href="https://www.youtube.com/@thecrtvhub" target="_blank" style="font-family:'MadeOuter',sans-serif;font-size:14px;color:#fff;text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;">YOUTUBE</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* NAV */
+window.addEventListener('scroll',()=>{ document.getElementById('nav-outer').classList.toggle('scrolled',window.scrollY>60); });
+document.getElementById('nav-burger').addEventListener('click',()=>{ document.getElementById('mobile-nav').classList.add('open'); });
+document.getElementById('mob-close').addEventListener('click',()=>{ document.getElementById('mobile-nav').classList.remove('open'); });
 </script>
-</body></html>
+</body>
+</html>
