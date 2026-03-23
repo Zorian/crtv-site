@@ -78,26 +78,27 @@ ul { list-style: none; }
 #preloader.fade-out { opacity: 0; }
 
 /* ─── NAV ─── */
-/* Outer fixed wrapper - full width, positioned at top */
+/* Outer fixed wrapper */
 #nav-outer {
   position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-  height: var(--nav-h);
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 20px 30px;
+  display: flex; align-items: flex-start; justify-content: space-between;
+  padding: 16px 20px;
   pointer-events: none;
-  transition: background 0.4s ease, padding 0.4s ease, height 0.4s ease;
 }
-/* Logo — hidden at top, fades in on scroll */
+/* Logo — hidden at top, fades in on scroll inside the pill */
 #nav-logo {
   pointer-events: all;
   opacity: 0;
   transition: opacity 0.35s ease;
+  display: flex; align-items: center;
+  padding-left: 20px;
 }
 #nav-outer.scrolled #nav-logo { opacity: 1; }
-/* The pill */
+
+/* The pill — floating rounded bar, logo left + links right */
 #nav-pill {
   pointer-events: all;
-  display: flex; align-items: center; justify-content: center;
+  display: flex; align-items: center; justify-content: flex-end;
   gap: 36px;
   background: rgba(255,255,255,0.15);
   backdrop-filter: blur(16px) saturate(160%);
@@ -105,27 +106,27 @@ ul { list-style: none; }
   border: 1px solid rgba(255,255,255,0.3);
   border-radius: 45px;
   box-shadow: 0 8px 32px rgba(0,0,0,0.15);
-  padding: 0 40px;
+  padding: 0 32px;
   height: 62px;
-  gap: 36px;
-  transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
+  transition: all 0.45s cubic-bezier(0.4,0,0.2,1);
 }
-/* Scrolled — full-width solid blue bar */
+
+/* Scrolled — floating blue pill with logo + links, rounded, NOT full width */
 #nav-outer.scrolled {
-  background: #1076F8;
-  padding: 0 30px;
-  height: 70px;
-  box-shadow: 0 2px 20px rgba(0,0,0,0.2);
+  padding: 12px 20px;
 }
 #nav-outer.scrolled #nav-pill {
-  background: transparent;
-  border-color: transparent;
-  box-shadow: none;
-  border-radius: 0;
-  padding: 0;
-  height: 70px;
+  background: #1076F8;
+  border-color: #1076F8;
+  box-shadow: 0 4px 24px rgba(16,118,248,0.35);
+  border-radius: 45px;
+  padding: 0 32px;
+  gap: 36px;
+  height: 62px;
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
+  flex: 1;
+  justify-content: space-between;
 }
 .nav-link {
   font-family: var(--font); font-size: 16px; font-weight: 400;
