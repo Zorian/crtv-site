@@ -730,8 +730,9 @@ document.getElementById('mob-close').addEventListener('click',()=>{ document.get
 
 
 /* PRELOADER — first visit only */
-/* PRELOADER — always shows on load */
+/* PRELOADER — first visit only per session */
 (function(){
+  if(sessionStorage.getItem('crtv_entered')){ const p=document.getElementById('preloader'); if(p)p.remove(); return; }
   const preloader=document.getElementById('preloader');
   const circle=document.getElementById('preloader-circle');
   if(!preloader||!circle) return;
@@ -752,6 +753,7 @@ document.getElementById('mob-close').addEventListener('click',()=>{ document.get
   function exit(){
     if(done)return; done=true;
     playClick();
+    sessionStorage.setItem('crtv_entered','1');
     circle.style.pointerEvents='none';
     preloader.classList.add('slide-exit');
     setTimeout(()=>{ preloader.classList.add('fade-out'); setTimeout(()=>preloader.remove(),400); },900);
