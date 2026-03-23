@@ -62,15 +62,15 @@
 }
 /* BUTTONS — stacked, full-width, uppercase */
 .feat-btns {
-  display: flex; flex-direction: column; gap: 12px;
-  align-items: stretch; margin-top: 8px; width: 100%; max-width: 480px;
+  display: flex; flex-direction: row; gap: 12px;
+  align-items: flex-start; margin-top: 8px; flex-wrap: wrap;
 }
 .feat-btn {
   font-family: 'MadeOuter', sans-serif; font-size: 13px; font-weight: 500;
   letter-spacing: 0.18em; text-transform: uppercase; color: #fff;
   background: #1076F8; border: none; padding: 18px 28px; cursor: pointer;
   text-decoration: none; transition: background 0.2s;
-  text-align: center; display: block;
+  text-align: center; display: inline-block;
 }
 .feat-btn:hover { background: #0560d4; }
 
@@ -79,7 +79,7 @@
   padding: 70px 60px; background: #001138; text-align: center;
 }
 .section-heading-row h2 {
-  font-family: 'StrechPro', sans-serif; font-size: clamp(40px, 6vw, 80px);
+  font-family: 'StrechPro', sans-serif; font-size: clamp(32px, 4.5vw, 56px);
   font-weight: 700; text-transform: uppercase; color: #fff; margin: 0;
   letter-spacing: 0.04em;
 }
