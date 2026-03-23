@@ -70,14 +70,8 @@ document.getElementById('mob-close').addEventListener('click',()=>{ document.get
     const circle=p.querySelector('#preloader-circle');
     function playClick(){
       try{
-        const ctx=new(window.AudioContext||window.webkitAudioContext)();
-        const osc=ctx.createOscillator(); const gain=ctx.createGain();
-        osc.connect(gain); gain.connect(ctx.destination);
-        osc.frequency.setValueAtTime(800,ctx.currentTime);
-        osc.frequency.exponentialRampToValueAtTime(200,ctx.currentTime+0.08);
-        gain.gain.setValueAtTime(0.4,ctx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.001,ctx.currentTime+0.1);
-        osc.start(ctx.currentTime); osc.stop(ctx.currentTime+0.1);
+        const a=new Audio('https://pub-a9f22cf5804840608cb8ba43afc33a34.r2.dev/click-sound.mp3');
+        a.volume=0.8; a.play();
       }catch(e){}
     }
     function exit(){
