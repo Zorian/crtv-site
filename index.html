@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>THE CRTV HUB — Only rebels recreate the world</title>
+<link rel="icon" href="assets/favicon.png" type="image/png">
+<link rel="stylesheet" href="styles.css">
+<style>
+/* ── HOME HERO SLIDER ── */
+.hero-slider { position: relative; width: 100%; min-height: 100vh; overflow: hidden; background: #000; }
+.slide {
+  position: absolute; inset: 0; opacity: 0;
+  transition: opacity 0.8s cubic-bezier(0.4,0,0.2,1);
+  background-size: cover; background-position: center;
+}
+.slide.active { opacity: 1; z-index: 1; }
+.slide-overlay {
+  position: absolute; inset: 0; background: rgba(0,0,0,0.48);
+  display: flex; flex-direction: column; justify-content: flex-end;
+  padding: 0 60px 100px; z-index: 2;
+}
+.slide-subtitle {
+  font-family: var(--font-main); font-size: 10px; font-weight: 300;
+  letter-spacing: 0.4em; text-transform: uppercase; color: rgba(255,255,255,0.7);
+  margin-bottom: 14px;
+}
+.slide-title {
+  font-family: var(--font-main); font-size: clamp(32px, 5vw, 72px); font-weight: 300;
+  letter-spacing: 0.03em; text-transform: uppercase; color: #fff;
+  line-height: 1.05; max-width: 700px; margin-bottom: 32px;
+}
+.slide-cta {
+  display: inline-flex; align-items: center; gap: 12px;
+  background: var(--blue); color: #fff;
+  font-family: var(--font-main); font-size: 11px; font-weight: 300;
+  letter-spacing: 0.25em; text-transform: uppercase;
+  padding: 14px 28px; transition: background 0.2s; align-self: flex-start;
+}
+.slide-cta:hover { background: #0560d4; }
+.slide-cta svg { width: 14px; height: 14px; fill: #fff; }
+/* Slider nav dots */
+.slider-dots {
+  position: absolute; bottom: 42px; right: 60px; z-index: 10;
+  display: flex; gap: 8px;
+}
+.dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: rgba(255,255,255,0.3); cursor: pointer;
+  transition: background 0.3s, transform 0.3s; border: none;
+}
+.dot.active { background: #fff; transform: scale(1.3); }
+/* Slider arrows */
+.slider-arrow {
+  position: absolute; top: 50%; transform: translateY(-50%); z-index: 10;
+  background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.25);
+  color: #fff; width: 48px; height: 48px; font-size: 20px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.2s;
+}
+.slider-arrow:hover { background: rgba(255,255,255,0.25); }
+.slider-arrow.prev { left: 30px; }
+.slider-arrow.next { right: 30px; }
+
+/* ── WHAT WE ARE ── */
+.what-we-are {
+  background: #fff; padding: 100px 60px 80px;
+  max-width: 1200px; margin: 0 auto;
+}
+.what-we-are .wwa-flex { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.wwa-text {}
+.wwa-text .section-heading { font-size: clamp(38px, 5vw, 72px); margin-bottom: 24px; }
+.wwa-text .section-quote { margin-bottom: 24px; }
+.wwa-text .section-body { font-size: 15px; }
+
+/* ── TRUSTED SECTION ── */
+.trusted { background: #0a0a0a; padding: 80px 0 70px; }
+.trusted-inner { max-width: 1200px; margin: 0 auto; padding: 0 60px 50px; }
+.trusted-inner .section-heading { color: #fff; margin-bottom: 16px; }
+.trusted-inner .section-body { color: rgba(255,255,255,0.55); margin-bottom: 48px; }
+
+/* ── WHAT WE DO ── */
+.what-we-do { padding: 100px 60px; max-width: 1200px; margin: 0 auto; }
+.wwd-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+.wwd-list { list-style: none; }
+.wwd-list li {
+  font-family: var(--font-main); font-size: 15px; font-weight: 300;
+  padding: 14px 0; border-bottom: 1px solid rgba(0,0,0,0.08);
+  color: #444; letter-spacing: 0.05em;
+}
+
+/* ── THE VISION ── */
+.the-vision { background: var(--blue); padding: 80px 60px; }
+.vision-inner { max-width: 1200px; margin: 0 auto; }
+.the-vision .section-eyebrow { color: rgba(255,255,255,0.6); }
+.the-vision .section-heading { color: #fff; margin-bottom: 20px; }
+.the-vision .section-quote { color: rgba(255,255,255,0.85); }
+.the-vision .section-body { color: rgba(255,255,255,0.7); }
+.vision-cta {
+  display: inline-block; margin-top: 32px;
+  font-family: var(--font-main); font-size: 11px; font-weight: 300;
+  letter-spacing: 0.3em; text-transform: uppercase;
+  color: #fff; border-bottom: 1px solid rgba(255,255,255,0.4);
+  padding-bottom: 3px; transition: border-color 0.2s;
+}
+.vision-cta:hover { border-color: #fff; }
+
+/* ── EXPLORE / PROJECTS ── */
+.explore { padding: 100px 60px; background: #fff; }
+.explore-inner { max-width: 1200px; margin: 0 auto; }
+.explore-heading { font-family: var(--font-main); font-size: 11px; font-weight: 300; letter-spacing: 0.3em; text-transform: uppercase; color: var(--muted); margin-bottom: 40px; }
+.projects-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 3px; }
+.project-card { position: relative; aspect-ratio: 9/16; overflow: hidden; cursor: pointer; }
+.project-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94), filter 0.4s; filter: brightness(0.7); }
+.project-card:hover img { transform: scale(1.06); filter: brightness(0.45); }
+.project-info {
+  position: absolute; inset: 0; display: flex; flex-direction: column;
+  justify-content: flex-end; padding: 20px;
+  background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 55%);
+}
+.project-client { font-family: var(--font-main); font-size: 9px; font-weight: 300; letter-spacing: 0.35em; text-transform: uppercase; color: var(--blue); margin-bottom: 6px; }
+.project-title { font-family: var(--font-main); font-size: clamp(13px, 1.4vw, 18px); font-weight: 300; letter-spacing: 0.04em; text-transform: uppercase; color: #fff; line-height: 1.2; }
+.project-watch {
+  position: absolute; top: 16px; right: 16px;
+  background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3);
+  color: #fff; font-family: var(--font-main); font-size: 9px; font-weight: 300;
+  letter-spacing: 0.2em; text-transform: uppercase; padding: 7px 12px;
+  opacity: 0; transform: translateY(-4px); transition: opacity 0.3s, transform 0.3s;
+}
+.project-card:hover .project-watch { opacity: 1; transform: translateY(0); }
+
+/* ─── FOOTER BRAND TICKER ─── */
+.brand-ticker { background: #000; overflow: hidden; padding: 18px 0; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .what-we-are .wwa-flex, .wwd-grid { grid-template-columns: 1fr; gap: 40px; }
+  .projects-grid { grid-template-columns: repeat(2, 1fr); }
+  .slide-overlay { padding: 0 24px 80px; }
+  .what-we-are, .what-we-do, .explore { padding-left: 24px; padding-right: 24px; }
+  .trusted-inner { padding-left: 24px; padding-right: 24px; }
+  .the-vision { padding: 60px 24px; }
+}
+@media (max-width: 480px) {
+  .projects-grid { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- PRELOADER -->
+<div id="preloader">
+  <div class="preloader-inner">
+    <div id="preloader-circle" role="button" tabindex="0" aria-label="Enter">
+      <img id="preloader-logo" src="assets/logo.png" alt="CRTV Hub">
+    </div>
+    <p id="preloader-instruction">Click to enter</p>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a class="nav-logo" href="index.html">
+    <img src="assets/logo.png" alt="THE CRTV HUB">
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html" class="active">HOME</a></li>
+    <li><a href="about.html">ABOUT</a></li>
+    <li><a href="events.html">EVENTS</a></li>
+    <li><a href="media.html">MEDIA</a></li>
+    <li><a href="join.html" class="nav-cta">JOIN / SIGN UP</a></li>
+  </ul>
+  <button class="nav-burger" id="burger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div id="mobile-nav">
+  <a href="index.html">HOME</a>
+  <a href="about.html">ABOUT</a>
+  <a href="events.html">EVENTS</a>
+  <a href="media.html">MEDIA</a>
+  <a href="join.html">JOIN / SIGN UP</a>
+</div>
+
+<!-- HERO SLIDER -->
+<section class="hero-slider" id="hero-slider">
+
+  <div class="slide active" style="background-image:url('https://crtv.axocreate.com/wp-content/uploads/2026/01/dqJ8oud7l2Q-HD.jpg')">
+    <div class="slide-overlay">
+      <span class="slide-subtitle">JOIN "CREATING OUR MOTION"</span>
+      <h2 class="slide-title">Lose Count - Stronger Than One</h2>
+      <a href="https://www.youtube.com/watch?v=dqJ8oud7l2Q" target="_blank" class="slide-cta">
+        <svg viewBox="0 0 16 16"><polygon points="4,2 14,8 4,14"/></svg>
+        WATCH NOW
+      </a>
+    </div>
+  </div>
+
+  <div class="slide" style="background-image:url('https://crtv.axocreate.com/wp-content/uploads/2026/01/398143622_6735031366575353_3516649951948309757_n-e1773412953687.jpg')">
+    <div class="slide-overlay">
+      <span class="slide-subtitle">JOIN "CREATING OUR MOTION"</span>
+      <h2 class="slide-title">Get To Know Me - Louis Lasa Tarbuck</h2>
+      <a href="https://www.youtube.com/watch?v=LouisLasa" target="_blank" class="slide-cta">
+        <svg viewBox="0 0 16 16"><polygon points="4,2 14,8 4,14"/></svg>
+        WATCH NOW
+      </a>
+    </div>
+  </div>
+
+  <div class="slide" style="background-image:url('https://lh3.googleusercontent.com/d/1iE3LMj5pH9uHG57A9nrTuWNFDyPl8O84')">
+    <div class="slide-overlay">
+      <span class="slide-subtitle">JOIN "CREATING OUR MOTION"</span>
+      <h2 class="slide-title">JBEE — 24'S</h2>
+      <a href="https://www.youtube.com/watch?v=JBEE24s" target="_blank" class="slide-cta">
+        <svg viewBox="0 0 16 16"><polygon points="4,2 14,8 4,14"/></svg>
+        WATCH NOW
+      </a>
+    </div>
+  </div>
+
+  <div class="slide" style="background-image:url('https://lh3.googleusercontent.com/d/1oNATfEX5LlIQRVqjQEvv7wBvxZlhWP_1')">
+    <div class="slide-overlay">
+      <span class="slide-subtitle">JOIN "CREATING OUR MOTION"</span>
+      <h2 class="slide-title">Get To Know Me - Nokuthulah H</h2>
+      <a href="#" class="slide-cta">
+        <svg viewBox="0 0 16 16"><polygon points="4,2 14,8 4,14"/></svg>
+        WATCH NOW
+      </a>
+    </div>
+  </div>
+
+  <div class="slide" style="background-image:url('https://lh3.googleusercontent.com/d/1pqOFkVcH80DctXoOm6y9LVcX8AKNSmqK')">
+    <div class="slide-overlay">
+      <span class="slide-subtitle">JOIN "CREATING OUR MOTION"</span>
+      <h2 class="slide-title">UPSYCLE HYPEWEAR VOL 1 SHORT FILM</h2>
+      <a href="#" class="slide-cta">
+        <svg viewBox="0 0 16 16"><polygon points="4,2 14,8 4,14"/></svg>
+        WATCH NOW
+      </a>
+    </div>
+  </div>
+
+  <div class="slide" style="background-image:url('https://lh3.googleusercontent.com/d/1HVEzxJFb1SY_jhy335GnRWWg_4wDhA5H')">
+    <div class="slide-overlay">
+      <span class="slide-subtitle">JOIN "CREATING OUR MOTION"</span>
+      <h2 class="slide-title">Get To Know Me - James Olusegun</h2>
+      <a href="#" class="slide-cta">
+        <svg viewBox="0 0 16 16"><polygon points="4,2 14,8 4,14"/></svg>
+        WATCH NOW
+      </a>
+    </div>
+  </div>
+
+  <div class="slide" style="background-image:url('https://crtv.axocreate.com/wp-content/uploads/2026/01/maxresdefault.webp')">
+    <div class="slide-overlay">
+      <span class="slide-subtitle">JOIN "CREATING OUR MOTION"</span>
+      <h2 class="slide-title">Biig Piig - Feels Right (Official Video)</h2>
+      <a href="https://www.youtube.com/watch?v=nsGbD-q9NIk" target="_blank" class="slide-cta">
+        <svg viewBox="0 0 16 16"><polygon points="4,2 14,8 4,14"/></svg>
+        WATCH NOW
+      </a>
+    </div>
+  </div>
+
+  <div class="slide" style="background-image:url('https://crtv.axocreate.com/wp-content/uploads/2026/01/5P87JlJQ8-M-HD.jpg')">
+    <div class="slide-overlay">
+      <span class="slide-subtitle">JOIN "CREATING OUR MOTION"</span>
+      <h2 class="slide-title">NEW GEN ENTERTAINMENT — Dance Your Style Cypher</h2>
+      <a href="https://www.youtube.com/watch?v=5P87JlJQ8-M" target="_blank" class="slide-cta">
+        <svg viewBox="0 0 16 16"><polygon points="4,2 14,8 4,14"/></svg>
+        WATCH NOW
+      </a>
+    </div>
+  </div>
+
+  <button class="slider-arrow prev" id="sl-prev">&#8592;</button>
+  <button class="slider-arrow next" id="sl-next">&#8594;</button>
+  <div class="slider-dots" id="slider-dots"></div>
+</section>
+
+<!-- WHAT WE ARE -->
+<section>
+  <div class="what-we-are">
+    <div class="wwa-flex">
+      <div class="wwa-text">
+        <span class="section-eyebrow">What we are?</span>
+        <h2 class="section-heading">THE CRTV HUB</h2>
+        <p class="section-quote">"Built by creatives. Powered by culture."</p>
+        <p class="section-body">THE CRTV HUB is a creative media house and cultural platform specialising in film production, live events, and creative storytelling. We exist to create opportunities, spotlight talent, and build spaces where creativity can thrive without limits.</p>
+      </div>
+      <div class="wwa-image">
+        <img src="https://lh3.googleusercontent.com/d/1wCAzACw6_mVfiYk3XsxUSOggCMQdDaYl" alt="CRTV Hub" style="width:100%;aspect-ratio:4/5;object-fit:cover;">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER 1 -->
+<div class="ticker-row">
+  <div class="ticker-track">
+    <span class="ticker-item">Podcast</span><span class="ticker-item">*</span><span class="ticker-item">Music</span><span class="ticker-item">*</span><span class="ticker-item">Live</span><span class="ticker-item">*</span><span class="ticker-item">Podcast</span><span class="ticker-item">*</span><span class="ticker-item">Music</span><span class="ticker-item">*</span><span class="ticker-item">Live</span><span class="ticker-item">*</span><span class="ticker-item">Podcast</span><span class="ticker-item">*</span><span class="ticker-item">Music</span><span class="ticker-item">*</span><span class="ticker-item">Live</span><span class="ticker-item">*</span><span class="ticker-item">Podcast</span><span class="ticker-item">*</span><span class="ticker-item">Music</span><span class="ticker-item">*</span><span class="ticker-item">Live</span><span class="ticker-item">*</span><span class="ticker-item">Podcast</span><span class="ticker-item">*</span><span class="ticker-item">Music</span><span class="ticker-item">*</span><span class="ticker-item">Live</span><span class="ticker-item">*</span><span class="ticker-item">Podcast</span><span class="ticker-item">*</span><span class="ticker-item">Music</span><span class="ticker-item">*</span><span class="ticker-item">Live</span><span class="ticker-item">*</span>
+  </div>
+</div>
+<div class="ticker-row reverse">
+  <div class="ticker-track">
+    <span class="ticker-item">Podcast</span><span class="ticker-item">*</span><span class="ticker-item">Music</span><span class="ticker-item">*</span><span class="ticker-item">Live</span><span class="ticker-item">*</span><span class="ticker-item">Podcast</span><span class="ticker-item">*</span><span class="ticker-item">Music</span><span class="ticker-item">*</span><span class="ticker-item">Live</span><span class="ticker-item">*</span><span class="ticker-item">Podcast</span><span class="ticker-item">*</span><span class="ticker-item">Music</span><span class="ticker-item">*</span><span class="ticker-item">Live</span><span class="ticker-item">*</span><span class="ticker-item">Podcast</span><span class="ticker-item">*</span><span class="ticker-item">Music</span><span class="ticker-item">*</span><span class="ticker-item">Live</span><span class="ticker-item">*</span><span class="ticker-item">Podcast</span><span class="ticker-item">*</span><span class="ticker-item">Music</span><span class="ticker-item">*</span><span class="ticker-item">Live</span><span class="ticker-item">*</span><span class="ticker-item">Podcast</span><span class="ticker-item">*</span><span class="ticker-item">Music</span><span class="ticker-item">*</span><span class="ticker-item">Live</span><span class="ticker-item">*</span>
+  </div>
+</div>
+
+<!-- TRUSTED BY -->
+<section class="trusted">
+  <div class="trusted-inner">
+    <h2 class="section-heading" style="color:#fff;">Trusted by global brands &amp; platforms.</h2>
+    <p class="section-body" style="color:rgba(255,255,255,0.55);margin-bottom:44px;">We've worked with artists, brands, and organisations that align with culture, creativity, and innovation, delivering stories that resonate worldwide.</p>
+  </div>
+  <!-- Carousel row 1 -->
+  <div class="carousel-wrap">
+    <div class="carousel-inner">
+      <img src="https://lh3.googleusercontent.com/d/1U9oZW-EZmKr8OjwHdhjcXdSGDZ9GB8DR" alt="" loading="lazy">
+      <img src="https://lh3.googleusercontent.com/d/12NwxG0TdFHdcV-nOtcfHSluYcgkk3jcr" alt="" loading="lazy">
+      <img src="https://lh3.googleusercontent.com/d/1-WnILLbRtGNJQtsDSdC4kd3yTY_trL3T" alt="" loading="lazy">
+      <img src="https://lh3.googleusercontent.com/d/1TCdJFRc-kWsEtQjTbjs2-QFNNWDxLddB" alt="" loading="lazy">
+      <img src="https://lh3.googleusercontent.com/d/128PnA6DNL6IFQ_I0x2zeO16CFUU8YTFU" alt="" loading="lazy">
+      <img src="https://lh3.googleusercontent.com/d/1ODgCOBEXmB0jDxnVc7VQj2Ca9gFb4U0Z" alt="" loading="lazy">
+      <!-- duplicate for seamless -->
+      <img src="https://lh3.googleusercontent.com/d/1U9oZW-EZmKr8OjwHdhjcXdSGDZ9GB8DR" alt="" loading="lazy">
+      <img src="https://lh3.googleusercontent.com/d/12NwxG0TdFHdcV-nOtcfHSluYcgkk3jcr" alt="" loading="lazy">
+      <img src="https://lh3.googleusercontent.com/d/1-WnILLbRtGNJQtsDSdC4kd3yTY_trL3T" alt="" loading="lazy">
+      <img src="https://lh3.googleusercontent.com/d/1TCdJFRc-kWsEtQjTbjs2-QFNNWDxLddB" alt="" loading="lazy">
+      <img src="https://lh3.googleusercontent.com/d/128PnA6DNL6IFQ_I0x2zeO16CFUU8YTFU" alt="" loading="lazy">
+      <img src="https://lh3.googleusercontent.com/d/1ODgCOBEXmB0jDxnVc7VQj2Ca9gFb4U0Z" alt="" loading="lazy">
+    </div>
+  </div>
+  <div style="height:10px;"></div>
+  <!-- Carousel row 2 -->
+  <div class="carousel-wrap">
+    <div class="carousel-inner reverse">
+      <img src="https://lh3.googleusercontent.com/d/1nN6LJ96tLPgMh031m61Jn-91QbOPBiI5" alt="" loading="lazy">
+      <img src="https://lh3.googleusercontent.com/d/1YZlIDQ9D6BkdfsKzNi9XjwtX5_tAtF_s" alt="" loading="lazy">
+      <img src="https://lh3.googleusercontent.com/d/1OeWktkzW2LRs40I_VuOcqNc-DjRa-k8e" alt="" loading="lazy">
+      <img src="https://lh3.googleusercontent.com/d/1z-wUT-GAH_aOUZMxCmPW3ntXRA9iRC6h" alt="" loading="lazy">
+      <img src="https://lh3.googleusercontent.com/d/1FpcElpI0hh1jVdf7XzT0RrOHqqD2BGlZ" alt="" loading="lazy">
+      <img src="https://lh3.googleusercontent.com/d/1TYmBhMoq7lzJJZWWQ12l7nBOXUkp3lFZ" alt="" loading="lazy">
+      <img src="https://lh3.googleusercontent.com/d/12zD1ASU2EsX7XDJYQkOVs0vYJ-fL3My8" alt="" loading="lazy">
+      <!-- duplicate -->
+      <img src="https://lh3.googleusercontent.com/d/1nN6LJ96tLPgMh031m61Jn-91QbOPBiI5" alt="" loading="lazy">
+      <img src="https://lh3.googleusercontent.com/d/1YZlIDQ9D6BkdfsKzNi9XjwtX5_tAtF_s" alt="" loading="lazy">
+      <img src="https://lh3.googleusercontent.com/d/1OeWktkzW2LRs40I_VuOcqNc-DjRa-k8e" alt="" loading="lazy">
+      <img src="https://lh3.googleusercontent.com/d/1z-wUT-GAH_aOUZMxCmPW3ntXRA9iRC6h" alt="" loading="lazy">
+      <img src="https://lh3.googleusercontent.com/d/1FpcElpI0hh1jVdf7XzT0RrOHqqD2BGlZ" alt="" loading="lazy">
+      <img src="https://lh3.googleusercontent.com/d/1TYmBhMoq7lzJJZWWQ12l7nBOXUkp3lFZ" alt="" loading="lazy">
+      <img src="https://lh3.googleusercontent.com/d/12zD1ASU2EsX7XDJYQkOVs0vYJ-fL3My8" alt="" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- WHAT WE DO -->
+<section>
+  <div class="what-we-do">
+    <div class="wwd-grid">
+      <div>
+        <span class="section-eyebrow">WHAT WE DO?</span>
+        <h2 class="section-heading" style="font-size:clamp(38px,5vw,72px);">Film. Events. Culture.</h2>
+        <p class="section-quote">"Film. Events. Culture."</p>
+      </div>
+      <div>
+        <ul class="wwd-list">
+          <li>Film Production &amp; Visual Storytelling</li>
+          <li>Live Events &amp; Global Dance Platforms</li>
+          <li>Creative Strategy &amp; Brand Storytelling</li>
+          <li>Community Building &amp; Talent Development</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE VISION -->
+<section class="the-vision">
+  <div class="vision-inner">
+    <span class="section-eyebrow">THE VISION</span>
+    <h2 class="section-heading" style="color:#fff;font-size:clamp(38px,5vw,72px);">"More than content. It's a movement."</h2>
+    <p class="section-body" style="color:rgba(255,255,255,0.75);margin-top:20px;">From underground dance cyphers to global stages, we are building a world where creatives are valued, supported, and seen. Our work bridges film, community, and live experiences locally and globally.<br><br>Create with us. Build with us. Move with us.</p>
+    <a href="about.html" class="vision-cta">EXPLORE →&nbsp; ABOUT</a>
+  </div>
+</section>
+
+<!-- EXPLORE / FEATURED PROJECTS -->
+<section class="explore">
+  <div class="explore-inner">
+    <p class="explore-heading">EXPLORE</p>
+    <div class="projects-grid">
+      <a href="https://www.youtube.com/watch?v=nsGbD-q9NIk" target="_blank" class="project-card">
+        <img src="https://crtv.axocreate.com/wp-content/uploads/2026/01/maxresdefault.webp" alt="Biig Piig" loading="lazy">
+        <div class="project-info">
+          <div class="project-client">Client: Biig Piig</div>
+          <div class="project-title">Biig Piig — Feels Right (Official Video)</div>
+        </div>
+        <div class="project-watch">WATCH NOW</div>
+      </a>
+      <a href="https://www.youtube.com/watch?v=JBEE24" target="_blank" class="project-card">
+        <img src="https://lh3.googleusercontent.com/d/1iE3LMj5pH9uHG57A9nrTuWNFDyPl8O84" alt="JBEE" loading="lazy">
+        <div class="project-info">
+          <div class="project-client">Client: JBEE</div>
+          <div class="project-title">JBEE — 24'S</div>
+        </div>
+        <div class="project-watch">WATCH NOW</div>
+      </a>
+      <a href="https://www.youtube.com/watch?v=dqJ8oud7l2Q" target="_blank" class="project-card">
+        <img src="https://crtv.axocreate.com/wp-content/uploads/2026/01/dqJ8oud7l2Q-HD.jpg" alt="Nike" loading="lazy">
+        <div class="project-info">
+          <div class="project-client">Client: NIKE</div>
+          <div class="project-title">Lose Count — Stronger Than One</div>
+        </div>
+        <div class="project-watch">WATCH NOW</div>
+      </a>
+      <a href="#" class="project-card">
+        <img src="https://lh3.googleusercontent.com/d/1ODgCOBEXmB0jDxnVc7VQj2Ca9gFb4U0Z" alt="Upsycle" loading="lazy">
+        <div class="project-info">
+          <div class="project-client">Client: Upsycle Hyperwear</div>
+          <div class="project-title">UPSYCLE HYPEWEAR VOL 1 SHORT FILM</div>
+        </div>
+        <div class="project-watch">WATCH NOW</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER BRAND TICKER -->
+<div class="ticker-row ticker-row-brand brand-ticker">
+  <div class="ticker-track">
+    <span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-main">
+    <div><div class="footer-logo"><img src="assets/logo.png" alt="THE CRTV HUB"></div></div>
+    <div class="footer-col">
+      <h5>Quick Links</h5>
+      <a href="index.html">HOME</a>
+      <a href="media.html">MEDIA</a>
+      <a href="events.html">EVENTS</a>
+      <a href="join.html">JOIN/SIGNUP</a>
+    </div>
+    <div class="footer-col">
+      <h5>Stay Connected</h5>
+      <a href="http://tiktok.com/@thecreativehubagency" target="_blank">TIKTOK</a>
+      <a href="https://www.instagram.com/thecrtvhubuk" target="_blank">INSTAGRAM</a>
+      <a href="https://www.youtube.com/@thecrtvhub" target="_blank">YOUTUBE</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 The CRTV Hub. All rights reserved.</span>
+    <span>Built by Creatives. Powered by Culture.</span>
+  </div>
+</footer>
+
+<script>
+// PRELOADER
+(function(){
+  const preloader = document.getElementById('preloader');
+  const circle = document.getElementById('preloader-circle');
+  setTimeout(() => preloader.classList.add('show-logo'), 50);
+  let done = false;
+  function exit() {
+    if (done) return; done = true;
+    circle.style.pointerEvents = 'none';
+    preloader.classList.add('slide-exit');
+    setTimeout(() => { preloader.classList.add('fade-out'); setTimeout(() => preloader.remove(), 400); }, 900);
+  }
+  circle.addEventListener('click', exit);
+  circle.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') exit(); });
+})();
+
+// NAV
+window.addEventListener('scroll', () => {
+  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 40);
+});
+document.getElementById('burger').addEventListener('click', () => {
+  document.getElementById('mobile-nav').classList.toggle('open');
+});
+
+// HERO SLIDER
+(function(){
+  const slides = document.querySelectorAll('.slide');
+  const dotsEl = document.getElementById('slider-dots');
+  let cur = 0, timer;
+  slides.forEach((_, i) => {
+    const d = document.createElement('button');
+    d.className = 'dot' + (i === 0 ? ' active' : '');
+    d.addEventListener('click', () => goTo(i));
+    dotsEl.appendChild(d);
+  });
+  const dots = dotsEl.querySelectorAll('.dot');
+  function goTo(n) {
+    slides[cur].classList.remove('active');
+    dots[cur].classList.remove('active');
+    cur = (n + slides.length) % slides.length;
+    slides[cur].classList.add('active');
+    dots[cur].classList.add('active');
+    clearInterval(timer); timer = setInterval(() => goTo(cur + 1), 5500);
+  }
+  document.getElementById('sl-prev').addEventListener('click', () => goTo(cur - 1));
+  document.getElementById('sl-next').addEventListener('click', () => goTo(cur + 1));
+  timer = setInterval(() => goTo(cur + 1), 5500);
+})();
+</script>
+</body>
+</html>
