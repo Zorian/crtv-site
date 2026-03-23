@@ -78,23 +78,22 @@ ul { list-style: none; }
 #preloader.fade-out { opacity: 0; }
 
 /* ─── NAV ─── */
-/* Outer fixed wrapper */
+/* Outer fixed wrapper - full width, positioned at top */
 #nav-outer {
   position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-  display: flex; align-items: center; justify-content: flex-end;
-  padding: 16px 24px;
+  height: var(--nav-h);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 20px 30px;
   pointer-events: none;
-  transition: padding 0.4s ease, background 0.4s ease, justify-content 0.4s ease;
+  transition: background 0.4s ease, padding 0.4s ease, height 0.4s ease;
 }
-/* Logo — hidden by default, shown when scrolled */
+/* Logo */
 #nav-logo {
   pointer-events: all;
-  opacity: 0; pointer-events: none;
+  opacity: 0;
   transition: opacity 0.3s ease;
 }
-#nav-outer.scrolled #nav-logo {
-  opacity: 1; pointer-events: all;
-}
+#nav-outer.scrolled #nav-logo { opacity: 1; }
 /* The pill container */
 #nav-pill {
   pointer-events: all;
@@ -112,11 +111,10 @@ ul { list-style: none; }
 }
 /* Scrolled state — full-width blue bar */
 #nav-outer.scrolled {
-  justify-content: space-between;
-  padding: 0 30px;
   background: #1076F8;
-  box-shadow: 0 2px 20px rgba(0,0,0,0.2);
+  padding: 0 30px;
   height: 70px;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.2);
 }
 #nav-outer.scrolled #nav-pill {
   background: transparent;
