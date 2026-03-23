@@ -26,11 +26,11 @@
 }
 
 /* ── CONTACT CARDS ── */
-.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; background: transparent; margin: -120px 40px 0; position: relative; z-index: 20; }
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; background: transparent; margin: -120px 40px 0; position: relative; z-index: 20; align-items: stretch; }
 .contact-card {
-  background: #001138; padding: 44px 40px; min-height: 260px;
+  background: #001138; padding: 44px 40px;
   display: flex; flex-direction: column; gap: 14px;
-  border: 1px solid rgba(255,255,255,0.18);
+  border: 1px solid rgba(255,255,255,0.18); height: 100%;
 }
 
 .contact-card-heading {
