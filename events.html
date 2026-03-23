@@ -60,36 +60,42 @@
   font-family: 'MadeOuter', sans-serif; font-size: 15px; font-weight: 400;
   letter-spacing: 0.5px; color: #333; line-height: 1.75; margin: 0;
 }
-.feat-btns { display: flex; flex-direction: column; gap: 12px; align-items: flex-start; margin-top: 8px; }
+/* BUTTONS — stacked, full-width, uppercase */
+.feat-btns {
+  display: flex; flex-direction: column; gap: 12px;
+  align-items: stretch; margin-top: 8px; width: 100%; max-width: 480px;
+}
 .feat-btn {
   font-family: 'MadeOuter', sans-serif; font-size: 13px; font-weight: 500;
-  letter-spacing: 0.12em; text-transform: uppercase; color: #fff;
-  background: #1076F8; border: none; padding: 14px 28px; cursor: pointer;
+  letter-spacing: 0.18em; text-transform: uppercase; color: #fff;
+  background: #1076F8; border: none; padding: 18px 28px; cursor: pointer;
   text-decoration: none; transition: background 0.2s;
+  text-align: center; display: block;
 }
 .feat-btn:hover { background: #0560d4; }
 
-/* SECTION HEADINGS */
+/* SECTION HEADING ROWS — navy bg, white text, centered */
 .section-heading-row {
-  padding: 60px 60px 30px; background: #fff;
+  padding: 70px 60px; background: #001138; text-align: center;
 }
 .section-heading-row h2 {
-  font-family: 'StrechPro', sans-serif; font-size: 45px; font-weight: 600;
-  text-transform: uppercase; color: #1076F8; margin: 0;
+  font-family: 'StrechPro', sans-serif; font-size: clamp(40px, 6vw, 80px);
+  font-weight: 700; text-transform: uppercase; color: #fff; margin: 0;
+  letter-spacing: 0.04em;
 }
 
-/* EVENT CARDS GRID — matches axocreate exactly */
+/* EVENT CARDS GRID — gap between cards */
 .event-cards-grid {
   display: grid; grid-template-columns: 1fr 1fr;
-  gap: 0; padding: 0 60px 80px;
+  gap: 4px; padding: 4px 0 4px;
+  background: #fff;
 }
 .event-card-item {
   background: #001138; padding: 30px;
   display: flex; flex-direction: row; gap: 0;
-  border: 1px solid rgba(255,255,255,0.06);
 }
 .event-card-logo {
-  flex-shrink: 0; width: 250px; background: #1076F8;
+  flex-shrink: 0; width: 220px; background: #1076F8;
   display: flex; align-items: center; justify-content: center;
   padding: 20px; min-height: 220px;
 }
@@ -124,17 +130,8 @@
 }
 .event-card-btn:hover { border-color: #fff; }
 
-/* PAST EVENTS section bg */
-.past-events-section { background: #001138; }
-.past-events-section .section-heading-row { background: #001138; }
-.past-events-section .section-heading-row h2 { color: #1076F8; }
-.past-events-section .event-cards-grid { background: #001138; }
-
-/* UPCOMING bg */
-.upcoming-section { background: #fff; }
-.upcoming-section .section-heading-row { background: #fff; padding: 60px 60px 30px; }
-.upcoming-section .event-card-item { background: #001138; }
-.upcoming-section .event-cards-grid { background: #fff; }
+/* PAST section wrapper — white bg so the gap between cards shows as white */
+.past-events-section { background: #fff; }
 
 @media (max-width: 1100px) {
   .event-card-logo { width: 180px; min-height: 180px; }
@@ -142,15 +139,27 @@
 @media (max-width: 900px) {
   .featured-section { flex-direction: column; }
   .feat-img-col, .feat-text-col { width: 100%; }
+  .feat-img-col { min-height: 320px; }
   .feat-text-col { padding: 50px 24px; }
-  .event-cards-grid { grid-template-columns: 1fr; padding: 0 24px 60px; }
-  .section-heading-row { padding: 40px 24px 20px; }
+  .feat-btns { max-width: 100%; }
+  .event-cards-grid { grid-template-columns: 1fr; }
+  .section-heading-row { padding: 50px 24px; }
   .events-hero-content { padding: 0 24px; }
   .event-card-logo { width: 140px; min-height: 140px; }
 }
 </style>
 </head>
 <body>
+
+<!-- PRELOADER -->
+<div id="preloader">
+  <div class="preloader-inner">
+    <div id="preloader-circle" role="button" tabindex="0" aria-label="Enter">
+      <img id="preloader-logo" src="assets/logo.png" alt="CRTV Hub">
+    </div>
+    <p id="preloader-instruction">Click to enter</p>
+  </div>
+</div>
 
 <!-- NAV -->
 <div id="nav-outer" style="justify-content:space-between;padding:20px 30px;">
@@ -193,106 +202,104 @@
   <div class="feat-text-col">
     <p class="feat-label">FEATURED EVENT</p>
     <h2 class="feat-title">CREATING<br>OUR MOTION</h2>
-    <p class="feat-date" style="color:#111;">Summer 2026 (August 2026)</p>
+    <p class="feat-date">Summer 2026 (August 2026)</p>
     <p class="feat-desc">A high-energy summer dance competition bringing together top crews and soloists to showcase creativity, skill, and stage presence. Expect electrifying performances, fierce battles, and a vibrant community atmosphere with a cash prize to be won.</p>
     <div class="feat-btns">
-      <a href="join.html" class="feat-btn">Buy Tickets — Spectators</a>
-      <a href="join.html" class="feat-btn">Buy Tickets — Competitors</a>
+      <a href="join.html" class="feat-btn">BUY TICKETS – SPECTATORS</a>
+      <a href="join.html" class="feat-btn">BUY TICKETS – COMPETITORS</a>
     </div>
   </div>
 </section>
 
 <!-- UPCOMING EVENTS -->
-<section class="upcoming-section">
-  <div class="section-heading-row">
-    <h2>UPCOMING EVENTS</h2>
+<div class="section-heading-row">
+  <h2>UPCOMING EVENTS</h2>
+</div>
+<div class="event-cards-grid">
+
+  <div class="event-card-item">
+    <div class="event-card-logo">
+      <img src="https://crtv.axocreate.com/wp-content/uploads/2026/01/Image-1-e1769234730649.png" alt="CRTV Hub">
+    </div>
+    <div class="event-card-content">
+      <h3 class="event-card-title">The CRTV Hub X-Mas Party (19 December 2026)</h3>
+      <p class="event-card-desc">A festive end-of-year gathering and celebration. Crews and soloists come together to vibe, closing out the year with performances, prizes, and a community party feel.</p>
+      <div class="event-card-meta">
+        <span>📍 London</span>
+        <span>📅 29/08/2026 12:00 am</span>
+      </div>
+      <a href="#" class="event-card-btn">VIEW EVENT</a>
+    </div>
   </div>
-  <div class="event-cards-grid">
 
-    <div class="event-card-item">
-      <div class="event-card-logo">
-        <img src="https://crtv.axocreate.com/wp-content/uploads/2026/01/Image-1-e1769234730649.png" alt="CRTV Hub">
-      </div>
-      <div class="event-card-content">
-        <h3 class="event-card-title">The CRTV Hub X-Mas Party (19 December 2026)</h3>
-        <p class="event-card-desc">A festive end-of-year gathering and celebration. Crews and soloists come together to vibe, closing out the year with performances, prizes, and a community party feel.</p>
-        <div class="event-card-meta">
-          <span>📍 London</span>
-          <span>📅 29/08/2026 12:00 am</span>
-        </div>
-        <a href="#" class="event-card-btn">View Event</a>
-      </div>
+  <div class="event-card-item">
+    <div class="event-card-logo">
+      <img src="https://crtv.axocreate.com/wp-content/uploads/2026/01/Image-1-e1769234730649.png" alt="CRTV Hub">
     </div>
-
-    <div class="event-card-item">
-      <div class="event-card-logo">
-        <img src="https://crtv.axocreate.com/wp-content/uploads/2026/01/Image-1-e1769234730649.png" alt="CRTV Hub">
+    <div class="event-card-content">
+      <h3 class="event-card-title">The CRTV Camp '26 (1 October 2026)</h3>
+      <p class="event-card-desc">This year THE CRTV HUB hosts its second ever annual event: THE CRTV CAMP. Spend the day networking with creatives, taking part in different activities and meeting pioneers in the creative field.</p>
+      <div class="event-card-meta">
+        <span>📍 Boxpark</span>
+        <span>📅 28/02/2026 12:00 am</span>
       </div>
-      <div class="event-card-content">
-        <h3 class="event-card-title">The CRTV Camp '26 (1 October 2026)</h3>
-        <p class="event-card-desc">This year THE CRTV HUB hosts its second ever annual event: THE CRTV CAMP. Spend the day networking with creatives, taking part in different activities and meeting pioneers in the creative field.</p>
-        <div class="event-card-meta">
-          <span>📍 Boxpark</span>
-          <span>📅 28/02/2026 12:00 am</span>
-        </div>
-        <a href="#" class="event-card-btn">View Event</a>
-      </div>
+      <a href="#" class="event-card-btn">VIEW EVENT</a>
     </div>
-
-    <div class="event-card-item">
-      <div class="event-card-logo">
-        <img src="https://crtv.axocreate.com/wp-content/uploads/2026/01/Image-1-e1769234730649.png" alt="CRTV Hub">
-      </div>
-      <div class="event-card-content">
-        <h3 class="event-card-title">Creating Our Motion – Tour 2027 (February 2027)</h3>
-        <p class="event-card-desc">A multi-city qualifying tour for the London main stage, spotlighting emerging and established dancers across regions. The tour expands the Creating Our Motion platform, giving talent the chance to compete, connect, and earn their place on a bigger stage.</p>
-        <div class="event-card-meta">
-          <span>📍 TBC</span>
-          <span>📅 15/02/2026 12:00 am</span>
-        </div>
-        <a href="#" class="event-card-btn">View Event</a>
-      </div>
-    </div>
-
-    <div class="event-card-item">
-      <div class="event-card-logo">
-        <img src="https://crtv.axocreate.com/wp-content/uploads/2026/01/Image-1-e1769234730649.png" alt="CRTV Hub">
-      </div>
-      <div class="event-card-content">
-        <h3 class="event-card-title">Creating Our Motion – Tour 2027 (February 2027)</h3>
-        <p class="event-card-desc">The official qualifying rounds for the Summer 2026 edition. Dancers and crews compete for a chance to secure their spot on the main stage in London, with judges selecting standout talent across multiple styles and categories.</p>
-        <div class="event-card-meta">
-          <span>📍 Boxpark</span>
-          <span>📅 22/02/2026 12:00 am</span>
-        </div>
-        <a href="#" class="event-card-btn">View Event</a>
-      </div>
-    </div>
-
-    <div class="event-card-item">
-      <div class="event-card-logo">
-        <img src="https://crtv.axocreate.com/wp-content/uploads/2026/01/Image-1-e1769234730649.png" alt="CRTV Hub">
-      </div>
-      <div class="event-card-content">
-        <h3 class="event-card-title">Creating Our Motion – Summer 2026 (August 2026)</h3>
-        <p class="event-card-desc">A high-energy summer dance competition bringing together top crews and soloists to showcase creativity, skill, and stage presence. Expect electrifying performances, fierce battles, and a vibrant community atmosphere with a cash prize to be won.</p>
-        <div class="event-card-meta">
-          <span>📍 Box Park</span>
-          <span>📅 21/02/2026 12:00 am</span>
-        </div>
-        <a href="#" class="event-card-btn">View Event</a>
-      </div>
-    </div>
-
   </div>
-</section>
+
+  <div class="event-card-item">
+    <div class="event-card-logo">
+      <img src="https://crtv.axocreate.com/wp-content/uploads/2026/01/Image-1-e1769234730649.png" alt="CRTV Hub">
+    </div>
+    <div class="event-card-content">
+      <h3 class="event-card-title">Creating Our Motion – Tour 2027 (February 2027)</h3>
+      <p class="event-card-desc">A multi-city qualifying tour for the London main stage, spotlighting emerging and established dancers across regions. The tour expands the Creating Our Motion platform, giving talent the chance to compete, connect, and earn their place on a bigger stage.</p>
+      <div class="event-card-meta">
+        <span>📍 TBC</span>
+        <span>📅 15/02/2026 12:00 am</span>
+      </div>
+      <a href="#" class="event-card-btn">VIEW EVENT</a>
+    </div>
+  </div>
+
+  <div class="event-card-item">
+    <div class="event-card-logo">
+      <img src="https://crtv.axocreate.com/wp-content/uploads/2026/01/Image-1-e1769234730649.png" alt="CRTV Hub">
+    </div>
+    <div class="event-card-content">
+      <h3 class="event-card-title">Creating Our Motion – Tour 2027 (February 2027)</h3>
+      <p class="event-card-desc">The official qualifying rounds for the Summer 2026 edition. Dancers and crews compete for a chance to secure their spot on the main stage in London, with judges selecting standout talent across multiple styles and categories.</p>
+      <div class="event-card-meta">
+        <span>📍 Boxpark</span>
+        <span>📅 22/02/2026 12:00 am</span>
+      </div>
+      <a href="#" class="event-card-btn">VIEW EVENT</a>
+    </div>
+  </div>
+
+  <div class="event-card-item">
+    <div class="event-card-logo">
+      <img src="https://crtv.axocreate.com/wp-content/uploads/2026/01/Image-1-e1769234730649.png" alt="CRTV Hub">
+    </div>
+    <div class="event-card-content">
+      <h3 class="event-card-title">Creating Our Motion – Summer 2026 (August 2026)</h3>
+      <p class="event-card-desc">A high-energy summer dance competition bringing together top crews and soloists to showcase creativity, skill, and stage presence. Expect electrifying performances, fierce battles, and a vibrant community atmosphere with a cash prize to be won.</p>
+      <div class="event-card-meta">
+        <span>📍 Box Park</span>
+        <span>📅 21/02/2026 12:00 am</span>
+      </div>
+      <a href="#" class="event-card-btn">VIEW EVENT</a>
+    </div>
+  </div>
+
+</div>
 
 <!-- PAST EVENTS -->
-<section class="past-events-section">
+<div class="past-events-section">
   <div class="section-heading-row">
     <h2>PAST EVENTS</h2>
   </div>
-  <div class="event-cards-grid" style="padding-bottom:80px;">
+  <div class="event-cards-grid" style="margin-bottom:0;">
 
     <div class="event-card-item">
       <div class="event-card-logo">
@@ -305,7 +312,7 @@
           <span>📍 London</span>
           <span>📅 29/08/2026 12:00 am</span>
         </div>
-        <a href="#" class="event-card-btn">View Event</a>
+        <a href="#" class="event-card-btn">VIEW EVENT</a>
       </div>
     </div>
 
@@ -320,12 +327,12 @@
           <span>📍 London</span>
           <span>📅 29/08/2026 12:00 am</span>
         </div>
-        <a href="#" class="event-card-btn">View Event</a>
+        <a href="#" class="event-card-btn">VIEW EVENT</a>
       </div>
     </div>
 
   </div>
-</section>
+</div>
 
 <!-- FOOTER -->
 <footer style="background:#000;padding:40px 30px 50px;">
@@ -354,6 +361,18 @@
 </footer>
 
 <script>
+/* PRELOADER */
+(function(){
+  if(sessionStorage.getItem('crtv_seen')){ const p=document.getElementById('preloader'); if(p)p.remove(); return; }
+  const preloader=document.getElementById('preloader'), circle=document.getElementById('preloader-circle');
+  setTimeout(()=>preloader.classList.add('show-logo'),50);
+  let done=false;
+  function exit(){ if(done)return; done=true; sessionStorage.setItem('crtv_seen','1'); circle.style.pointerEvents='none'; preloader.classList.add('slide-exit'); setTimeout(()=>{ preloader.classList.add('fade-out'); setTimeout(()=>preloader.remove(),400); },900); }
+  circle.addEventListener('click',exit);
+  circle.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' ')exit(); });
+})();
+
+/* NAV */
 window.addEventListener('scroll',()=>{ document.getElementById('nav-outer').classList.toggle('scrolled',window.scrollY>60); });
 document.getElementById('nav-burger').addEventListener('click',()=>{ document.getElementById('mobile-nav').classList.add('open'); });
 document.getElementById('mob-close').addEventListener('click',()=>{ document.getElementById('mobile-nav').classList.remove('open'); });
