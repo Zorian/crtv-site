@@ -686,19 +686,45 @@ document.getElementById('mob-close').addEventListener('click',()=>{ document.get
 /* HERO SLIDER */
 (function(){
   const slides = document.querySelectorAll('.hs-slide');
-  const vids = document.querySelectorAll('.hs-video');
   let cur = 0, total = slides.length, timer;
 
-  function goTo(n) {
-    if(vids[cur]) vids[cur].pause();
+  function getVid(slide){ return slide.querySelector('.hs-video'); }
+
+  function loadAndPlay(slide){
+    const v = getVid(slide);
+    if(!v) return;
+    // If not loaded yet, set preload=auto and load
+    if(v.preload === 'none' || v.readyState === 0){
+      v.preload = 'auto';
+      v.load();
+    }
+    v.currentTime = 0;
+    v.play().catch(()=>{});
+  }
+
+  function goTo(n){
+    const oldVid = getVid(slides[cur]);
+    if(oldVid) oldVid.pause();
     slides[cur].classList.remove('hs-active');
+
     cur = (n + total) % total;
     slides[cur].classList.add('hs-active');
-    const v = vids[cur];
-    if(v){ v.currentTime=0; v.play().catch(()=>{}); }
+    loadAndPlay(slides[cur]);
+
+    // Preload next slide in background
+    const next = slides[(cur + 1) % total];
+    const nextVid = getVid(next);
+    if(nextVid && nextVid.preload === 'none'){
+      nextVid.preload = 'metadata';
+      nextVid.load();
+    }
+
     clearInterval(timer);
     timer = setInterval(()=>goTo(cur+1), 7000);
   }
+
+  // Play first slide immediately
+  loadAndPlay(slides[0]);
 
   document.getElementById('hs-prev').addEventListener('click',()=>goTo(cur-1));
   document.getElementById('hs-next').addEventListener('click',()=>goTo(cur+1));
