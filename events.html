@@ -374,11 +374,7 @@
 
 /* NAV */
 /* LOGO CLICK — navigate home */
-(function(){
-  const logo = document.getElementById('nav-logo');
-  if(!logo) return;
-  logo.style.cursor = 'pointer';
-})();
+(function(){ const logo=document.getElementById('nav-logo'); if(logo) logo.style.cursor='pointer'; })();
 window.addEventListener('scroll',()=>{ document.getElementById('nav-outer').classList.toggle('scrolled',window.scrollY>60); });
 document.getElementById('nav-burger').addEventListener('click',()=>{ document.getElementById('mobile-nav').classList.add('open'); });
 document.getElementById('mob-close').addEventListener('click',()=>{ document.getElementById('mobile-nav').classList.remove('open'); });
