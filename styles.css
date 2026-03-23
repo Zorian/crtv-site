@@ -265,7 +265,20 @@ footer { background: #fff; border-top: 1px solid rgba(0,0,0,0.06); }
 
 /* ─── RESPONSIVE ─── */
 @media (max-width: 900px) {
-  #nav-outer { display: none; }
+  #nav-outer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 20px;
+    background: transparent;
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    pointer-events: none;
+  }
+  #nav-outer > * { pointer-events: all; }
+  #nav-pill { display: none; }
+  #nav-logo img { width: 64px; height: 64px; }
   #nav-burger { display: flex; }
   .masonry { column-count: 2; }
   .footer-main { grid-template-columns: 1fr; gap: 32px; padding: 40px 24px; }
