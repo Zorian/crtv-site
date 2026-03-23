@@ -7,60 +7,72 @@
 <link rel="stylesheet" href="styles.css">
 <style>
 /* ── HERO SLIDER ── */
-.hero-slider { position: relative; width: 100%; min-height: 100vh; overflow: hidden; background: #000; }
-.slide { position: absolute; inset: 0; opacity: 0; transition: opacity 0.9s cubic-bezier(0.4,0,0.2,1); background-size: cover; background-position: center; }
+.hero-slider { position: relative; width: 100%; height: 100vh; overflow: hidden; background: #000; }
+.slide {
+  position: absolute; inset: 0; opacity: 0;
+  transition: opacity 1s cubic-bezier(0.4,0,0.2,1);
+  z-index: 0;
+}
 .slide.active { opacity: 1; z-index: 1; }
-.slide-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.48); display: flex; flex-direction: column; justify-content: flex-end; padding: 0 60px 100px; z-index: 2; }
+
+/* Video background */
+.slide-video {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; z-index: 0;
+  pointer-events: none;
+}
+/* Image fallback (for YouTube slides) */
+.slide-img {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; z-index: 0;
+}
+.slide-overlay {
+  position: absolute; inset: 0; z-index: 2;
+  background: rgba(0,0,0,0.42);
+  display: flex; flex-direction: column; justify-content: flex-end;
+  padding: 0 60px 100px;
+}
 .slide-sub { font-family: var(--font); font-size: 10px; font-weight: 300; letter-spacing: 0.45em; text-transform: uppercase; color: rgba(255,255,255,0.65); margin-bottom: 14px; }
-.slide-title { font-family: var(--font); font-size: clamp(30px, 4.5vw, 64px); font-weight: 300; letter-spacing: 0.03em; text-transform: uppercase; color: #fff; line-height: 1.05; max-width: 660px; margin-bottom: 32px; }
+.slide-title { font-family: var(--font); font-size: clamp(28px,4vw,60px); font-weight: 300; letter-spacing: 0.03em; text-transform: uppercase; color: #fff; line-height: 1.05; max-width: 640px; margin-bottom: 30px; }
 .slide-btn { display: inline-flex; align-items: center; gap: 12px; background: var(--blue); color: #fff; font-family: var(--font); font-size: 11px; font-weight: 300; letter-spacing: 0.25em; text-transform: uppercase; padding: 14px 28px; align-self: flex-start; transition: background 0.2s; }
 .slide-btn:hover { background: #0560d4; }
 .slide-btn svg { width: 13px; height: 13px; fill: #fff; }
-.slider-dots { position: absolute; bottom: 40px; right: 60px; z-index: 10; display: flex; gap: 8px; }
-.dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.3); cursor: pointer; transition: background 0.3s, transform 0.3s; border: none; }
+
+/* Slider controls */
+.slider-dots { position: absolute; bottom: 38px; right: 60px; z-index: 10; display: flex; gap: 8px; }
+.dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.35); cursor: pointer; transition: background 0.3s, transform 0.3s; border: none; }
 .dot.active { background: #fff; transform: scale(1.3); }
-.sl-arr { position: absolute; top: 50%; transform: translateY(-50%); z-index: 10; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.28); color: #fff; width: 48px; height: 48px; font-size: 20px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s; }
-.sl-arr:hover { background: rgba(255,255,255,0.28); }
+.sl-arr { position: absolute; top: 50%; transform: translateY(-50%); z-index: 10; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.25); color: #fff; width: 48px; height: 48px; font-size: 20px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s; }
+.sl-arr:hover { background: rgba(255,255,255,0.25); }
 .sl-arr.prev { left: 30px; } .sl-arr.next { right: 30px; }
 
-/* ── WHAT WE ARE ── */
+/* ── SECTIONS ── */
 .wwa { padding: 100px 60px; max-width: 1280px; margin: 0 auto; }
 .wwa-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
-
-/* ── TRUSTED ── */
 .trusted { background: #0a0a0a; padding: 80px 0 0; }
 .trusted-inner { max-width: 1200px; margin: 0 auto; padding: 0 60px 50px; }
-
-/* ── WHAT WE DO ── */
 .wwd { padding: 100px 60px; max-width: 1280px; margin: 0 auto; }
 .wwd-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
 .wwd-list li { font-family: var(--font); font-size: 15px; font-weight: 300; padding: 15px 0; border-bottom: 1px solid rgba(0,0,0,0.08); color: #555; }
-
-/* ── THE VISION ── */
 .vision { background: var(--blue); padding: 90px 60px; }
 .vision-inner { max-width: 1280px; margin: 0 auto; }
 .vision-cta { display: inline-block; margin-top: 32px; font-family: var(--font); font-size: 11px; font-weight: 300; letter-spacing: 0.3em; text-transform: uppercase; color: #fff; border-bottom: 1px solid rgba(255,255,255,0.45); padding-bottom: 3px; }
-
-/* ── EXPLORE PROJECTS ── */
 .explore { padding: 100px 60px; background: #fff; }
 .explore-inner { max-width: 1280px; margin: 0 auto; }
 .explore-label { font-family: var(--font); font-size: 11px; font-weight: 300; letter-spacing: 0.3em; text-transform: uppercase; color: #aaa; margin-bottom: 40px; }
-.projects-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 3px; }
-.project-card { position: relative; aspect-ratio: 9/16; overflow: hidden; cursor: pointer; }
-.project-card img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.68); transition: transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94), filter 0.4s; }
-.project-card:hover img { transform: scale(1.06); filter: brightness(0.42); }
+.projects-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 3px; }
+.project-card { position: relative; aspect-ratio: 9/16; overflow: hidden; }
+.project-card img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.65); transition: transform 0.6s, filter 0.4s; }
+.project-card:hover img { transform: scale(1.06); filter: brightness(0.4); }
 .project-info { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end; padding: 20px; background: linear-gradient(to top, rgba(0,0,0,0.88) 0%, transparent 55%); }
 .project-client { font-family: var(--font); font-size: 9px; font-weight: 300; letter-spacing: 0.35em; text-transform: uppercase; color: var(--blue); margin-bottom: 6px; }
-.project-title { font-family: var(--font); font-size: clamp(13px, 1.3vw, 17px); font-weight: 300; letter-spacing: 0.04em; text-transform: uppercase; color: #fff; line-height: 1.2; }
-.project-watch { position: absolute; top: 16px; right: 16px; background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,0.3); color: #fff; font-family: var(--font); font-size: 9px; font-weight: 300; letter-spacing: 0.2em; text-transform: uppercase; padding: 7px 12px; opacity: 0; transform: translateY(-4px); transition: opacity 0.3s, transform 0.3s; }
+.project-title { font-family: var(--font); font-size: clamp(12px,1.3vw,16px); font-weight: 300; letter-spacing: 0.04em; text-transform: uppercase; color: #fff; line-height: 1.2; }
+.project-watch { position: absolute; top: 16px; right: 16px; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.28); color: #fff; font-family: var(--font); font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; padding: 7px 12px; opacity: 0; transform: translateY(-4px); transition: opacity 0.3s, transform 0.3s; }
 .project-card:hover .project-watch { opacity: 1; transform: translateY(0); }
-
-/* ── BRAND TICKER FOOTER ── */
-.brand-ticker { background: #000; overflow: hidden; padding: 18px 0; }
 
 @media (max-width: 900px) {
   .wwa-grid, .wwd-grid { grid-template-columns: 1fr; gap: 40px; }
-  .projects-grid { grid-template-columns: repeat(2, 1fr); }
+  .projects-grid { grid-template-columns: repeat(2,1fr); }
   .wwa, .wwd, .explore { padding: 60px 24px; }
   .trusted-inner { padding: 0 24px 40px; }
   .vision { padding: 60px 24px; }
@@ -100,64 +112,99 @@
   <a href="join.html">JOIN / SIGN UP</a>
 </div>
 
-<!-- HERO SLIDER -->
+<!-- HERO SLIDER — 8 slides, video backgrounds where available -->
 <section class="hero-slider" id="hero">
-  <div class="slide active" style="background-image:url('https://crtv.axocreate.com/wp-content/uploads/2026/01/dqJ8oud7l2Q-HD.jpg')">
+
+  <!-- 1: Lose Count — Nike (VIDEO) -->
+  <div class="slide active">
+    <video class="slide-video" autoplay muted loop playsinline preload="auto">
+      <source src="https://crtv.axocreate.com/wp-content/uploads/2026/02/Lose-Count-%EF%BD%9C-Stronger-Than-One-%EF%BD%9C-Nike.mp4" type="video/mp4">
+    </video>
     <div class="slide-overlay">
       <span class="slide-sub">JOIN "CREATING OUR MOTION"</span>
       <h2 class="slide-title">Lose Count - Stronger Than One</h2>
       <a href="https://www.youtube.com/watch?v=dqJ8oud7l2Q" target="_blank" class="slide-btn"><svg viewBox="0 0 16 16"><polygon points="4,2 14,8 4,14"/></svg>WATCH NOW</a>
     </div>
   </div>
-  <div class="slide" style="background-image:url('https://crtv.axocreate.com/wp-content/uploads/2026/01/398143622_6735031366575353_3516649951948309757_n-e1773412953687.jpg')">
+
+  <!-- 2: Get To Know Me - Louis Lasa Tarbuck (YouTube — use thumbnail) -->
+  <div class="slide">
+    <img class="slide-img" src="https://crtv.axocreate.com/wp-content/uploads/2026/01/398143622_6735031366575353_3516649951948309757_n-e1773412953687.jpg" alt="">
     <div class="slide-overlay">
       <span class="slide-sub">JOIN "CREATING OUR MOTION"</span>
       <h2 class="slide-title">Get To Know Me - Louis Lasa Tarbuck</h2>
-      <a href="#" class="slide-btn"><svg viewBox="0 0 16 16"><polygon points="4,2 14,8 4,14"/></svg>WATCH NOW</a>
+      <a href="https://www.youtube.com/watch?v=KV8XAK4Fn6A" target="_blank" class="slide-btn"><svg viewBox="0 0 16 16"><polygon points="4,2 14,8 4,14"/></svg>WATCH NOW</a>
     </div>
   </div>
-  <div class="slide" style="background-image:url('https://lh3.googleusercontent.com/d/1iE3LMj5pH9uHG57A9nrTuWNFDyPl8O84')">
+
+  <!-- 3: JBEE 24'S (VIDEO) -->
+  <div class="slide">
+    <video class="slide-video" muted loop playsinline preload="none">
+      <source src="https://crtv.axocreate.com/wp-content/uploads/2026/02/JBEE-24s-Official-Video.mp4" type="video/mp4">
+    </video>
     <div class="slide-overlay">
       <span class="slide-sub">JOIN "CREATING OUR MOTION"</span>
       <h2 class="slide-title">JBEE — 24'S</h2>
-      <a href="#" class="slide-btn"><svg viewBox="0 0 16 16"><polygon points="4,2 14,8 4,14"/></svg>WATCH NOW</a>
+      <a href="https://www.youtube.com/watch?v=JBEE24" target="_blank" class="slide-btn"><svg viewBox="0 0 16 16"><polygon points="4,2 14,8 4,14"/></svg>WATCH NOW</a>
     </div>
   </div>
-  <div class="slide" style="background-image:url('https://lh3.googleusercontent.com/d/1oNATfEX5LlIQRVqjQEvv7wBvxZlhWP_1')">
+
+  <!-- 4: Get To Know Me - Nokuthulah H (YouTube) -->
+  <div class="slide">
+    <img class="slide-img" src="https://lh3.googleusercontent.com/d/1oNATfEX5LlIQRVqjQEvv7wBvxZlhWP_1" alt="">
     <div class="slide-overlay">
       <span class="slide-sub">JOIN "CREATING OUR MOTION"</span>
       <h2 class="slide-title">Get To Know Me - Nokuthulah H</h2>
-      <a href="#" class="slide-btn"><svg viewBox="0 0 16 16"><polygon points="4,2 14,8 4,14"/></svg>WATCH NOW</a>
+      <a href="https://www.youtube.com/watch?v=xyVyj0M_llY" target="_blank" class="slide-btn"><svg viewBox="0 0 16 16"><polygon points="4,2 14,8 4,14"/></svg>WATCH NOW</a>
     </div>
   </div>
-  <div class="slide" style="background-image:url('https://lh3.googleusercontent.com/d/1pqOFkVcH80DctXoOm6y9LVcX8AKNSmqK')">
+
+  <!-- 5: UPSYCLE HYPEWEAR (VIDEO) -->
+  <div class="slide">
+    <video class="slide-video" muted loop playsinline preload="none">
+      <source src="https://crtv.axocreate.com/wp-content/uploads/2026/02/UPSYCLE-HYPEWEAR-VOL.1.mp4" type="video/mp4">
+    </video>
     <div class="slide-overlay">
       <span class="slide-sub">JOIN "CREATING OUR MOTION"</span>
       <h2 class="slide-title">UPSYCLE HYPEWEAR VOL 1 SHORT FILM</h2>
       <a href="#" class="slide-btn"><svg viewBox="0 0 16 16"><polygon points="4,2 14,8 4,14"/></svg>WATCH NOW</a>
     </div>
   </div>
-  <div class="slide" style="background-image:url('https://lh3.googleusercontent.com/d/1HVEzxJFb1SY_jhy335GnRWWg_4wDhA5H')">
+
+  <!-- 6: Get To Know Me - James Olusegun (YouTube) -->
+  <div class="slide">
+    <img class="slide-img" src="https://lh3.googleusercontent.com/d/1HVEzxJFb1SY_jhy335GnRWWg_4wDhA5H" alt="">
     <div class="slide-overlay">
       <span class="slide-sub">JOIN "CREATING OUR MOTION"</span>
       <h2 class="slide-title">Get To Know Me - James Olusegun</h2>
-      <a href="#" class="slide-btn"><svg viewBox="0 0 16 16"><polygon points="4,2 14,8 4,14"/></svg>WATCH NOW</a>
+      <a href="https://www.youtube.com/watch?v=sPs63uGzWuI" target="_blank" class="slide-btn"><svg viewBox="0 0 16 16"><polygon points="4,2 14,8 4,14"/></svg>WATCH NOW</a>
     </div>
   </div>
-  <div class="slide" style="background-image:url('https://crtv.axocreate.com/wp-content/uploads/2026/01/maxresdefault.webp')">
+
+  <!-- 7: Biig Piig (VIDEO) -->
+  <div class="slide">
+    <video class="slide-video" muted loop playsinline preload="none">
+      <source src="https://crtv.axocreate.com/wp-content/uploads/2026/02/Biig-Piig-Feels-Right-Official-Video.mp4" type="video/mp4">
+    </video>
     <div class="slide-overlay">
       <span class="slide-sub">JOIN "CREATING OUR MOTION"</span>
       <h2 class="slide-title">Biig Piig - Feels Right (Official Video)</h2>
       <a href="https://www.youtube.com/watch?v=nsGbD-q9NIk" target="_blank" class="slide-btn"><svg viewBox="0 0 16 16"><polygon points="4,2 14,8 4,14"/></svg>WATCH NOW</a>
     </div>
   </div>
-  <div class="slide" style="background-image:url('https://crtv.axocreate.com/wp-content/uploads/2026/01/5P87JlJQ8-M-HD.jpg')">
+
+  <!-- 8: NEW GEN ENTERTAINMENT (VIDEO) -->
+  <div class="slide">
+    <video class="slide-video" muted loop playsinline preload="none">
+      <source src="https://crtv.axocreate.com/wp-content/uploads/2026/03/NEW-GEN-ENTERTAINMENT-TV-Dance-Your-Style-Cypher-Spain-Edition-zy-ooB1l5QE.mp4" type="video/mp4">
+    </video>
     <div class="slide-overlay">
       <span class="slide-sub">JOIN "CREATING OUR MOTION"</span>
       <h2 class="slide-title">NEW GEN ENTERTAINMENT — Dance Your Style Cypher</h2>
       <a href="https://www.youtube.com/watch?v=5P87JlJQ8-M" target="_blank" class="slide-btn"><svg viewBox="0 0 16 16"><polygon points="4,2 14,8 4,14"/></svg>WATCH NOW</a>
     </div>
   </div>
+
   <button class="sl-arr prev" id="sl-prev">&#8592;</button>
   <button class="sl-arr next" id="sl-next">&#8594;</button>
   <div class="slider-dots" id="sl-dots"></div>
@@ -190,40 +237,22 @@
     <h2 class="h-lg" style="color:#fff;margin-bottom:14px;">Trusted by global brands &amp; platforms.</h2>
     <p class="body-text" style="color:rgba(255,255,255,0.5);max-width:600px;">We've worked with artists, brands, and organisations that align with culture, creativity, and innovation, delivering stories that resonate worldwide.</p>
   </div>
-  <!-- Brand logos row 1 -->
   <div class="brands-carousel">
     <div class="brands-track">
       <img src="assets/logos/brand-2.png" alt="Subway">
-      <img src="assets/logos/brand-3.png" alt="Levi's">
+      <img src="assets/logos/brand-3.png" alt="Levis">
       <img src="assets/logos/brand-4.png" alt="Red Bull">
       <img src="assets/logos/brand-5.png" alt="Nike">
       <img src="assets/logos/brand-7.png" alt="Selfridges">
       <img src="assets/logos/brand-8.png" alt="Adidas">
-      <!-- duplicate for seamless loop -->
-      <img src="assets/logos/brand-2.png" alt="Subway">
-      <img src="assets/logos/brand-3.png" alt="Levi's">
-      <img src="assets/logos/brand-4.png" alt="Red Bull">
-      <img src="assets/logos/brand-5.png" alt="Nike">
-      <img src="assets/logos/brand-7.png" alt="Selfridges">
-      <img src="assets/logos/brand-8.png" alt="Adidas">
+      <img src="assets/logos/brand-2.png" alt=""><img src="assets/logos/brand-3.png" alt=""><img src="assets/logos/brand-4.png" alt=""><img src="assets/logos/brand-5.png" alt=""><img src="assets/logos/brand-7.png" alt=""><img src="assets/logos/brand-8.png" alt="">
     </div>
   </div>
   <div style="height:10px;background:#0a0a0a;"></div>
-  <!-- Brand logos row 2 (reverse) -->
   <div class="brands-carousel">
     <div class="brands-track reverse">
-      <img src="assets/logos/brand-9.png" alt="">
-      <img src="assets/logos/brand-10.png" alt="">
-      <img src="assets/logos/brand-11.png" alt="">
-      <img src="assets/logos/brand-12.png" alt="">
-      <img src="assets/logos/brand-6.png" alt="">
-      <img src="assets/logos/brand-1.png" alt="">
-      <img src="assets/logos/brand-9.png" alt="">
-      <img src="assets/logos/brand-10.png" alt="">
-      <img src="assets/logos/brand-11.png" alt="">
-      <img src="assets/logos/brand-12.png" alt="">
-      <img src="assets/logos/brand-6.png" alt="">
-      <img src="assets/logos/brand-1.png" alt="">
+      <img src="assets/logos/brand-9.png" alt=""><img src="assets/logos/brand-10.png" alt=""><img src="assets/logos/brand-11.png" alt=""><img src="assets/logos/brand-12.png" alt=""><img src="assets/logos/brand-6.png" alt=""><img src="assets/logos/brand-1.png" alt="">
+      <img src="assets/logos/brand-9.png" alt=""><img src="assets/logos/brand-10.png" alt=""><img src="assets/logos/brand-11.png" alt=""><img src="assets/logos/brand-12.png" alt=""><img src="assets/logos/brand-6.png" alt=""><img src="assets/logos/brand-1.png" alt="">
     </div>
   </div>
 </section>
@@ -252,13 +281,13 @@
 <section class="vision">
   <div class="vision-inner">
     <span class="eyebrow" style="color:rgba(255,255,255,0.6);">THE VISION</span>
-    <h2 class="h-lg" style="color:#fff;margin-bottom:20px;">"More than content.<br>It's a movement."</h2>
+    <h2 class="h-lg" style="color:#fff;margin-bottom:20px;">"More than content. It's a movement."</h2>
     <p class="body-text" style="color:rgba(255,255,255,0.72);max-width:680px;">From underground dance cyphers to global stages, we are building a world where creatives are valued, supported, and seen. Our work bridges film, community, and live experiences locally and globally.<br><br>Create with us. Build with us. Move with us.</p>
     <a href="about.html" class="vision-cta">EXPLORE → ABOUT</a>
   </div>
 </section>
 
-<!-- EXPLORE PROJECTS -->
+<!-- EXPLORE -->
 <section class="explore">
   <div class="explore-inner">
     <p class="explore-label">EXPLORE</p>
@@ -288,7 +317,7 @@
 </section>
 
 <!-- BRAND TICKER -->
-<div class="brand-ticker ticker-row"><div class="ticker-track"><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span></div></div>
+<div class="ticker-row" style="background:#000;"><div class="ticker-track"><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span></div></div>
 
 <!-- FOOTER -->
 <footer>
@@ -306,7 +335,7 @@
 <script>
 /* PRELOADER — first visit only */
 (function(){
-  if (sessionStorage.getItem('crtv_seen')) { const p=document.getElementById('preloader'); if(p) p.remove(); return; }
+  if(sessionStorage.getItem('crtv_seen')){ const p=document.getElementById('preloader'); if(p)p.remove(); return; }
   const preloader=document.getElementById('preloader'), circle=document.getElementById('preloader-circle');
   setTimeout(()=>preloader.classList.add('show-logo'),50);
   let done=false;
@@ -322,14 +351,40 @@ document.getElementById('mob-close').addEventListener('click',()=>{ document.get
 
 /* HERO SLIDER */
 (function(){
-  const slides=document.querySelectorAll('.slide'), dotsEl=document.getElementById('sl-dots');
+  const slides=document.querySelectorAll('.slide');
+  const dotsEl=document.getElementById('sl-dots');
   let cur=0, timer;
-  slides.forEach((_,i)=>{ const d=document.createElement('button'); d.className='dot'+(i===0?' active':''); d.addEventListener('click',()=>goTo(i)); dotsEl.appendChild(d); });
+
+  slides.forEach((_,i)=>{
+    const d=document.createElement('button');
+    d.className='dot'+(i===0?' active':'');
+    d.addEventListener('click',()=>goTo(i));
+    dotsEl.appendChild(d);
+  });
   const dots=dotsEl.querySelectorAll('.dot');
-  function goTo(n){ slides[cur].classList.remove('active'); dots[cur].classList.remove('active'); cur=(n+slides.length)%slides.length; slides[cur].classList.add('active'); dots[cur].classList.add('active'); clearInterval(timer); timer=setInterval(()=>goTo(cur+1),5500); }
+
+  function goTo(n){
+    // Pause current video
+    const curVid=slides[cur].querySelector('.slide-video');
+    if(curVid) curVid.pause();
+
+    slides[cur].classList.remove('active');
+    dots[cur].classList.remove('active');
+    cur=(n+slides.length)%slides.length;
+    slides[cur].classList.add('active');
+    dots[cur].classList.add('active');
+
+    // Play new slide video
+    const newVid=slides[cur].querySelector('.slide-video');
+    if(newVid){ newVid.currentTime=0; newVid.play().catch(()=>{}); }
+
+    clearInterval(timer);
+    timer=setInterval(()=>goTo(cur+1),7000);
+  }
+
   document.getElementById('sl-prev').addEventListener('click',()=>goTo(cur-1));
   document.getElementById('sl-next').addEventListener('click',()=>goTo(cur+1));
-  timer=setInterval(()=>goTo(cur+1),5500);
+  timer=setInterval(()=>goTo(cur+1),7000);
 })();
 </script>
 </body>
