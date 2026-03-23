@@ -59,7 +59,6 @@ document.getElementById('mob-close').addEventListener('click',()=>{ document.get
   if(!logo) return;
   logo.addEventListener('click', function(e){
     e.preventDefault();
-    // Re-create and show preloader
     const existing = document.getElementById('preloader');
     if(existing) existing.remove();
     const p = document.createElement('div');
