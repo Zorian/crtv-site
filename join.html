@@ -218,14 +218,17 @@
   <div style="padding:40px 40px;display:flex;flex-direction:column;gap:14px;background:#fff;justify-content:center;">
     <h2 style="font-family:'StrechPro',sans-serif;font-size:clamp(28px,3.5vw,48px);font-weight:700;text-transform:uppercase;color:#1076F8;letter-spacing:0.03em;margin:0;line-height:1;">SIGN UP</h2>
     <p style="font-family:'MadeOuter',sans-serif;font-size:14px;font-weight:700;font-style:italic;color:#111;margin:0;">Interested? Fill out the form below and let's get started.</p>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;" class="name-row">
-      <input type="text" placeholder="First Name" style="font-family:'MadeOuter',sans-serif;font-size:13px;border:1.5px solid #1076F8;padding:11px 14px;outline:none;border-radius:0;">
-      <input type="text" placeholder="Last Name" style="font-family:'MadeOuter',sans-serif;font-size:13px;border:1.5px solid #1076F8;padding:11px 14px;outline:none;border-radius:0;">
-    </div>
-    <input type="email" placeholder="Email" style="font-family:'MadeOuter',sans-serif;font-size:13px;border:1.5px solid #1076F8;padding:11px 14px;outline:none;border-radius:0;width:100%;box-sizing:border-box;">
-    <textarea placeholder="Message" rows="3" style="font-family:'MadeOuter',sans-serif;font-size:13px;border:1.5px solid #1076F8;padding:11px 14px;outline:none;border-radius:0;resize:none;width:100%;box-sizing:border-box;"></textarea>
-    <button onclick="this.textContent='Sent ✓';this.style.background='#0d9e5c';this.disabled=true;"
-      style="font-family:'MadeOuter',sans-serif;font-size:12px;letter-spacing:0.2em;text-transform:uppercase;background:#1076F8;color:#fff;border:none;padding:14px;cursor:pointer;width:100%;">SEND</button>
+    <form name="signup" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" action="/success.html" style="display:flex;flex-direction:column;gap:12px;">
+      <input type="hidden" name="form-name" value="signup">
+      <p style="display:none;"><input name="bot-field"></p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;" class="name-row">
+        <input type="text" name="first-name" placeholder="First Name" required style="font-family:'MadeOuter',sans-serif;font-size:13px;border:1.5px solid #1076F8;padding:11px 14px;outline:none;border-radius:0;">
+        <input type="text" name="last-name" placeholder="Last Name" required style="font-family:'MadeOuter',sans-serif;font-size:13px;border:1.5px solid #1076F8;padding:11px 14px;outline:none;border-radius:0;">
+      </div>
+      <input type="email" name="email" placeholder="Email" required style="font-family:'MadeOuter',sans-serif;font-size:13px;border:1.5px solid #1076F8;padding:11px 14px;outline:none;border-radius:0;width:100%;box-sizing:border-box;">
+      <textarea name="message" placeholder="Message" rows="3" style="font-family:'MadeOuter',sans-serif;font-size:13px;border:1.5px solid #1076F8;padding:11px 14px;outline:none;border-radius:0;resize:none;width:100%;box-sizing:border-box;"></textarea>
+      <button type="submit" style="font-family:'MadeOuter',sans-serif;font-size:12px;letter-spacing:0.2em;text-transform:uppercase;background:#1076F8;color:#fff;border:none;padding:14px;cursor:pointer;width:100%;">SEND</button>
+    </form>
   </div>
 </div>
 
