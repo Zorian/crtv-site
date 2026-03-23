@@ -863,7 +863,7 @@ document.getElementById('mob-close').addEventListener('click',()=>{ document.get
     const v = document.getElementById('nike-vid');
     if(!v) return;
     v.addEventListener('canplay', function seek(){
-      if(v.currentTime < 9){ v.currentTime = 9; }
+      if(v.currentTime < 4){ v.currentTime = 4; }
       v.removeEventListener('canplay', seek);
     });
   })();
