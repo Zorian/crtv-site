@@ -235,37 +235,13 @@
 window.addEventListener('scroll',()=>{ document.getElementById('nav-outer').classList.toggle('scrolled',window.scrollY>60); });
 document.getElementById('nav-burger').addEventListener('click',()=>{ document.getElementById('mobile-nav').classList.add('open'); });
 document.getElementById('mob-close').addEventListener('click',()=>{ document.getElementById('mobile-nav').classList.remove('open'); });
-/* LOGO CLICK — re-triggers preloader */
+/* LOGO CLICK — go to homepage */
 (function(){
   const logo = document.getElementById('nav-logo');
   if(!logo) return;
-  logo.addEventListener('click', function(e){
-    e.preventDefault();
-    const existing = document.getElementById('preloader');
-    if(existing) existing.remove();
-    const p = document.createElement('div');
-    p.id = 'preloader';
-    p.innerHTML = '<div class="preloader-inner"><div id="preloader-circle" role="button" tabindex="0" aria-label="Enter"><img id="preloader-logo" src="assets/logo.png" alt="CRTV Hub"></div><p id="preloader-instruction">Click to enter</p></div>';
-    document.body.appendChild(p);
-    setTimeout(()=>p.classList.add('show-logo'),50);
-    let done=false;
-    const circle=p.querySelector('#preloader-circle');
-    function playClick(){
-      try{
-        const a=new Audio('https://pub-a9f22cf5804840608cb8ba43afc33a34.r2.dev/click-sound.mp3');
-        a.volume=0.8; a.play();
-      }catch(e){}
-    }
-    function exit(){
-      if(done)return; done=true;
-      playClick();
-      circle.style.pointerEvents='none';
-      p.classList.add('slide-exit');
-      setTimeout(()=>{ p.classList.add('fade-out'); setTimeout(()=>p.remove(),400); },900);
-    }
-    circle.addEventListener('click',exit);
-    circle.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' ')exit(); });
-  });
+  logo.style.pointerEvents = 'all';
+  logo.style.cursor = 'pointer';
+  // Just let the <a href="index.html"> inside work normally
 })();
 </script>
 </body>
