@@ -9,8 +9,7 @@
 /* ── HERO ── */
 .join-hero {
   position: relative; width: 100%; min-height: 75vh; overflow: hidden;
-  display: flex; align-items: flex-end; justify-content: center; background: #000;
-  padding-bottom: 130px;
+  display: flex; align-items: center; justify-content: center; background: #000;
 }
 .join-hero-bg {
   position: absolute; inset: 0; width: 100%; height: 100%;
@@ -26,11 +25,11 @@
 }
 
 /* ── CONTACT CARDS ── */
-.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; background: transparent; margin: -120px 40px 0; position: relative; z-index: 20; align-items: stretch; }
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; background: #fff; margin: 0; }
 .contact-card {
-  background: #001138; padding: 44px 40px;
-  display: flex; flex-direction: column; gap: 14px;
-  border: 1px solid rgba(255,255,255,0.18); height: 100%;
+  background: #001138; padding: 60px 50px; min-height: 280px;
+  display: flex; flex-direction: column; gap: 16px;
+  border: 2px solid rgba(16,118,248,0.35);
 }
 
 .contact-card-heading {
