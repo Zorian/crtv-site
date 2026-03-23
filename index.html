@@ -188,7 +188,7 @@
 </style>
 
   <div class="hs-slide hs-active" data-index="0">
-    <video class="hs-video" autoplay muted loop playsinline preload="auto" poster="https://crtv.axocreate.com/wp-content/uploads/2026/03/WhatsApp-Image-2026-03-13-at-17.36.24-scaled.jpeg">
+    <video class="hs-video" autoplay preload="auto" autoplay muted loop playsinline poster="https://crtv.axocreate.com/wp-content/uploads/2026/03/WhatsApp-Image-2026-03-13-at-17.36.24-scaled.jpeg">
       <source src="https://crtv.axocreate.com/wp-content/uploads/2026/02/Lose-Count-%EF%BD%9C-Stronger-Than-One-%EF%BD%9C-Nike.mp4" type="video/mp4">
     </video>
     <div class="hs-overlay"></div>
@@ -212,7 +212,7 @@
     </div>
   </div>
   <div class="hs-slide" data-index="2">
-    <video class="hs-video"  muted loop playsinline preload="none" poster="https://crtv.axocreate.com/wp-content/uploads/2026/03/WhatsApp-Image-2026-03-13-at-17.36.37-scaled.jpeg">
+    <video class="hs-video" preload="none" muted loop playsinline poster="https://crtv.axocreate.com/wp-content/uploads/2026/03/WhatsApp-Image-2026-03-13-at-17.36.37-scaled.jpeg">
       <source src="https://crtv.axocreate.com/wp-content/uploads/2026/02/JBEE-24s-Official-Video.mp4" type="video/mp4">
     </video>
     <div class="hs-overlay"></div>
@@ -236,7 +236,7 @@
     </div>
   </div>
   <div class="hs-slide" data-index="4">
-    <video class="hs-video"  muted loop playsinline preload="none" poster="https://crtv.axocreate.com/wp-content/uploads/2026/01/398143622_6735031366575353_3516649951948309757_n-e1773412953687.jpg">
+    <video class="hs-video" preload="none" muted loop playsinline poster="https://crtv.axocreate.com/wp-content/uploads/2026/01/398143622_6735031366575353_3516649951948309757_n-e1773412953687.jpg">
       <source src="https://crtv.axocreate.com/wp-content/uploads/2026/02/UPSYCLE-HYPEWEAR-VOL.1.mp4" type="video/mp4">
     </video>
     <div class="hs-overlay"></div>
@@ -260,7 +260,7 @@
     </div>
   </div>
   <div class="hs-slide" data-index="6">
-    <video class="hs-video"  muted loop playsinline preload="none" poster="https://crtv.axocreate.com/wp-content/uploads/2026/03/WhatsApp-Image-2026-03-13-at-17.36.53-scaled.jpeg">
+    <video class="hs-video" preload="none" muted loop playsinline poster="https://crtv.axocreate.com/wp-content/uploads/2026/03/WhatsApp-Image-2026-03-13-at-17.36.53-scaled.jpeg">
       <source src="https://crtv.axocreate.com/wp-content/uploads/2026/02/Biig-Piig-Feels-Right-Official-Video.mp4" type="video/mp4">
     </video>
     <div class="hs-overlay"></div>
@@ -273,7 +273,7 @@
     </div>
   </div>
   <div class="hs-slide" data-index="7">
-    <video class="hs-video"  muted loop playsinline preload="none" poster="https://crtv.axocreate.com/wp-content/uploads/2026/03/b510acdb-add2-4458-867b-df42312025d0.jpg">
+    <video class="hs-video" preload="none" muted loop playsinline poster="https://crtv.axocreate.com/wp-content/uploads/2026/03/b510acdb-add2-4458-867b-df42312025d0.jpg">
       <source src="https://crtv.axocreate.com/wp-content/uploads/2026/03/NEW-GEN-ENTERTAINMENT-TV-Dance-Your-Style-Cypher-Spain-Edition-zy-ooB1l5QE.mp4" type="video/mp4">
     </video>
     <div class="hs-overlay"></div>
@@ -303,7 +303,7 @@
 
   <!-- RIGHT: video background, 50% width -->
   <div style="width:50%;position:relative;min-height:500px;overflow:hidden;background:#000;">
-    <video autoplay muted loop playsinline preload="auto" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+    <video class="lazy-vid" muted loop playsinline preload="none" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
       <source src="https://crtv.axocreate.com/wp-content/uploads/2026/01/AQNk5DDBanbZ_5ca6dYW4zZmnkV2MVF9vWKB6gdslWZVXk_CK9Uagk4rt4cz4wS-GXzwSVwH-Vq3ETXyG8LVCDGDNEJv7eDUdEbj2_4.mp4" type="video/mp4">
     </video>
   </div>
@@ -388,7 +388,7 @@
 
   <!-- LEFT 50%: video background -->
   <div style="width:50%;min-height:500px;position:relative;overflow:hidden;background:#000;order:-1;">
-    <video autoplay muted loop playsinline preload="auto" poster="https://crtv.axocreate.com/wp-content/uploads/2026/01/SnapVideo.app_466638928_18472038676039053_1722983639102375895_n.jpg"
+    <video class="lazy-vid" muted loop playsinline preload="none" poster="https://crtv.axocreate.com/wp-content/uploads/2026/01/SnapVideo.app_466638928_18472038676039053_1722983639102375895_n.jpg"
       style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
       <source src="https://crtv.axocreate.com/wp-content/uploads/2026/01/SaveGram.App_AQPrSVniqVe0FDLwnCUUiK_K9zbllpM9shHR4VcaXsgGmrSoI98RYZUWbyeoqAmhvrG_OVuMafwLXWydhFcrIOap5ytFgXoBA_Di_v8.mp4" type="video/mp4">
     </video>
@@ -722,6 +722,27 @@ window.addEventListener('scroll',()=>{ document.getElementById('nav-outer').clas
 document.getElementById('nav-burger').addEventListener('click',()=>{ document.getElementById('mobile-nav').classList.add('open'); });
 document.getElementById('mob-close').addEventListener('click',()=>{ document.getElementById('mobile-nav').classList.remove('open'); });
 
+
+/* LAZY VIDEO LOADER — plays section videos only when visible */
+(function(){
+  const lazies = document.querySelectorAll('video.lazy-vid');
+  if(!lazies.length) return;
+  const obs = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        const v = e.target;
+        if(v.readyState === 0){
+          // Load and play
+          v.preload = 'auto';
+          v.load();
+        }
+        v.play().catch(()=>{});
+        obs.unobserve(v);
+      }
+    });
+  }, { threshold: 0.3 });
+  lazies.forEach(v => obs.observe(v));
+})();
 </script>
 </body>
 </html>
