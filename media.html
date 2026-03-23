@@ -6,38 +6,42 @@
 <link rel="icon" href="assets/favicon.png" type="image/png">
 <link rel="stylesheet" href="styles.css">
 <style>
+/* ── MEDIA HERO (video background) ── */
 .media-hero {
-  min-height: 60vh; display: flex; flex-direction: column; justify-content: flex-end;
-  padding: 0 60px 80px; background: #0a0a0a; position: relative; overflow: hidden;
+  min-height: 65vh; display: flex; flex-direction: column; justify-content: flex-end;
+  padding: 0 60px 90px; background: #000; position: relative; overflow: hidden;
 }
-.media-hero-bg {
-  position: absolute; inset: 0;
-  background-image: url('https://lh3.googleusercontent.com/d/1iE3LMj5pH9uHG57A9nrTuWNFDyPl8O84');
-  background-size: cover; background-position: center; filter: brightness(0.3);
+.media-hero-video {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; filter: brightness(0.3); z-index: 0; pointer-events: none;
 }
 .media-hero-content { position: relative; z-index: 2; }
-.media-hero h1 { font-family: var(--font-main); font-size: clamp(38px,7vw,100px); font-weight: 300; letter-spacing: 0.02em; text-transform: uppercase; color: #fff; line-height: 1; }
-.media-hero-sub { font-family: var(--font-main); font-size: 16px; font-weight: 300; color: rgba(255,255,255,0.55); margin-top: 16px; letter-spacing: 0.06em; }
+.media-hero h1 {
+  font-family: var(--font); font-size: clamp(38px,7vw,100px);
+  font-weight: 300; letter-spacing: 0.02em; text-transform: uppercase;
+  color: #fff; line-height: 1;
+}
+.media-hero-sub {
+  font-family: var(--font); font-size: 15px; font-weight: 300;
+  color: rgba(255,255,255,0.55); margin-top: 16px; letter-spacing: 0.06em;
+}
 
-/* OUR WORK */
+/* ── OUR WORK ── */
 .our-work { padding: 100px 60px; max-width: 1200px; margin: 0 auto; }
 .ow-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
-.ow-list { list-style: none; margin-top: 16px; }
-.ow-list li { font-family: var(--font-main); font-size: 15px; font-weight: 300; padding: 12px 0; border-bottom: 1px solid rgba(0,0,0,0.07); color: #555; }
+.ow-list li { font-family: var(--font); font-size: 15px; font-weight: 300; padding: 12px 0; border-bottom: 1px solid rgba(0,0,0,0.07); color: #555; }
 
-/* TRUSTED */
+/* ── TRUSTED ── */
 .trusted-media { background: #0a0a0a; padding: 80px 0 10px; }
 .trusted-media-inner { max-width: 1200px; margin: 0 auto; padding: 0 60px 48px; }
-.trusted-media-inner h2 { font-family: var(--font-main); font-size: clamp(28px,4vw,52px); font-weight: 300; letter-spacing: 0.03em; text-transform: uppercase; color: #fff; margin-bottom: 14px; }
-.trusted-media-inner p { font-family: var(--font-main); font-size: 15px; font-weight: 300; color: rgba(255,255,255,0.5); max-width: 600px; line-height: 1.7; }
 
-/* CREATIVE APPROACH */
+/* ── CREATIVE APPROACH ── */
 .creative-approach { padding: 100px 60px; max-width: 1200px; margin: 0 auto; }
 .ca-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
 
-/* GALLERY */
+/* ── GALLERY ── */
 .gallery-section { padding: 20px 60px 100px; }
-.gallery-label { font-family: var(--font-main); font-size: 11px; font-weight: 300; letter-spacing: 0.35em; text-transform: uppercase; color: #aaa; margin-bottom: 24px; }
+.gallery-label { font-family: var(--font); font-size: 11px; font-weight: 300; letter-spacing: 0.35em; text-transform: uppercase; color: #aaa; margin-bottom: 24px; }
 
 @media (max-width: 900px) {
   .media-hero { padding: 0 24px 60px; }
@@ -49,7 +53,6 @@
 </head>
 <body>
 
-<!-- PRELOADER -->
 <!-- PRELOADER -->
 <div id="preloader">
   <div class="preloader-inner">
@@ -77,69 +80,81 @@
   <a href="events.html">EVENTS</a><a href="media.html">MEDIA</a>
   <a href="join.html">JOIN / SIGN UP</a>
 </div>
+
+<!-- MEDIA HERO — WeTransfer video background -->
+<section class="media-hero">
+  <video class="media-hero-video" autoplay muted loop playsinline preload="auto">
+    <source src="https://crtv.axocreate.com/wp-content/uploads/2026/01/Video-from-WeTransfer.mov" type="video/mp4">
+    <source src="https://crtv.axocreate.com/wp-content/uploads/2026/01/Video-from-WeTransfer.mov" type="video/quicktime">
+  </video>
+  <div class="media-hero-content">
+    <h1>We tell stories that<br>move culture.</h1>
+    <p class="media-hero-sub">Explore the creativity of our talented creators.</p>
+  </div>
+</section>
+
+<!-- OUR WORK -->
+<section>
+  <div class="our-work">
+    <div class="ow-grid">
+      <div>
+        <span class="eyebrow">OUR WORK</span>
+        <h2 class="h-lg" style="margin-bottom:16px;">Film, fashion,<br>music &amp; movement.</h2>
+        <p class="italic-quote">"Film, fashion, music &amp; movement."</p>
+      </div>
+      <div>
+        <p class="body-text" style="margin-bottom:8px;">We produce high-impact visual content across:</p>
+        <ul class="ow-list">
+          <li>Music videos</li>
+          <li>Commercials</li>
+          <li>Short films</li>
+          <li>Documentary storytelling</li>
+        </ul>
+        <p class="body-text" style="margin-top:16px;">Our work is driven by authenticity, emotion, and cultural relevance</p>
+      </div>
+    </div>
   </div>
 </section>
 
 <!-- TRUSTED + CAROUSELS -->
 <section class="trusted-media">
   <div class="trusted-media-inner">
-    <h2>Trusted by global brands &amp; platforms.</h2>
-    <p>We've worked with artists, brands, and organisations that align with culture, creativity, and innovation, delivering stories that resonate worldwide.</p>
+    <h2 class="h-md" style="color:#fff;margin-bottom:14px;">Trusted by global brands &amp; platforms.</h2>
+    <p class="body-text" style="color:rgba(255,255,255,0.5);max-width:600px;margin-bottom:0;">We've worked with artists, brands, and organisations that align with culture, creativity, and innovation, delivering stories that resonate worldwide.</p>
   </div>
-  <div class="carousel-wrap">
-    <div class="carousel-inner">
-      <img src="https://lh3.googleusercontent.com/d/1U9oZW-EZmKr8OjwHdhjcXdSGDZ9GB8DR" alt="" loading="lazy">
-      <img src="https://lh3.googleusercontent.com/d/12NwxG0TdFHdcV-nOtcfHSluYcgkk3jcr" alt="" loading="lazy">
-      <img src="https://lh3.googleusercontent.com/d/1-WnILLbRtGNJQtsDSdC4kd3yTY_trL3T" alt="" loading="lazy">
-      <img src="https://lh3.googleusercontent.com/d/1TCdJFRc-kWsEtQjTbjs2-QFNNWDxLddB" alt="" loading="lazy">
-      <img src="https://lh3.googleusercontent.com/d/128PnA6DNL6IFQ_I0x2zeO16CFUU8YTFU" alt="" loading="lazy">
-      <img src="https://lh3.googleusercontent.com/d/1ODgCOBEXmB0jDxnVc7VQj2Ca9gFb4U0Z" alt="" loading="lazy">
-      <img src="https://lh3.googleusercontent.com/d/1U9oZW-EZmKr8OjwHdhjcXdSGDZ9GB8DR" alt="" loading="lazy">
-      <img src="https://lh3.googleusercontent.com/d/12NwxG0TdFHdcV-nOtcfHSluYcgkk3jcr" alt="" loading="lazy">
-      <img src="https://lh3.googleusercontent.com/d/1-WnILLbRtGNJQtsDSdC4kd3yTY_trL3T" alt="" loading="lazy">
-      <img src="https://lh3.googleusercontent.com/d/1TCdJFRc-kWsEtQjTbjs2-QFNNWDxLddB" alt="" loading="lazy">
-      <img src="https://lh3.googleusercontent.com/d/128PnA6DNL6IFQ_I0x2zeO16CFUU8YTFU" alt="" loading="lazy">
-      <img src="https://lh3.googleusercontent.com/d/1ODgCOBEXmB0jDxnVc7VQj2Ca9gFb4U0Z" alt="" loading="lazy">
+  <div class="brands-carousel">
+    <div class="brands-track">
+      <img src="assets/logos/brand-2.png" alt="Subway">
+      <img src="assets/logos/brand-3.png" alt="Levis">
+      <img src="assets/logos/brand-4.png" alt="Red Bull">
+      <img src="assets/logos/brand-5.png" alt="Nike">
+      <img src="assets/logos/brand-7.png" alt="Selfridges">
+      <img src="assets/logos/brand-8.png" alt="Adidas">
+      <img src="assets/logos/brand-2.png" alt=""><img src="assets/logos/brand-3.png" alt=""><img src="assets/logos/brand-4.png" alt=""><img src="assets/logos/brand-5.png" alt=""><img src="assets/logos/brand-7.png" alt=""><img src="assets/logos/brand-8.png" alt="">
     </div>
   </div>
-  <div style="height:10px;"></div>
-  <div class="carousel-wrap">
-    <div class="carousel-inner reverse">
-      <img src="https://lh3.googleusercontent.com/d/1nN6LJ96tLPgMh031m61Jn-91QbOPBiI5" alt="" loading="lazy">
-      <img src="https://lh3.googleusercontent.com/d/1YZlIDQ9D6BkdfsKzNi9XjwtX5_tAtF_s" alt="" loading="lazy">
-      <img src="https://lh3.googleusercontent.com/d/1OeWktkzW2LRs40I_VuOcqNc-DjRa-k8e" alt="" loading="lazy">
-      <img src="https://lh3.googleusercontent.com/d/1z-wUT-GAH_aOUZMxCmPW3ntXRA9iRC6h" alt="" loading="lazy">
-      <img src="https://lh3.googleusercontent.com/d/1FpcElpI0hh1jVdf7XzT0RrOHqqD2BGlZ" alt="" loading="lazy">
-      <img src="https://lh3.googleusercontent.com/d/1TYmBhMoq7lzJJZWWQ12l7nBOXUkp3lFZ" alt="" loading="lazy">
-      <img src="https://lh3.googleusercontent.com/d/12zD1ASU2EsX7XDJYQkOVs0vYJ-fL3My8" alt="" loading="lazy">
-      <img src="https://lh3.googleusercontent.com/d/1nN6LJ96tLPgMh031m61Jn-91QbOPBiI5" alt="" loading="lazy">
-      <img src="https://lh3.googleusercontent.com/d/1YZlIDQ9D6BkdfsKzNi9XjwtX5_tAtF_s" alt="" loading="lazy">
-      <img src="https://lh3.googleusercontent.com/d/1OeWktkzW2LRs40I_VuOcqNc-DjRa-k8e" alt="" loading="lazy">
-      <img src="https://lh3.googleusercontent.com/d/1z-wUT-GAH_aOUZMxCmPW3ntXRA9iRC6h" alt="" loading="lazy">
-      <img src="https://lh3.googleusercontent.com/d/1FpcElpI0hh1jVdf7XzT0RrOHqqD2BGlZ" alt="" loading="lazy">
-      <img src="https://lh3.googleusercontent.com/d/1TYmBhMoq7lzJJZWWQ12l7nBOXUkp3lFZ" alt="" loading="lazy">
-      <img src="https://lh3.googleusercontent.com/d/12zD1ASU2EsX7XDJYQkOVs0vYJ-fL3My8" alt="" loading="lazy">
+  <div style="height:10px;background:#0a0a0a;"></div>
+  <div class="brands-carousel">
+    <div class="brands-track reverse">
+      <img src="assets/logos/brand-9.png" alt=""><img src="assets/logos/brand-10.png" alt=""><img src="assets/logos/brand-11.png" alt=""><img src="assets/logos/brand-12.png" alt=""><img src="assets/logos/brand-6.png" alt=""><img src="assets/logos/brand-1.png" alt="">
+      <img src="assets/logos/brand-9.png" alt=""><img src="assets/logos/brand-10.png" alt=""><img src="assets/logos/brand-11.png" alt=""><img src="assets/logos/brand-12.png" alt=""><img src="assets/logos/brand-6.png" alt=""><img src="assets/logos/brand-1.png" alt="">
     </div>
   </div>
 </section>
 
 <!-- TICKER -->
-<div class="ticker-row">
-  <div class="ticker-track"><span class="ticker-item">Podcast</span><span class="ticker-item">*</span><span class="ticker-item">Music</span><span class="ticker-item">*</span><span class="ticker-item">Live</span><span class="ticker-item">*</span><span class="ticker-item">Podcast</span><span class="ticker-item">*</span><span class="ticker-item">Music</span><span class="ticker-item">*</span><span class="ticker-item">Live</span><span class="ticker-item">*</span><span class="ticker-item">Podcast</span><span class="ticker-item">*</span><span class="ticker-item">Music</span><span class="ticker-item">*</span><span class="ticker-item">Live</span><span class="ticker-item">*</span><span class="ticker-item">Podcast</span><span class="ticker-item">*</span><span class="ticker-item">Music</span><span class="ticker-item">*</span><span class="ticker-item">Live</span><span class="ticker-item">*</span><span class="ticker-item">Podcast</span><span class="ticker-item">*</span><span class="ticker-item">Music</span><span class="ticker-item">*</span><span class="ticker-item">Live</span><span class="ticker-item">*</span><span class="ticker-item">Podcast</span><span class="ticker-item">*</span><span class="ticker-item">Music</span><span class="ticker-item">*</span><span class="ticker-item">Live</span><span class="ticker-item">*</span></div>
-</div>
-<div class="ticker-row reverse">
-  <div class="ticker-track"><span class="ticker-item">Podcast</span><span class="ticker-item">*</span><span class="ticker-item">Music</span><span class="ticker-item">*</span><span class="ticker-item">Live</span><span class="ticker-item">*</span><span class="ticker-item">Podcast</span><span class="ticker-item">*</span><span class="ticker-item">Music</span><span class="ticker-item">*</span><span class="ticker-item">Live</span><span class="ticker-item">*</span><span class="ticker-item">Podcast</span><span class="ticker-item">*</span><span class="ticker-item">Music</span><span class="ticker-item">*</span><span class="ticker-item">Live</span><span class="ticker-item">*</span><span class="ticker-item">Podcast</span><span class="ticker-item">*</span><span class="ticker-item">Music</span><span class="ticker-item">*</span><span class="ticker-item">Live</span><span class="ticker-item">*</span><span class="ticker-item">Podcast</span><span class="ticker-item">*</span><span class="ticker-item">Music</span><span class="ticker-item">*</span><span class="ticker-item">Live</span><span class="ticker-item">*</span><span class="ticker-item">Podcast</span><span class="ticker-item">*</span><span class="ticker-item">Music</span><span class="ticker-item">*</span><span class="ticker-item">Live</span><span class="ticker-item">*</span></div>
-</div>
+<div class="ticker-row"><div class="ticker-track"><span class="ticker-item">Podcast</span><span class="ticker-item">*</span><span class="ticker-item">Music</span><span class="ticker-item">*</span><span class="ticker-item">Live</span><span class="ticker-item">*</span><span class="ticker-item">Podcast</span><span class="ticker-item">*</span><span class="ticker-item">Music</span><span class="ticker-item">*</span><span class="ticker-item">Live</span><span class="ticker-item">*</span><span class="ticker-item">Podcast</span><span class="ticker-item">*</span><span class="ticker-item">Music</span><span class="ticker-item">*</span><span class="ticker-item">Live</span><span class="ticker-item">*</span><span class="ticker-item">Podcast</span><span class="ticker-item">*</span><span class="ticker-item">Music</span><span class="ticker-item">*</span><span class="ticker-item">Live</span><span class="ticker-item">*</span><span class="ticker-item">Podcast</span><span class="ticker-item">*</span><span class="ticker-item">Music</span><span class="ticker-item">*</span><span class="ticker-item">Live</span><span class="ticker-item">*</span><span class="ticker-item">Podcast</span><span class="ticker-item">*</span><span class="ticker-item">Music</span><span class="ticker-item">*</span><span class="ticker-item">Live</span><span class="ticker-item">*</span></div></div>
+<div class="ticker-row reverse"><div class="ticker-track"><span class="ticker-item">Podcast</span><span class="ticker-item">*</span><span class="ticker-item">Music</span><span class="ticker-item">*</span><span class="ticker-item">Live</span><span class="ticker-item">*</span><span class="ticker-item">Podcast</span><span class="ticker-item">*</span><span class="ticker-item">Music</span><span class="ticker-item">*</span><span class="ticker-item">Live</span><span class="ticker-item">*</span><span class="ticker-item">Podcast</span><span class="ticker-item">*</span><span class="ticker-item">Music</span><span class="ticker-item">*</span><span class="ticker-item">Live</span><span class="ticker-item">*</span><span class="ticker-item">Podcast</span><span class="ticker-item">*</span><span class="ticker-item">Music</span><span class="ticker-item">*</span><span class="ticker-item">Live</span><span class="ticker-item">*</span><span class="ticker-item">Podcast</span><span class="ticker-item">*</span><span class="ticker-item">Music</span><span class="ticker-item">*</span><span class="ticker-item">Live</span><span class="ticker-item">*</span><span class="ticker-item">Podcast</span><span class="ticker-item">*</span><span class="ticker-item">Music</span><span class="ticker-item">*</span><span class="ticker-item">Live</span><span class="ticker-item">*</span></div></div>
 
 <!-- CREATIVE APPROACH -->
 <section>
   <div class="creative-approach">
     <div class="ca-grid">
       <div>
-        <span class="section-eyebrow">CREATIVE APPROACH</span>
-        <h2 class="section-heading" style="font-size:clamp(36px,5vw,72px);margin-bottom:16px;">Story first.<br>Always.</h2>
-        <p class="section-quote">"Story first. Always."</p>
-        <p class="section-body">Every project starts with intention. We don't chase trends, we document moments, people, and movements that matter.</p>
+        <span class="eyebrow">CREATIVE APPROACH</span>
+        <h2 class="h-lg" style="margin-bottom:16px;">Story first.<br>Always.</h2>
+        <p class="italic-quote" style="margin-bottom:20px;">"Story first. Always."</p>
+        <p class="body-text">Every project starts with intention. We don't chase trends, we document moments, people, and movements that matter.</p>
       </div>
       <div>
         <img src="https://lh3.googleusercontent.com/d/1DfiYjBxVvfvsBYZ3hebJWX6kGAhgN-LS" alt="" style="width:100%;aspect-ratio:4/5;object-fit:cover;">
@@ -152,43 +167,43 @@
 <section class="gallery-section">
   <p class="gallery-label">Gallery</p>
   <div class="masonry" id="masonry">
-    <div class="masonry-item" data-src="https://lh3.googleusercontent.com/d/1U9oZW-EZmKr8OjwHdhjcXdSGDZ9GB8DR"><img src="https://lh3.googleusercontent.com/d/1U9oZW-EZmKr8OjwHdhjcXdSGDZ9GB8DR" alt="" loading="lazy"><div class="masonry-overlay"><div class="masonry-zoom">⤢</div></div></div>
-    <div class="masonry-item" data-src="https://lh3.googleusercontent.com/d/12NwxG0TdFHdcV-nOtcfHSluYcgkk3jcr"><img src="https://lh3.googleusercontent.com/d/12NwxG0TdFHdcV-nOtcfHSluYcgkk3jcr" alt="" loading="lazy"><div class="masonry-overlay"><div class="masonry-zoom">⤢</div></div></div>
-    <div class="masonry-item" data-src="https://lh3.googleusercontent.com/d/1-WnILLbRtGNJQtsDSdC4kd3yTY_trL3T"><img src="https://lh3.googleusercontent.com/d/1-WnILLbRtGNJQtsDSdC4kd3yTY_trL3T" alt="" loading="lazy"><div class="masonry-overlay"><div class="masonry-zoom">⤢</div></div></div>
-    <div class="masonry-item" data-src="https://lh3.googleusercontent.com/d/1TCdJFRc-kWsEtQjTbjs2-QFNNWDxLddB"><img src="https://lh3.googleusercontent.com/d/1TCdJFRc-kWsEtQjTbjs2-QFNNWDxLddB" alt="" loading="lazy"><div class="masonry-overlay"><div class="masonry-zoom">⤢</div></div></div>
-    <div class="masonry-item" data-src="https://lh3.googleusercontent.com/d/128PnA6DNL6IFQ_I0x2zeO16CFUU8YTFU"><img src="https://lh3.googleusercontent.com/d/128PnA6DNL6IFQ_I0x2zeO16CFUU8YTFU" alt="" loading="lazy"><div class="masonry-overlay"><div class="masonry-zoom">⤢</div></div></div>
-    <div class="masonry-item" data-src="https://lh3.googleusercontent.com/d/1ODgCOBEXmB0jDxnVc7VQj2Ca9gFb4U0Z"><img src="https://lh3.googleusercontent.com/d/1ODgCOBEXmB0jDxnVc7VQj2Ca9gFb4U0Z" alt="" loading="lazy"><div class="masonry-overlay"><div class="masonry-zoom">⤢</div></div></div>
-    <div class="masonry-item" data-src="https://lh3.googleusercontent.com/d/1nN6LJ96tLPgMh031m61Jn-91QbOPBiI5"><img src="https://lh3.googleusercontent.com/d/1nN6LJ96tLPgMh031m61Jn-91QbOPBiI5" alt="" loading="lazy"><div class="masonry-overlay"><div class="masonry-zoom">⤢</div></div></div>
-    <div class="masonry-item" data-src="https://lh3.googleusercontent.com/d/1YZlIDQ9D6BkdfsKzNi9XjwtX5_tAtF_s"><img src="https://lh3.googleusercontent.com/d/1YZlIDQ9D6BkdfsKzNi9XjwtX5_tAtF_s" alt="" loading="lazy"><div class="masonry-overlay"><div class="masonry-zoom">⤢</div></div></div>
-    <div class="masonry-item" data-src="https://lh3.googleusercontent.com/d/1OeWktkzW2LRs40I_VuOcqNc-DjRa-k8e"><img src="https://lh3.googleusercontent.com/d/1OeWktkzW2LRs40I_VuOcqNc-DjRa-k8e" alt="" loading="lazy"><div class="masonry-overlay"><div class="masonry-zoom">⤢</div></div></div>
-    <div class="masonry-item" data-src="https://lh3.googleusercontent.com/d/1z-wUT-GAH_aOUZMxCmPW3ntXRA9iRC6h"><img src="https://lh3.googleusercontent.com/d/1z-wUT-GAH_aOUZMxCmPW3ntXRA9iRC6h" alt="" loading="lazy"><div class="masonry-overlay"><div class="masonry-zoom">⤢</div></div></div>
-    <div class="masonry-item" data-src="https://lh3.googleusercontent.com/d/1FpcElpI0hh1jVdf7XzT0RrOHqqD2BGlZ"><img src="https://lh3.googleusercontent.com/d/1FpcElpI0hh1jVdf7XzT0RrOHqqD2BGlZ" alt="" loading="lazy"><div class="masonry-overlay"><div class="masonry-zoom">⤢</div></div></div>
-    <div class="masonry-item" data-src="https://lh3.googleusercontent.com/d/1TYmBhMoq7lzJJZWWQ12l7nBOXUkp3lFZ"><img src="https://lh3.googleusercontent.com/d/1TYmBhMoq7lzJJZWWQ12l7nBOXUkp3lFZ" alt="" loading="lazy"><div class="masonry-overlay"><div class="masonry-zoom">⤢</div></div></div>
-    <div class="masonry-item" data-src="https://lh3.googleusercontent.com/d/12zD1ASU2EsX7XDJYQkOVs0vYJ-fL3My8"><img src="https://lh3.googleusercontent.com/d/12zD1ASU2EsX7XDJYQkOVs0vYJ-fL3My8" alt="" loading="lazy"><div class="masonry-overlay"><div class="masonry-zoom">⤢</div></div></div>
-    <div class="masonry-item" data-src="https://lh3.googleusercontent.com/d/1DfiYjBxVvfvsBYZ3hebJWX6kGAhgN-LS"><img src="https://lh3.googleusercontent.com/d/1DfiYjBxVvfvsBYZ3hebJWX6kGAhgN-LS" alt="" loading="lazy"><div class="masonry-overlay"><div class="masonry-zoom">⤢</div></div></div>
-    <div class="masonry-item" data-src="https://lh3.googleusercontent.com/d/1S8fzfuw0KqsYJvQAWUx-IhgCKW-lvu2k"><img src="https://lh3.googleusercontent.com/d/1S8fzfuw0KqsYJvQAWUx-IhgCKW-lvu2k" alt="" loading="lazy"><div class="masonry-overlay"><div class="masonry-zoom">⤢</div></div></div>
-    <div class="masonry-item" data-src="https://lh3.googleusercontent.com/d/1A17BsJ1kQWjTmH2kQh2lw1y4pXS4OQxd"><img src="https://lh3.googleusercontent.com/d/1A17BsJ1kQWjTmH2kQh2lw1y4pXS4OQxd" alt="" loading="lazy"><div class="masonry-overlay"><div class="masonry-zoom">⤢</div></div></div>
-    <div class="masonry-item" data-src="https://lh3.googleusercontent.com/d/11NVPDVPWAJueN8WCmTnf27SeChMCNVmR"><img src="https://lh3.googleusercontent.com/d/11NVPDVPWAJueN8WCmTnf27SeChMCNVmR" alt="" loading="lazy"><div class="masonry-overlay"><div class="masonry-zoom">⤢</div></div></div>
-    <div class="masonry-item" data-src="https://lh3.googleusercontent.com/d/1Oc0mZabmQTBvjeVk0KjbJo6jZ-RkTx7u"><img src="https://lh3.googleusercontent.com/d/1Oc0mZabmQTBvjeVk0KjbJo6jZ-RkTx7u" alt="" loading="lazy"><div class="masonry-overlay"><div class="masonry-zoom">⤢</div></div></div>
-    <div class="masonry-item" data-src="https://lh3.googleusercontent.com/d/1XaIIpDBXZEhrGLjHzMbAcoOhYfgLpDRj"><img src="https://lh3.googleusercontent.com/d/1XaIIpDBXZEhrGLjHzMbAcoOhYfgLpDRj" alt="" loading="lazy"><div class="masonry-overlay"><div class="masonry-zoom">⤢</div></div></div>
-    <div class="masonry-item" data-src="https://lh3.googleusercontent.com/d/1IIav_dIpCRX2aJSvDclE6xBgBFoQgIwc"><img src="https://lh3.googleusercontent.com/d/1IIav_dIpCRX2aJSvDclE6xBgBFoQgIwc" alt="" loading="lazy"><div class="masonry-overlay"><div class="masonry-zoom">⤢</div></div></div>
-    <div class="masonry-item" data-src="https://lh3.googleusercontent.com/d/1FY113mWfm5mkf25PPSysH8HKqyxsyXQN"><img src="https://lh3.googleusercontent.com/d/1FY113mWfm5mkf25PPSysH8HKqyxsyXQN" alt="" loading="lazy"><div class="masonry-overlay"><div class="masonry-zoom">⤢</div></div></div>
-    <div class="masonry-item" data-src="https://lh3.googleusercontent.com/d/1gSWy8jaBz_SnI-wJzAbtliH76fCpkklJ"><img src="https://lh3.googleusercontent.com/d/1gSWy8jaBz_SnI-wJzAbtliH76fCpkklJ" alt="" loading="lazy"><div class="masonry-overlay"><div class="masonry-zoom">⤢</div></div></div>
-    <div class="masonry-item" data-src="https://lh3.googleusercontent.com/d/1MO24IcNhwBqALqg6CCfUXcBYOIDxPgRZ"><img src="https://lh3.googleusercontent.com/d/1MO24IcNhwBqALqg6CCfUXcBYOIDxPgRZ" alt="" loading="lazy"><div class="masonry-overlay"><div class="masonry-zoom">⤢</div></div></div>
-    <div class="masonry-item" data-src="https://lh3.googleusercontent.com/d/1VquD7ziLJUyqVNkH_Ml1xiXsByuKd8RF"><img src="https://lh3.googleusercontent.com/d/1VquD7ziLJUyqVNkH_Ml1xiXsByuKd8RF" alt="" loading="lazy"><div class="masonry-overlay"><div class="masonry-zoom">⤢</div></div></div>
-    <div class="masonry-item" data-src="https://lh3.googleusercontent.com/d/1iE3LMj5pH9uHG57A9nrTuWNFDyPl8O84"><img src="https://lh3.googleusercontent.com/d/1iE3LMj5pH9uHG57A9nrTuWNFDyPl8O84" alt="" loading="lazy"><div class="masonry-overlay"><div class="masonry-zoom">⤢</div></div></div>
-    <div class="masonry-item" data-src="https://lh3.googleusercontent.com/d/1GcnALGsntqPNPD0bc6Mo1KHPrZ0AZ-83"><img src="https://lh3.googleusercontent.com/d/1GcnALGsntqPNPD0bc6Mo1KHPrZ0AZ-83" alt="" loading="lazy"><div class="masonry-overlay"><div class="masonry-zoom">⤢</div></div></div>
-    <div class="masonry-item" data-src="https://lh3.googleusercontent.com/d/1oNATfEX5LlIQRVqjQEvv7wBvxZlhWP_1"><img src="https://lh3.googleusercontent.com/d/1oNATfEX5LlIQRVqjQEvv7wBvxZlhWP_1" alt="" loading="lazy"><div class="masonry-overlay"><div class="masonry-zoom">⤢</div></div></div>
-    <div class="masonry-item" data-src="https://lh3.googleusercontent.com/d/1pqOFkVcH80DctXoOm6y9LVcX8AKNSmqK"><img src="https://lh3.googleusercontent.com/d/1pqOFkVcH80DctXoOm6y9LVcX8AKNSmqK" alt="" loading="lazy"><div class="masonry-overlay"><div class="masonry-zoom">⤢</div></div></div>
-    <div class="masonry-item" data-src="https://lh3.googleusercontent.com/d/1HVEzxJFb1SY_jhy335GnRWWg_4wDhA5H"><img src="https://lh3.googleusercontent.com/d/1HVEzxJFb1SY_jhy335GnRWWg_4wDhA5H" alt="" loading="lazy"><div class="masonry-overlay"><div class="masonry-zoom">⤢</div></div></div>
-    <div class="masonry-item" data-src="https://lh3.googleusercontent.com/d/1wCAzACw6_mVfiYk3XsxUSOggCMQdDaYl"><img src="https://lh3.googleusercontent.com/d/1wCAzACw6_mVfiYk3XsxUSOggCMQdDaYl" alt="" loading="lazy"><div class="masonry-overlay"><div class="masonry-zoom">⤢</div></div></div>
-    <div class="masonry-item" data-src="https://lh3.googleusercontent.com/d/1EIOhSgI9xyolDzMYG6gFDzOKsWc7RK3z"><img src="https://lh3.googleusercontent.com/d/1EIOhSgI9xyolDzMYG6gFDzOKsWc7RK3z" alt="" loading="lazy"><div class="masonry-overlay"><div class="masonry-zoom">⤢</div></div></div>
-    <div class="masonry-item" data-src="https://lh3.googleusercontent.com/d/1-oGd9ZyjbCTSTKLgLZZJtEjYLc5RTy92"><img src="https://lh3.googleusercontent.com/d/1-oGd9ZyjbCTSTKLgLZZJtEjYLc5RTy92" alt="" loading="lazy"><div class="masonry-overlay"><div class="masonry-zoom">⤢</div></div></div>
-    <div class="masonry-item" data-src="https://lh3.googleusercontent.com/d/1XJi3kfVj27ADEj25hZaCiFKeFSXfkTQm"><img src="https://lh3.googleusercontent.com/d/1XJi3kfVj27ADEj25hZaCiFKeFSXfkTQm" alt="" loading="lazy"><div class="masonry-overlay"><div class="masonry-zoom">⤢</div></div></div>
-    <div class="masonry-item" data-src="https://lh3.googleusercontent.com/d/1kz3EiixBPiUXfs-7Cnw8XFIrF3nyZfOy"><img src="https://lh3.googleusercontent.com/d/1kz3EiixBPiUXfs-7Cnw8XFIrF3nyZfOy" alt="" loading="lazy"><div class="masonry-overlay"><div class="masonry-zoom">⤢</div></div></div>
-    <div class="masonry-item" data-src="https://lh3.googleusercontent.com/d/1zBWZtX7SwteCijFqWxn0vIiAYFXIZSqt"><img src="https://lh3.googleusercontent.com/d/1zBWZtX7SwteCijFqWxn0vIiAYFXIZSqt" alt="" loading="lazy"><div class="masonry-overlay"><div class="masonry-zoom">⤢</div></div></div>
-    <div class="masonry-item" data-src="https://lh3.googleusercontent.com/d/14EcNX7RH8Z1N6RyHkvSbSKjLXqSPSwBt"><img src="https://lh3.googleusercontent.com/d/14EcNX7RH8Z1N6RyHkvSbSKjLXqSPSwBt" alt="" loading="lazy"><div class="masonry-overlay"><div class="masonry-zoom">⤢</div></div></div>
-    <div class="masonry-item" data-src="https://lh3.googleusercontent.com/d/1vT55Yl2tTD4TiK4h-1os9ntMS5RGdyP-"><img src="https://lh3.googleusercontent.com/d/1vT55Yl2tTD4TiK4h-1os9ntMS5RGdyP-" alt="" loading="lazy"><div class="masonry-overlay"><div class="masonry-zoom">⤢</div></div></div>
+    <div class="masonry-item" data-src="https://lh3.googleusercontent.com/d/1U9oZW-EZmKr8OjwHdhjcXdSGDZ9GB8DR"><img src="https://lh3.googleusercontent.com/d/1U9oZW-EZmKr8OjwHdhjcXdSGDZ9GB8DR" loading="lazy"><div class="masonry-overlay"><div class="masonry-zoom">⤢</div></div></div>
+    <div class="masonry-item" data-src="https://lh3.googleusercontent.com/d/12NwxG0TdFHdcV-nOtcfHSluYcgkk3jcr"><img src="https://lh3.googleusercontent.com/d/12NwxG0TdFHdcV-nOtcfHSluYcgkk3jcr" loading="lazy"><div class="masonry-overlay"><div class="masonry-zoom">⤢</div></div></div>
+    <div class="masonry-item" data-src="https://lh3.googleusercontent.com/d/1-WnILLbRtGNJQtsDSdC4kd3yTY_trL3T"><img src="https://lh3.googleusercontent.com/d/1-WnILLbRtGNJQtsDSdC4kd3yTY_trL3T" loading="lazy"><div class="masonry-overlay"><div class="masonry-zoom">⤢</div></div></div>
+    <div class="masonry-item" data-src="https://lh3.googleusercontent.com/d/1TCdJFRc-kWsEtQjTbjs2-QFNNWDxLddB"><img src="https://lh3.googleusercontent.com/d/1TCdJFRc-kWsEtQjTbjs2-QFNNWDxLddB" loading="lazy"><div class="masonry-overlay"><div class="masonry-zoom">⤢</div></div></div>
+    <div class="masonry-item" data-src="https://lh3.googleusercontent.com/d/128PnA6DNL6IFQ_I0x2zeO16CFUU8YTFU"><img src="https://lh3.googleusercontent.com/d/128PnA6DNL6IFQ_I0x2zeO16CFUU8YTFU" loading="lazy"><div class="masonry-overlay"><div class="masonry-zoom">⤢</div></div></div>
+    <div class="masonry-item" data-src="https://lh3.googleusercontent.com/d/1ODgCOBEXmB0jDxnVc7VQj2Ca9gFb4U0Z"><img src="https://lh3.googleusercontent.com/d/1ODgCOBEXmB0jDxnVc7VQj2Ca9gFb4U0Z" loading="lazy"><div class="masonry-overlay"><div class="masonry-zoom">⤢</div></div></div>
+    <div class="masonry-item" data-src="https://lh3.googleusercontent.com/d/1nN6LJ96tLPgMh031m61Jn-91QbOPBiI5"><img src="https://lh3.googleusercontent.com/d/1nN6LJ96tLPgMh031m61Jn-91QbOPBiI5" loading="lazy"><div class="masonry-overlay"><div class="masonry-zoom">⤢</div></div></div>
+    <div class="masonry-item" data-src="https://lh3.googleusercontent.com/d/1YZlIDQ9D6BkdfsKzNi9XjwtX5_tAtF_s"><img src="https://lh3.googleusercontent.com/d/1YZlIDQ9D6BkdfsKzNi9XjwtX5_tAtF_s" loading="lazy"><div class="masonry-overlay"><div class="masonry-zoom">⤢</div></div></div>
+    <div class="masonry-item" data-src="https://lh3.googleusercontent.com/d/1OeWktkzW2LRs40I_VuOcqNc-DjRa-k8e"><img src="https://lh3.googleusercontent.com/d/1OeWktkzW2LRs40I_VuOcqNc-DjRa-k8e" loading="lazy"><div class="masonry-overlay"><div class="masonry-zoom">⤢</div></div></div>
+    <div class="masonry-item" data-src="https://lh3.googleusercontent.com/d/1z-wUT-GAH_aOUZMxCmPW3ntXRA9iRC6h"><img src="https://lh3.googleusercontent.com/d/1z-wUT-GAH_aOUZMxCmPW3ntXRA9iRC6h" loading="lazy"><div class="masonry-overlay"><div class="masonry-zoom">⤢</div></div></div>
+    <div class="masonry-item" data-src="https://lh3.googleusercontent.com/d/1FpcElpI0hh1jVdf7XzT0RrOHqqD2BGlZ"><img src="https://lh3.googleusercontent.com/d/1FpcElpI0hh1jVdf7XzT0RrOHqqD2BGlZ" loading="lazy"><div class="masonry-overlay"><div class="masonry-zoom">⤢</div></div></div>
+    <div class="masonry-item" data-src="https://lh3.googleusercontent.com/d/1TYmBhMoq7lzJJZWWQ12l7nBOXUkp3lFZ"><img src="https://lh3.googleusercontent.com/d/1TYmBhMoq7lzJJZWWQ12l7nBOXUkp3lFZ" loading="lazy"><div class="masonry-overlay"><div class="masonry-zoom">⤢</div></div></div>
+    <div class="masonry-item" data-src="https://lh3.googleusercontent.com/d/12zD1ASU2EsX7XDJYQkOVs0vYJ-fL3My8"><img src="https://lh3.googleusercontent.com/d/12zD1ASU2EsX7XDJYQkOVs0vYJ-fL3My8" loading="lazy"><div class="masonry-overlay"><div class="masonry-zoom">⤢</div></div></div>
+    <div class="masonry-item" data-src="https://lh3.googleusercontent.com/d/1DfiYjBxVvfvsBYZ3hebJWX6kGAhgN-LS"><img src="https://lh3.googleusercontent.com/d/1DfiYjBxVvfvsBYZ3hebJWX6kGAhgN-LS" loading="lazy"><div class="masonry-overlay"><div class="masonry-zoom">⤢</div></div></div>
+    <div class="masonry-item" data-src="https://lh3.googleusercontent.com/d/1S8fzfuw0KqsYJvQAWUx-IhgCKW-lvu2k"><img src="https://lh3.googleusercontent.com/d/1S8fzfuw0KqsYJvQAWUx-IhgCKW-lvu2k" loading="lazy"><div class="masonry-overlay"><div class="masonry-zoom">⤢</div></div></div>
+    <div class="masonry-item" data-src="https://lh3.googleusercontent.com/d/1A17BsJ1kQWjTmH2kQh2lw1y4pXS4OQxd"><img src="https://lh3.googleusercontent.com/d/1A17BsJ1kQWjTmH2kQh2lw1y4pXS4OQxd" loading="lazy"><div class="masonry-overlay"><div class="masonry-zoom">⤢</div></div></div>
+    <div class="masonry-item" data-src="https://lh3.googleusercontent.com/d/11NVPDVPWAJueN8WCmTnf27SeChMCNVmR"><img src="https://lh3.googleusercontent.com/d/11NVPDVPWAJueN8WCmTnf27SeChMCNVmR" loading="lazy"><div class="masonry-overlay"><div class="masonry-zoom">⤢</div></div></div>
+    <div class="masonry-item" data-src="https://lh3.googleusercontent.com/d/1Oc0mZabmQTBvjeVk0KjbJo6jZ-RkTx7u"><img src="https://lh3.googleusercontent.com/d/1Oc0mZabmQTBvjeVk0KjbJo6jZ-RkTx7u" loading="lazy"><div class="masonry-overlay"><div class="masonry-zoom">⤢</div></div></div>
+    <div class="masonry-item" data-src="https://lh3.googleusercontent.com/d/1XaIIpDBXZEhrGLjHzMbAcoOhYfgLpDRj"><img src="https://lh3.googleusercontent.com/d/1XaIIpDBXZEhrGLjHzMbAcoOhYfgLpDRj" loading="lazy"><div class="masonry-overlay"><div class="masonry-zoom">⤢</div></div></div>
+    <div class="masonry-item" data-src="https://lh3.googleusercontent.com/d/1IIav_dIpCRX2aJSvDclE6xBgBFoQgIwc"><img src="https://lh3.googleusercontent.com/d/1IIav_dIpCRX2aJSvDclE6xBgBFoQgIwc" loading="lazy"><div class="masonry-overlay"><div class="masonry-zoom">⤢</div></div></div>
+    <div class="masonry-item" data-src="https://lh3.googleusercontent.com/d/1FY113mWfm5mkf25PPSysH8HKqyxsyXQN"><img src="https://lh3.googleusercontent.com/d/1FY113mWfm5mkf25PPSysH8HKqyxsyXQN" loading="lazy"><div class="masonry-overlay"><div class="masonry-zoom">⤢</div></div></div>
+    <div class="masonry-item" data-src="https://lh3.googleusercontent.com/d/1gSWy8jaBz_SnI-wJzAbtliH76fCpkklJ"><img src="https://lh3.googleusercontent.com/d/1gSWy8jaBz_SnI-wJzAbtliH76fCpkklJ" loading="lazy"><div class="masonry-overlay"><div class="masonry-zoom">⤢</div></div></div>
+    <div class="masonry-item" data-src="https://lh3.googleusercontent.com/d/1MO24IcNhwBqALqg6CCfUXcBYOIDxPgRZ"><img src="https://lh3.googleusercontent.com/d/1MO24IcNhwBqALqg6CCfUXcBYOIDxPgRZ" loading="lazy"><div class="masonry-overlay"><div class="masonry-zoom">⤢</div></div></div>
+    <div class="masonry-item" data-src="https://lh3.googleusercontent.com/d/1VquD7ziLJUyqVNkH_Ml1xiXsByuKd8RF"><img src="https://lh3.googleusercontent.com/d/1VquD7ziLJUyqVNkH_Ml1xiXsByuKd8RF" loading="lazy"><div class="masonry-overlay"><div class="masonry-zoom">⤢</div></div></div>
+    <div class="masonry-item" data-src="https://lh3.googleusercontent.com/d/1iE3LMj5pH9uHG57A9nrTuWNFDyPl8O84"><img src="https://lh3.googleusercontent.com/d/1iE3LMj5pH9uHG57A9nrTuWNFDyPl8O84" loading="lazy"><div class="masonry-overlay"><div class="masonry-zoom">⤢</div></div></div>
+    <div class="masonry-item" data-src="https://lh3.googleusercontent.com/d/1GcnALGsntqPNPD0bc6Mo1KHPrZ0AZ-83"><img src="https://lh3.googleusercontent.com/d/1GcnALGsntqPNPD0bc6Mo1KHPrZ0AZ-83" loading="lazy"><div class="masonry-overlay"><div class="masonry-zoom">⤢</div></div></div>
+    <div class="masonry-item" data-src="https://lh3.googleusercontent.com/d/1oNATfEX5LlIQRVqjQEvv7wBvxZlhWP_1"><img src="https://lh3.googleusercontent.com/d/1oNATfEX5LlIQRVqjQEvv7wBvxZlhWP_1" loading="lazy"><div class="masonry-overlay"><div class="masonry-zoom">⤢</div></div></div>
+    <div class="masonry-item" data-src="https://lh3.googleusercontent.com/d/1pqOFkVcH80DctXoOm6y9LVcX8AKNSmqK"><img src="https://lh3.googleusercontent.com/d/1pqOFkVcH80DctXoOm6y9LVcX8AKNSmqK" loading="lazy"><div class="masonry-overlay"><div class="masonry-zoom">⤢</div></div></div>
+    <div class="masonry-item" data-src="https://lh3.googleusercontent.com/d/1HVEzxJFb1SY_jhy335GnRWWg_4wDhA5H"><img src="https://lh3.googleusercontent.com/d/1HVEzxJFb1SY_jhy335GnRWWg_4wDhA5H" loading="lazy"><div class="masonry-overlay"><div class="masonry-zoom">⤢</div></div></div>
+    <div class="masonry-item" data-src="https://lh3.googleusercontent.com/d/1wCAzACw6_mVfiYk3XsxUSOggCMQdDaYl"><img src="https://lh3.googleusercontent.com/d/1wCAzACw6_mVfiYk3XsxUSOggCMQdDaYl" loading="lazy"><div class="masonry-overlay"><div class="masonry-zoom">⤢</div></div></div>
+    <div class="masonry-item" data-src="https://lh3.googleusercontent.com/d/1EIOhSgI9xyolDzMYG6gFDzOKsWc7RK3z"><img src="https://lh3.googleusercontent.com/d/1EIOhSgI9xyolDzMYG6gFDzOKsWc7RK3z" loading="lazy"><div class="masonry-overlay"><div class="masonry-zoom">⤢</div></div></div>
+    <div class="masonry-item" data-src="https://lh3.googleusercontent.com/d/1-oGd9ZyjbCTSTKLgLZZJtEjYLc5RTy92"><img src="https://lh3.googleusercontent.com/d/1-oGd9ZyjbCTSTKLgLZZJtEjYLc5RTy92" loading="lazy"><div class="masonry-overlay"><div class="masonry-zoom">⤢</div></div></div>
+    <div class="masonry-item" data-src="https://lh3.googleusercontent.com/d/1XJi3kfVj27ADEj25hZaCiFKeFSXfkTQm"><img src="https://lh3.googleusercontent.com/d/1XJi3kfVj27ADEj25hZaCiFKeFSXfkTQm" loading="lazy"><div class="masonry-overlay"><div class="masonry-zoom">⤢</div></div></div>
+    <div class="masonry-item" data-src="https://lh3.googleusercontent.com/d/1kz3EiixBPiUXfs-7Cnw8XFIrF3nyZfOy"><img src="https://lh3.googleusercontent.com/d/1kz3EiixBPiUXfs-7Cnw8XFIrF3nyZfOy" loading="lazy"><div class="masonry-overlay"><div class="masonry-zoom">⤢</div></div></div>
+    <div class="masonry-item" data-src="https://lh3.googleusercontent.com/d/1zBWZtX7SwteCijFqWxn0vIiAYFXIZSqt"><img src="https://lh3.googleusercontent.com/d/1zBWZtX7SwteCijFqWxn0vIiAYFXIZSqt" loading="lazy"><div class="masonry-overlay"><div class="masonry-zoom">⤢</div></div></div>
+    <div class="masonry-item" data-src="https://lh3.googleusercontent.com/d/14EcNX7RH8Z1N6RyHkvSbSKjLXqSPSwBt"><img src="https://lh3.googleusercontent.com/d/14EcNX7RH8Z1N6RyHkvSbSKjLXqSPSwBt" loading="lazy"><div class="masonry-overlay"><div class="masonry-zoom">⤢</div></div></div>
+    <div class="masonry-item" data-src="https://lh3.googleusercontent.com/d/1vT55Yl2tTD4TiK4h-1os9ntMS5RGdyP-"><img src="https://lh3.googleusercontent.com/d/1vT55Yl2tTD4TiK4h-1os9ntMS5RGdyP-" loading="lazy"><div class="masonry-overlay"><div class="masonry-zoom">⤢</div></div></div>
   </div>
 </section>
 
@@ -204,9 +219,7 @@
 </div>
 
 <!-- BRAND TICKER -->
-<div class="ticker-row ticker-row-brand" style="background:#000;">
-  <div class="ticker-track"><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span></div>
-</div>
+<div class="ticker-row" style="background:#000;"><div class="ticker-track"><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span></div></div>
 
 <!-- FOOTER -->
 <footer>
@@ -224,7 +237,7 @@
 <script>
 /* PRELOADER — first visit only */
 (function(){
-  if(sessionStorage.getItem('crtv_seen')){ const p=document.getElementById('preloader'); if(p) p.remove(); return; }
+  if(sessionStorage.getItem('crtv_seen')){ const p=document.getElementById('preloader'); if(p)p.remove(); return; }
   const preloader=document.getElementById('preloader'), circle=document.getElementById('preloader-circle');
   setTimeout(()=>preloader.classList.add('show-logo'),50);
   let done=false;
@@ -232,29 +245,31 @@
   circle.addEventListener('click',exit);
   circle.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' ')exit(); });
 })();
+
+/* NAV */
 window.addEventListener('scroll',()=>{ document.getElementById('nav-outer').classList.toggle('scrolled',window.scrollY>60); });
 document.getElementById('nav-burger').addEventListener('click',()=>{ document.getElementById('mobile-nav').classList.add('open'); });
 document.getElementById('mob-close').addEventListener('click',()=>{ document.getElementById('mobile-nav').classList.remove('open'); });
 
-// LIGHTBOX
-const items = Array.from(document.querySelectorAll('.masonry-item'));
-const lb = document.getElementById('lightbox');
-const lbImg = document.getElementById('lb-img');
-const lbCount = document.getElementById('lb-count');
-let idx = 0;
-function showLB() { lbImg.style.opacity='.4'; lbImg.src=items[idx].dataset.src; lbImg.onload=()=>lbImg.style.opacity='1'; lbCount.textContent=(idx+1)+' / '+items.length; }
-function openLB(i) { idx=i; showLB(); lb.classList.add('open'); document.body.style.overflow='hidden'; }
-function closeLB() { lb.classList.remove('open'); document.body.style.overflow=''; lbImg.src=''; }
-items.forEach((item,i) => item.addEventListener('click', () => openLB(i)));
-document.getElementById('lb-close').addEventListener('click', closeLB);
-document.getElementById('lb-prev').addEventListener('click', () => { idx=(idx-1+items.length)%items.length; showLB(); });
-document.getElementById('lb-next').addEventListener('click', () => { idx=(idx+1)%items.length; showLB(); });
-lb.addEventListener('click', e => { if(e.target===lb) closeLB(); });
-document.addEventListener('keydown', e => {
-  if(!lb.classList.contains('open')) return;
-  if(e.key==='Escape') closeLB();
-  if(e.key==='ArrowLeft') { idx=(idx-1+items.length)%items.length; showLB(); }
-  if(e.key==='ArrowRight') { idx=(idx+1)%items.length; showLB(); }
+/* LIGHTBOX */
+const items=Array.from(document.querySelectorAll('.masonry-item'));
+const lb=document.getElementById('lightbox');
+const lbImg=document.getElementById('lb-img');
+const lbCount=document.getElementById('lb-count');
+let idx=0;
+function showLB(){ lbImg.style.opacity='.4'; lbImg.src=items[idx].dataset.src; lbImg.onload=()=>lbImg.style.opacity='1'; lbCount.textContent=(idx+1)+' / '+items.length; }
+function openLB(i){ idx=i; showLB(); lb.classList.add('open'); document.body.style.overflow='hidden'; }
+function closeLB(){ lb.classList.remove('open'); document.body.style.overflow=''; lbImg.src=''; }
+items.forEach((item,i)=>item.addEventListener('click',()=>openLB(i)));
+document.getElementById('lb-close').addEventListener('click',closeLB);
+document.getElementById('lb-prev').addEventListener('click',()=>{ idx=(idx-1+items.length)%items.length; showLB(); });
+document.getElementById('lb-next').addEventListener('click',()=>{ idx=(idx+1)%items.length; showLB(); });
+lb.addEventListener('click',e=>{ if(e.target===lb)closeLB(); });
+document.addEventListener('keydown',e=>{
+  if(!lb.classList.contains('open'))return;
+  if(e.key==='Escape')closeLB();
+  if(e.key==='ArrowLeft'){ idx=(idx-1+items.length)%items.length; showLB(); }
+  if(e.key==='ArrowRight'){ idx=(idx+1)%items.length; showLB(); }
 });
 </script>
 </body>
