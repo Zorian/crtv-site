@@ -115,8 +115,13 @@ ul { list-style: none; }
 }
 
 /* Scrolled — logo moves into pill on left, links on right, all inside one blue pill */
+@keyframes navSlideDown {
+  from { transform: translateY(-110%); opacity: 0; }
+  to   { transform: translateY(0);     opacity: 1; }
+}
 #nav-outer.scrolled {
   padding: 10px 20px;
+  animation: navSlideDown 0.45s cubic-bezier(0.4,0,0.2,1) forwards;
 }
 #nav-outer.scrolled #nav-logo {
   order: -1;
