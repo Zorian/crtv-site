@@ -87,16 +87,15 @@ ul { list-style: none; }
   gap: 16px;
   transition: padding 0.4s ease;
 }
-/* Logo — outside left, hidden until scroll */
+/* Logo — always visible top-left */
 #nav-logo {
   pointer-events: all;
-  opacity: 0;
+  opacity: 1;
   flex-shrink: 0;
   transition: opacity 0.35s ease;
   display: flex; align-items: center;
   margin-right: auto;
 }
-#nav-outer.scrolled #nav-logo { opacity: 1; }
 
 /* The pill — links only, floats right */
 #nav-pill {
