@@ -1,10 +1,18 @@
+@font-face {
+  font-family: 'StrechPro';
+  src: url('assets/stretch-pro.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* =============================================
    THE CRTV HUB — Shared Stylesheet
    Matching crtv.axocreate.com exactly
    ============================================= */
 
 @font-face {
-  font-family: 'MADEOuterSans';
+  font-family: 'MadeOuter';
   src: url('assets/MADE-Outer-Sans-Light-1.ttf') format('truetype');
   font-weight: 300;
   font-style: normal;
@@ -18,7 +26,8 @@
   --navy: #001138;
   --black: #000;
   --white: #fff;
-  --font: 'MADEOuterSans', sans-serif;
+  --font: 'MadeOuter', sans-serif;
+  --font-display: 'StrechPro', sans-serif;
   --nav-h: 90px;
 }
 
@@ -95,8 +104,9 @@ ul { list-style: none; }
 }
 /* Scrolled state — darken the pill */
 #nav-outer.scrolled #nav-pill {
-  background: rgba(0,17,56,0.88);
-  border-color: rgba(255,255,255,0.12);
+  background: #1076F8;
+  border-color: #1076F8;
+  box-shadow: none;
 }
 .nav-link {
   font-family: var(--font); font-size: 16px; font-weight: 400;
