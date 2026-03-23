@@ -354,34 +354,216 @@
 
 
 
-<!-- EXPLORE -->
-<section class="explore">
-  <div class="explore-inner">
-    <p class="explore-label">EXPLORE</p>
-    <div class="projects-grid">
-      <a href="https://www.youtube.com/watch?v=nsGbD-q9NIk" target="_blank" class="project-card">
-        <img src="https://crtv.axocreate.com/wp-content/uploads/2026/01/maxresdefault.webp" alt="Biig Piig">
-        <div class="project-info"><div class="project-client">Client: Biig Piig</div><div class="project-title">Biig Piig — Feels Right (Official Video)</div></div>
-        <div class="project-watch">WATCH NOW</div>
-      </a>
-      <a href="#" class="project-card">
-        <img src="https://lh3.googleusercontent.com/d/1iE3LMj5pH9uHG57A9nrTuWNFDyPl8O84" alt="JBEE">
-        <div class="project-info"><div class="project-client">Client: JBEE</div><div class="project-title">JBEE — 24'S</div></div>
-        <div class="project-watch">WATCH NOW</div>
-      </a>
-      <a href="https://www.youtube.com/watch?v=dqJ8oud7l2Q" target="_blank" class="project-card">
-        <img src="https://crtv.axocreate.com/wp-content/uploads/2026/01/dqJ8oud7l2Q-HD.jpg" alt="Nike">
-        <div class="project-info"><div class="project-client">Client: NIKE</div><div class="project-title">Lose Count — Stronger Than One</div></div>
-        <div class="project-watch">WATCH NOW</div>
-      </a>
-      <a href="#" class="project-card">
-        <img src="https://lh3.googleusercontent.com/d/1ODgCOBEXmB0jDxnVc7VQj2Ca9gFb4U0Z" alt="Upsycle">
-        <div class="project-info"><div class="project-client">Client: Upsycle Hyperwear</div><div class="project-title">UPSYCLE HYPEWEAR VOL 1 SHORT FILM</div></div>
-        <div class="project-watch">WATCH NOW</div>
-      </a>
+<!-- EXPLORE SLIDER — exact axocreate layout -->
+<section class="explore-section">
+<style>
+.explore-section {
+  position: relative; height: 700px; overflow: hidden; background: #1076F8;
+  display: flex;
+}
+/* Left 35%: slides */
+.explore-slides-wrap {
+  position: relative; width: 35%; height: 100%; flex-shrink: 0;
+}
+.explore-slide {
+  position: absolute; inset: 0; opacity: 0; transition: opacity 0.7s ease;
+  pointer-events: none;
+}
+.explore-slide.explore-active {
+  opacity: 1; pointer-events: all; z-index: 1;
+}
+.explore-left {
+  position: absolute; inset: 0; overflow: hidden;
+}
+.explore-vid {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover;
+}
+.explore-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.1) 60%);
+}
+.explore-client-info {
+  position: absolute; bottom: 32px; left: 28px; z-index: 2;
+}
+.explore-client {
+  font-family: 'MadeOuter', sans-serif; font-size: 14px; font-weight: 400;
+  color: rgba(255,255,255,0.75); letter-spacing: 0.05em; display: block; margin-bottom: 6px;
+}
+.explore-title {
+  font-family: 'StrechPro', sans-serif; font-size: 22px; font-weight: 600;
+  text-transform: uppercase; color: #fff; line-height: 1.1; margin: 0; max-width: 260px;
+}
+/* Floating thumbnail card */
+.explore-thumb-card {
+  position: absolute; left: 65%; top: 50%; transform: translate(-50%, -45%);
+  z-index: 10; background: #fff; padding: 10px;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.25); pointer-events: none;
+  width: 340px; opacity: 0; transition: opacity 0.7s ease;
+}
+.explore-slide.explore-active .explore-thumb-card {
+  opacity: 1;
+}
+.explore-thumb-card img {
+  width: 100%; display: block; aspect-ratio: 16/9; object-fit: cover;
+}
+/* Right 65%: blue content */
+.explore-right {
+  flex: 1; background: #1076F8; display: flex; flex-direction: column;
+  justify-content: center; align-items: flex-start;
+  padding: 60px 60px 60px 220px;  /* large left pad to clear the overlapping thumb */
+  position: relative;
+}
+.explore-create-text {
+  font-family: 'StrechPro', sans-serif; font-size: clamp(28px, 3vw, 42px);
+  font-weight: 600; text-transform: uppercase; color: #fff;
+  line-height: 1.15; margin-bottom: 40px;
+}
+.explore-btns {
+  display: flex; gap: 16px;
+}
+.explore-btn {
+  font-family: 'MadeOuter', sans-serif; font-size: 13px; font-weight: 500;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  color: #fff; border: 2px solid #fff; padding: 12px 32px;
+  background: transparent; cursor: pointer; transition: background 0.2s, color 0.2s;
+  text-decoration: none;
+}
+.explore-btn:hover { background: #fff; color: #1076F8; }
+/* Navigation arrows */
+.explore-arrows {
+  position: absolute; bottom: 32px; right: 40px;
+  display: flex; gap: 16px; z-index: 20;
+}
+.explore-arrow {
+  width: 48px; height: 48px; background: none;
+  border: 2px solid rgba(255,255,255,0.5); color: #fff;
+  font-size: 20px; cursor: pointer; display: flex; align-items: center; justify-content: center;
+  transition: border-color 0.2s, background 0.2s;
+}
+.explore-arrow:hover { border-color: #fff; background: rgba(255,255,255,0.1); }
+@media (max-width: 900px) {
+  .explore-section { height: auto; flex-direction: column; }
+  .explore-slides-wrap { width: 100%; height: 350px; position: relative; }
+  .explore-right { padding: 40px 24px; }
+  .explore-thumb-card { display: none; }
+  .explore-create-text { font-size: 26px; }
+}
+</style>
+
+  <!-- Left slides container -->
+  <div class="explore-slides-wrap" id="explore-slides">
+    
+  <div class="explore-slide explore-active" data-index="0">
+    <!-- Left 35%: video bg -->
+    <div class="explore-left">
+      <video class="explore-vid" autoplay muted loop playsinline preload="auto" poster="https://crtv.axocreate.com/wp-content/uploads/2026/01/maxresdefault.webp">
+        <source src="https://crtv.axocreate.com/wp-content/uploads/2026/02/Biig-Piig-Feels-Right-Official-Video.mp4" type="video/mp4">
+      </video>
+      <div class="explore-overlay"></div>
+      <div class="explore-client-info">
+        <span class="explore-client">Client: Bigg Pigg</span>
+        <h3 class="explore-title">Biig Piig - Feels Right (Official Video)</h3>
+      </div>
+    </div>
+    <!-- Floating thumbnail card (overlaps left/right boundary) -->
+    <div class="explore-thumb-card">
+      <img src="https://crtv.axocreate.com/wp-content/uploads/2026/01/maxresdefault.webp" alt="Biig Piig - Feels Right (Official Video)">
     </div>
   </div>
+  <div class="explore-slide" data-index="1">
+    <!-- Left 35%: video bg -->
+    <div class="explore-left">
+      <video class="explore-vid" autoplay muted loop playsinline preload="none" poster="https://crtv.axocreate.com/wp-content/uploads/2026/01/channels4_banner.jpg">
+        <source src="https://crtv.axocreate.com/wp-content/uploads/2026/02/JBEE-24s-Official-Video.mp4" type="video/mp4">
+      </video>
+      <div class="explore-overlay"></div>
+      <div class="explore-client-info">
+        <span class="explore-client">Client: JBEE</span>
+        <h3 class="explore-title">JBEE - 24'S</h3>
+      </div>
+    </div>
+    <!-- Floating thumbnail card (overlaps left/right boundary) -->
+    <div class="explore-thumb-card">
+      <img src="https://crtv.axocreate.com/wp-content/uploads/2026/01/channels4_banner.jpg" alt="JBEE - 24'S">
+    </div>
+  </div>
+  <div class="explore-slide" data-index="2">
+    <!-- Left 35%: video bg -->
+    <div class="explore-left">
+      <video class="explore-vid" autoplay muted loop playsinline preload="none" poster="https://crtv.axocreate.com/wp-content/uploads/2026/01/dqJ8oud7l2Q-HD.jpg">
+        <source src="https://crtv.axocreate.com/wp-content/uploads/2026/02/Lose-Count-%EF%BD%9C-Stronger-Than-One-%EF%BD%9C-Nike.mp4" type="video/mp4">
+      </video>
+      <div class="explore-overlay"></div>
+      <div class="explore-client-info">
+        <span class="explore-client">Client: NIKE</span>
+        <h3 class="explore-title">Lose Count - Stronger Than One</h3>
+      </div>
+    </div>
+    <!-- Floating thumbnail card (overlaps left/right boundary) -->
+    <div class="explore-thumb-card">
+      <img src="https://crtv.axocreate.com/wp-content/uploads/2026/01/dqJ8oud7l2Q-HD.jpg" alt="Lose Count - Stronger Than One">
+    </div>
+  </div>
+  <div class="explore-slide" data-index="3">
+    <!-- Left 35%: video bg -->
+    <div class="explore-left">
+      <video class="explore-vid" autoplay muted loop playsinline preload="none" poster="https://crtv.axocreate.com/wp-content/uploads/2026/01/398143622_6735031366575353_3516649951948309757_n-e1773412953687.jpg">
+        <source src="https://crtv.axocreate.com/wp-content/uploads/2026/02/UPSYCLE-HYPEWEAR-VOL.1.mp4" type="video/mp4">
+      </video>
+      <div class="explore-overlay"></div>
+      <div class="explore-client-info">
+        <span class="explore-client">Client: Upsycle Hyperwear</span>
+        <h3 class="explore-title">UPSYCLE HYPEWEAR VOL 1 SHORT FILM</h3>
+      </div>
+    </div>
+    <!-- Floating thumbnail card (overlaps left/right boundary) -->
+    <div class="explore-thumb-card">
+      <img src="https://crtv.axocreate.com/wp-content/uploads/2026/01/398143622_6735031366575353_3516649951948309757_n-e1773412953687.jpg" alt="UPSYCLE HYPEWEAR VOL 1 SHORT FILM">
+    </div>
+  </div>
+  </div>
+
+  <!-- Right: blue content -->
+  <div class="explore-right">
+    <p class="explore-create-text">CREATE WITH US.<br>BUILD WITH US.<br>MOVE WITH US.</p>
+    <div class="explore-btns">
+      <a href="media.html" class="explore-btn">EXPLORE</a>
+      <a href="about.html" class="explore-btn">ABOUT</a>
+    </div>
+    <div class="explore-arrows">
+      <button class="explore-arrow" id="exp-prev">&#8592;</button>
+      <button class="explore-arrow" id="exp-next">&#8594;</button>
+    </div>
+  </div>
+
 </section>
+
+<script>
+(function(){
+  const slides = document.querySelectorAll('.explore-slide');
+  const vids = document.querySelectorAll('.explore-vid');
+  let cur = 0, total = slides.length;
+
+  function goTo(n) {
+    // Pause old
+    if (vids[cur]) vids[cur].pause();
+    slides[cur].classList.remove('explore-active');
+
+    cur = (n + total) % total;
+    slides[cur].classList.add('explore-active');
+
+    // Play new
+    const v = vids[cur];
+    if (v) { v.currentTime = 0; v.play().catch(()=>{}); }
+  }
+
+  document.getElementById('exp-prev').addEventListener('click', () => goTo(cur - 1));
+  document.getElementById('exp-next').addEventListener('click', () => goTo(cur + 1));
+})();
+</script>
+
+
 
 <!-- BRAND TICKER -->
 <div class="ticker-row" style="background:#000;"><div class="ticker-track"><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span></div></div>
