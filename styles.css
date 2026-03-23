@@ -85,16 +85,19 @@ ul { list-style: none; }
   padding: 14px 20px;
   pointer-events: none;
   gap: 14px;
+  transition: padding 0.4s ease;
 }
-/* Logo — always visible top-left, outside pill */
+
+/* Logo — always visible top-left, outside pill by default */
 #nav-logo {
   pointer-events: all;
   opacity: 1;
   flex-shrink: 0;
   display: flex; align-items: center;
+  transition: all 0.4s ease;
 }
 
-/* The pill — links only, floats right */
+/* The pill — links only, floats right by default */
 #nav-pill {
   pointer-events: all;
   display: flex; align-items: center; justify-content: center;
@@ -111,23 +114,49 @@ ul { list-style: none; }
   transition: all 0.45s cubic-bezier(0.4,0,0.2,1);
 }
 
-/* Scrolled — pill expands between logo and right edge, stays rounded, NOT touching edges */
+/* Scrolled — logo moves into pill on left, links on right, all inside one blue pill */
 #nav-outer.scrolled {
-  padding: 10px 16px;
+  padding: 10px 20px;
+}
+#nav-outer.scrolled #nav-logo {
+  order: -1;
+  margin-right: 0;
 }
 #nav-outer.scrolled #nav-pill {
   background: #1076F8;
   border-color: #1076F8;
   box-shadow: 0 4px 24px rgba(16,118,248,0.3);
   border-radius: 45px;
-  padding: 0 40px;
-  height: 62px;
+  padding: 0 30px 0 20px;
+  height: 68px;
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
   flex: 1;
-  justify-content: space-evenly;
-  gap: 0;
-  margin-left: 14px;
+  justify-content: flex-end;
+  gap: 36px;
+  margin-left: 0;
+}
+/* Logo sits inside the pill visually by overlapping */
+#nav-outer.scrolled {
+  background: #1076F8;
+  border-radius: 45px;
+  margin: 10px 20px;
+  left: 0; right: 0;
+  padding: 0 20px 0 20px;
+  height: 68px;
+  box-shadow: 0 4px 24px rgba(16,118,248,0.3);
+}
+#nav-outer.scrolled #nav-pill {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  flex: 1;
+  justify-content: flex-end;
+  gap: 36px;
+  height: 68px;
+  padding: 0;
+  margin-left: 20px;
+  border-radius: 0;
 }
 .nav-link {
   font-family: var(--font); font-size: 16px; font-weight: 400;
