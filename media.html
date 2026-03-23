@@ -333,12 +333,26 @@
 </footer>
 
 <script>
+/* PRELOADER */
 (function(){
   if(sessionStorage.getItem('crtv_seen')){ const p=document.getElementById('preloader'); if(p)p.remove(); return; }
   const preloader=document.getElementById('preloader'), circle=document.getElementById('preloader-circle');
   setTimeout(()=>preloader.classList.add('show-logo'),50);
   let done=false;
-  function exit(){ if(done)return; done=true; sessionStorage.setItem('crtv_seen','1'); circle.style.pointerEvents='none'; preloader.classList.add('slide-exit'); setTimeout(()=>{ preloader.classList.add('fade-out'); setTimeout(()=>preloader.remove(),400); },900); }
+  function playClick(){
+    try{
+      const ctx=new(window.AudioContext||window.webkitAudioContext)();
+      const osc=ctx.createOscillator();
+      const gain=ctx.createGain();
+      osc.connect(gain); gain.connect(ctx.destination);
+      osc.frequency.setValueAtTime(800,ctx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(200,ctx.currentTime+0.08);
+      gain.gain.setValueAtTime(0.4,ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001,ctx.currentTime+0.1);
+      osc.start(ctx.currentTime); osc.stop(ctx.currentTime+0.1);
+    }catch(e){}
+  }
+  function exit(){ if(done)return; done=true; playClick(); sessionStorage.setItem('crtv_seen','1'); circle.style.pointerEvents='none'; preloader.classList.add('slide-exit'); setTimeout(()=>{ preloader.classList.add('fade-out'); setTimeout(()=>preloader.remove(),400); },900); }
   circle.addEventListener('click',exit);
   circle.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' ')exit(); });
 })();
