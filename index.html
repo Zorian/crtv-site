@@ -282,7 +282,7 @@
     </div>
   </div>
   <div class="hs-slide" data-index="4">
-    <video class="hs-video" preload="none" muted loop playsinline poster="https://pub-a9f22cf5804840608cb8ba43afc33a34.r2.dev/poster-slide5.jpg">
+    <video class="hs-video" id="upsycle-vid" preload="none" muted loop playsinline poster="https://pub-a9f22cf5804840608cb8ba43afc33a34.r2.dev/poster-slide5.jpg">
       <source src="https://pub-a9f22cf5804840608cb8ba43afc33a34.r2.dev/slide5-upsycle.mp4" type="video/mp4">
     </video>
     <div class="hs-overlay"></div>
@@ -871,6 +871,16 @@ document.getElementById('mob-close').addEventListener('click',()=>{ document.get
       if(v.currentTime < 4){ v.currentTime = 4; }
       v.removeEventListener('canplay', seek);
     });
+  })();
+
+  /* Seek Upsycle slide video to street scene (~3s) */
+  (function(){
+    const v = document.getElementById('upsycle-vid');
+    if(!v) return;
+    v.addEventListener('canplay', function seek(){
+      if(v.currentTime < 3){ v.currentTime = 3; }
+      v.removeEventListener('canplay', seek);
+    }, {once: true});
   })();
 </script>
 </body>
