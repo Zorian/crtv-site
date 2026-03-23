@@ -20,9 +20,33 @@
 </style>
 </head>
 <body>
-<div id="preloader"><div class="preloader-inner"><div id="preloader-circle" role="button" tabindex="0"><img id="preloader-logo" src="assets/logo.png" alt="CRTV Hub"></div><p id="preloader-instruction">Click to enter</p></div></div>
-<nav id="nav"><div class="nav-pill"><ul class="nav-links"><li><a href="index.html">HOME</a></li><li><a href="about.html" class="active">ABOUT</a></li><li><a href="events.html">EVENTS</a></li><li><a href="media.html">MEDIA</a></li><li><a href="join.html">JOIN/SIGN UP</a></li></ul><button class="nav-burger" id="burger"><span></span><span></span><span></span></button></div></nav>
-<div id="mobile-nav"><a href="index.html">HOME</a><a href="about.html">ABOUT</a><a href="events.html">EVENTS</a><a href="media.html">MEDIA</a><a href="join.html">JOIN / SIGN UP</a></div>
+<!-- PRELOADER -->
+<div id="preloader">
+  <div class="preloader-inner">
+    <div id="preloader-circle" role="button" tabindex="0" aria-label="Enter">
+      <img id="preloader-logo" src="assets/logo.png" alt="CRTV Hub">
+    </div>
+    <p id="preloader-instruction">Click to enter</p>
+  </div>
+</div>
+
+<!-- NAV PILL -->
+<div id="nav-outer">
+  <div id="nav-pill">
+    <a href="index.html" class="nav-link">HOME</a>
+    <a href="about.html" class="nav-link active">ABOUT</a>
+    <a href="events.html" class="nav-link">EVENTS</a>
+    <a href="media.html" class="nav-link">MEDIA</a>
+    <a href="join.html" class="nav-link nav-cta">JOIN/SIGN UP</a>
+  </div>
+</div>
+<button id="nav-burger" aria-label="Menu"><span></span><span></span><span></span></button>
+<div id="mobile-nav">
+  <button id="mob-close">✕</button>
+  <a href="index.html">HOME</a><a href="about.html">ABOUT</a>
+  <a href="events.html">EVENTS</a><a href="media.html">MEDIA</a>
+  <a href="join.html">JOIN / SIGN UP</a>
+</div>
 
 <section class="about-hero"><div class="about-hero-bg"></div><div class="about-hero-content"><p style="font-family:var(--font);font-size:11px;letter-spacing:.4em;text-transform:uppercase;color:var(--blue);margin-bottom:18px;">GET TO KNOW US</p><h1>By the young.<br>For the young.</h1><p class="about-hero-sub">"Only rebels recreate the world."</p></div></section>
 
@@ -49,9 +73,17 @@
 
 <div class="ticker-row ticker-row-brand" style="background:#000;"><div class="ticker-track"><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span></div></div>
 <footer><div class="footer-main"><div><div class="footer-logo"><img src="assets/logo.png" alt="THE CRTV HUB"></div></div><div class="footer-col"><h5>Quick Links</h5><a href="index.html">HOME</a><a href="media.html">MEDIA</a><a href="events.html">EVENTS</a><a href="join.html">JOIN/SIGNUP</a></div><div class="footer-col"><h5>Stay Connected</h5><a href="http://tiktok.com/@thecreativehubagency" target="_blank">TIKTOK</a><a href="https://www.instagram.com/thecrtvhubuk" target="_blank">INSTAGRAM</a><a href="https://www.youtube.com/@thecrtvhub" target="_blank">YOUTUBE</a></div></div><div class="footer-bottom"><span>© 2026 The CRTV Hub. All rights reserved.</span><span>Built by Creatives. Powered by Culture.</span></div></footer>
-<script>
-(function(){var p=document.getElementById("preloader");if(!p)return;if(sessionStorage.getItem("crtvEntered")){p.remove();return;}var c=document.getElementById("preloader-circle");setTimeout(function(){p.classList.add("show-logo");},50);var done=false;function exit(){if(done)return;done=true;sessionStorage.setItem("crtvEntered","1");c.style.pointerEvents="none";p.classList.add("slide-exit");setTimeout(function(){p.classList.add("fade-out");setTimeout(function(){p.remove();},400);},900);}c.addEventListener("click",exit);c.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" ")exit();});})();
-window.addEventListener("scroll",function(){document.getElementById("nav").classList.toggle("scrolled",window.scrollY>40);});
-document.getElementById("burger").addEventListener("click",function(){document.getElementById("mobile-nav").classList.toggle("open");});
-</script>
+<script>/* PRELOADER — first visit only */
+(function(){
+  if(sessionStorage.getItem('crtv_seen')){ const p=document.getElementById('preloader'); if(p) p.remove(); return; }
+  const preloader=document.getElementById('preloader'), circle=document.getElementById('preloader-circle');
+  setTimeout(()=>preloader.classList.add('show-logo'),50);
+  let done=false;
+  function exit(){ if(done)return; done=true; sessionStorage.setItem('crtv_seen','1'); circle.style.pointerEvents='none'; preloader.classList.add('slide-exit'); setTimeout(()=>{ preloader.classList.add('fade-out'); setTimeout(()=>preloader.remove(),400); },900); }
+  circle.addEventListener('click',exit);
+  circle.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' ')exit(); });
+})();
+window.addEventListener('scroll',()=>{ document.getElementById('nav-outer').classList.toggle('scrolled',window.scrollY>60); });
+document.getElementById('nav-burger').addEventListener('click',()=>{ document.getElementById('mobile-nav').classList.add('open'); });
+document.getElementById('mob-close').addEventListener('click',()=>{ document.getElementById('mobile-nav').classList.remove('open'); });</script>
 </body></html>
