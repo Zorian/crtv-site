@@ -49,6 +49,8 @@
 </footer>
 
 <script>
+/* LOGO CLICK */
+(function(){ var l=document.getElementById("nav-logo"); if(l) l.style.cursor="pointer"; })();
 /* NAV */
 window.addEventListener('scroll',()=>{ document.getElementById('nav-outer').classList.toggle('scrolled',window.scrollY>60); });
 document.getElementById('nav-burger').addEventListener('click',()=>{ document.getElementById('mobile-nav').classList.add('open'); });
