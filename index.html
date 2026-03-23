@@ -230,7 +230,7 @@
 </style>
 
   <div class="hs-slide hs-active" data-index="0">
-    <video class="hs-video" autoplay preload="auto" muted loop playsinline poster="https://pub-a9f22cf5804840608cb8ba43afc33a34.r2.dev/photo-01.jpg" style="object-position:center 30%;">
+    <video class="hs-video" id="nike-vid" autoplay preload="auto" muted loop playsinline poster="https://pub-a9f22cf5804840608cb8ba43afc33a34.r2.dev/photo-01.jpg">
       <source src="https://pub-a9f22cf5804840608cb8ba43afc33a34.r2.dev/slide1-nike.mp4" type="video/mp4">
     </video>
     <div class="hs-overlay"></div>
@@ -862,6 +862,16 @@ document.getElementById('mob-close').addEventListener('click',()=>{ document.get
     circle.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' ')exit(); });
   });
 })();
+
+  /* Seek Nike slide video to action scene */
+  (function(){
+    const v = document.getElementById('nike-vid');
+    if(!v) return;
+    v.addEventListener('canplay', function seek(){
+      if(v.currentTime < 4){ v.currentTime = 4; }
+      v.removeEventListener('canplay', seek);
+    });
+  })();
 </script>
 </body>
 </html>
