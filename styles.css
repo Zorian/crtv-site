@@ -87,14 +87,14 @@ ul { list-style: none; }
   pointer-events: none;
   transition: background 0.4s ease, padding 0.4s ease, height 0.4s ease;
 }
-/* Logo */
+/* Logo — hidden at top, fades in on scroll */
 #nav-logo {
   pointer-events: all;
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.35s ease;
 }
 #nav-outer.scrolled #nav-logo { opacity: 1; }
-/* The pill container */
+/* The pill */
 #nav-pill {
   pointer-events: all;
   display: flex; align-items: center; justify-content: center;
@@ -105,11 +105,12 @@ ul { list-style: none; }
   border: 1px solid rgba(255,255,255,0.3);
   border-radius: 45px;
   box-shadow: 0 8px 32px rgba(0,0,0,0.15);
-  padding: 0 32px;
-  height: 58px;
+  padding: 0 40px;
+  height: 62px;
+  gap: 36px;
   transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
 }
-/* Scrolled state — full-width blue bar */
+/* Scrolled — full-width solid blue bar */
 #nav-outer.scrolled {
   background: #1076F8;
   padding: 0 30px;
