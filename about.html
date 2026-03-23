@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — THE CRTV HUB</title>
+<link rel="icon" href="assets/favicon.png" type="image/png">
+<link rel="stylesheet" href="styles.css">
+<style>
+.about-hero {
+  min-height: 100vh; display: flex; flex-direction: column; justify-content: flex-end;
+  padding: 0 60px 100px; background: #0a0a0a; position: relative; overflow: hidden;
+}
+.about-hero-bg {
+  position: absolute; inset: 0;
+  background-image: url('https://lh3.googleusercontent.com/d/1wCAzACw6_mVfiYk3XsxUSOggCMQdDaYl');
+  background-size: cover; background-position: center;
+  filter: brightness(0.35);
+}
+.about-hero-content { position: relative; z-index: 2; max-width: 900px; }
+.about-hero-eyebrow { font-family: var(--font-main); font-size: 11px; font-weight: 300; letter-spacing: 0.4em; text-transform: uppercase; color: var(--blue); margin-bottom: 20px; }
+.about-hero h1 { font-family: var(--font-main); font-size: clamp(38px,7vw,100px); font-weight: 300; letter-spacing: 0.02em; text-transform: uppercase; color: #fff; line-height: 1; }
+.about-hero-sub { font-family: var(--font-main); font-size: clamp(16px,2vw,22px); font-weight: 300; color: rgba(255,255,255,0.65); margin-top: 20px; font-style: italic; }
+
+.about-section { padding: 100px 60px; max-width: 1200px; margin: 0 auto; }
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.about-grid.reverse { direction: rtl; }
+.about-grid.reverse > * { direction: ltr; }
+
+.values-list { list-style: none; }
+.values-list li {
+  font-family: var(--font-main); font-size: 16px; font-weight: 300;
+  padding: 18px 0; border-bottom: 1px solid rgba(0,0,0,0.08);
+  color: #444; letter-spacing: 0.06em;
+}
+.values-list li::before { content: '—'; color: var(--blue); margin-right: 14px; }
+
+@media (max-width: 900px) {
+  .about-hero { padding: 0 24px 80px; }
+  .about-section { padding: 60px 24px; }
+  .about-grid, .about-grid.reverse { grid-template-columns: 1fr; gap: 40px; direction: ltr; }
+}
+</style>
+</head>
+<body>
+
+<!-- PRELOADER -->
+<div id="preloader">
+  <div class="preloader-inner">
+    <div id="preloader-circle" role="button" tabindex="0" aria-label="Enter">
+      <img id="preloader-logo" src="assets/logo.png" alt="CRTV Hub">
+    </div>
+    <p id="preloader-instruction">Click to enter</p>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a class="nav-logo" href="index.html"><img src="assets/logo.png" alt="THE CRTV HUB"></a>
+  <ul class="nav-links">
+    <li><a href="index.html">HOME</a></li>
+    <li><a href="about.html" class="active">ABOUT</a></li>
+    <li><a href="events.html">EVENTS</a></li>
+    <li><a href="media.html">MEDIA</a></li>
+    <li><a href="join.html" class="nav-cta">JOIN / SIGN UP</a></li>
+  </ul>
+  <button class="nav-burger" id="burger"><span></span><span></span><span></span></button>
+</nav>
+<div id="mobile-nav">
+  <a href="index.html">HOME</a><a href="about.html">ABOUT</a>
+  <a href="events.html">EVENTS</a><a href="media.html">MEDIA</a>
+  <a href="join.html">JOIN / SIGN UP</a>
+</div>
+
+<!-- HERO -->
+<section class="about-hero">
+  <div class="about-hero-bg"></div>
+  <div class="about-hero-content">
+    <p class="about-hero-eyebrow">GET TO KNOW US</p>
+    <h1>By the young.<br>For the young.</h1>
+    <p class="about-hero-sub">"Only rebels recreate the world."</p>
+  </div>
+</section>
+
+<!-- WHO WE ARE -->
+<section>
+  <div class="about-section">
+    <div class="about-grid">
+      <div>
+        <img src="https://lh3.googleusercontent.com/d/1EIOhSgI9xyolDzMYG6gFDzOKsWc7RK3z" alt="CRTV Hub" style="width:100%;aspect-ratio:4/5;object-fit:cover;">
+      </div>
+      <div>
+        <span class="section-eyebrow">Who We Are</span>
+        <h2 class="section-heading" style="font-size:clamp(36px,4.5vw,66px);margin-bottom:24px;">THE CRTV HUB</h2>
+        <p class="section-body">THE CRTV HUB is a media house with expertise in film production, branding, and creative strategy. Our mission is to inspire creatives to create their own world, adding innovation, culture, and purpose to everything we touch.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OUR MISSION -->
+<section style="background:#f8f8f8;">
+  <div class="about-section">
+    <div class="about-grid reverse">
+      <div>
+        <img src="https://lh3.googleusercontent.com/d/1GcnALGsntqPNPD0bc6Mo1KHPrZ0AZ-83" alt="Our Mission" style="width:100%;aspect-ratio:4/5;object-fit:cover;">
+      </div>
+      <div>
+        <span class="section-eyebrow">OUR MISSION</span>
+        <h2 class="section-heading" style="font-size:clamp(36px,4.5vw,66px);margin-bottom:20px;">What we strive for?</h2>
+        <p class="section-body">Changing the narrative for creatives. We aim to dismantle the culture of fear, pressure, and isolation within the creative industry. By building platforms rooted in empathy, opportunity, and community, we help creatives move forward without sacrificing their passion.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE JOURNEY -->
+<section>
+  <div class="about-section">
+    <div class="about-grid">
+      <div>
+        <img src="https://lh3.googleusercontent.com/d/1-oGd9ZyjbCTSTKLgLZZJtEjYLc5RTy92" alt="The Journey" style="width:100%;aspect-ratio:4/5;object-fit:cover;">
+      </div>
+      <div>
+        <span class="section-eyebrow">The Journey</span>
+        <h2 class="section-heading" style="font-size:clamp(36px,4.5vw,66px);margin-bottom:20px;">How it all began?</h2>
+        <p class="section-body">From the streets to the world stage. What started in 2019 as a small local dance cypher with five people grew into a global creative platform reaching tens of thousands across cities worldwide. From London to Ghana, from community events to international film production, THE CRTV HUB has always been about giving back, creating access, and pushing culture forward.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OUR VALUES -->
+<section style="background:#0a0a0a;">
+  <div class="about-section">
+    <span class="section-eyebrow">OUR VALUES</span>
+    <h2 class="section-heading" style="color:#fff;margin-bottom:14px;font-size:clamp(36px,4.5vw,66px);">What matters the most to us?</h2>
+    <div style="margin-top:48px;">
+      <ul class="values-list" style="color:#fff;">
+        <li style="color:#ccc;border-bottom-color:rgba(255,255,255,0.1);">Community first</li>
+        <li style="color:#ccc;border-bottom-color:rgba(255,255,255,0.1);">Culture over clout</li>
+        <li style="color:#ccc;border-bottom-color:rgba(255,255,255,0.1);">Impact over noise</li>
+        <li style="color:#ccc;border-bottom-color:rgba(255,255,255,0.1);">Creativity without compromise</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- BRAND TICKER -->
+<div class="ticker-row ticker-row-brand brand-ticker" style="background:#000;">
+  <div class="ticker-track">
+    <span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-main">
+    <div><div class="footer-logo"><img src="assets/logo.png" alt="THE CRTV HUB"></div></div>
+    <div class="footer-col"><h5>Quick Links</h5><a href="index.html">HOME</a><a href="media.html">MEDIA</a><a href="events.html">EVENTS</a><a href="join.html">JOIN/SIGNUP</a></div>
+    <div class="footer-col"><h5>Stay Connected</h5><a href="http://tiktok.com/@thecreativehubagency" target="_blank">TIKTOK</a><a href="https://www.instagram.com/thecrtvhubuk" target="_blank">INSTAGRAM</a><a href="https://www.youtube.com/@thecrtvhub" target="_blank">YOUTUBE</a></div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 The CRTV Hub. All rights reserved.</span>
+    <span>Built by Creatives. Powered by Culture.</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  const preloader = document.getElementById('preloader');
+  const circle = document.getElementById('preloader-circle');
+  setTimeout(() => preloader.classList.add('show-logo'), 50);
+  let done = false;
+  function exit() {
+    if (done) return; done = true;
+    circle.style.pointerEvents = 'none';
+    preloader.classList.add('slide-exit');
+    setTimeout(() => { preloader.classList.add('fade-out'); setTimeout(() => preloader.remove(), 400); }, 900);
+  }
+  circle.addEventListener('click', exit);
+  circle.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') exit(); });
+})();
+window.addEventListener('scroll', () => { document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 40); });
+document.getElementById('burger').addEventListener('click', () => { document.getElementById('mobile-nav').classList.toggle('open'); });
+</script>
+</body>
+</html>
