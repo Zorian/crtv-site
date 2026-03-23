@@ -89,24 +89,17 @@
 </head>
 <body>
 
-<!-- PRELOADER -->
-<div id="preloader">
-  <div class="preloader-inner">
-    <div id="preloader-circle" role="button" tabindex="0" aria-label="Enter">
-      <img id="preloader-logo" src="assets/logo.png" alt="CRTV Hub">
-    </div>
-    <p id="preloader-instruction">Click to enter</p>
-  </div>
-</div>
-
-<!-- NAV PILL -->
+<!-- NAV: logo LEFT, pill RIGHT -->
 <div id="nav-outer">
+  <div id="nav-logo">
+    <a href="index.html"><img src="https://crtv.axocreate.com/wp-content/uploads/2026/01/Image-1-e1769234730649.png" alt="THE CRTV HUB" style="width:90px;height:90px;object-fit:contain;"></a>
+  </div>
   <div id="nav-pill">
     <a href="index.html" class="nav-link active">HOME</a>
     <a href="about.html" class="nav-link">ABOUT</a>
     <a href="events.html" class="nav-link">EVENTS</a>
     <a href="media.html" class="nav-link">MEDIA</a>
-    <a href="join.html" class="nav-link nav-cta">JOIN/SIGN UP</a>
+    <a href="join.html" class="nav-link">JOIN/SIGN UP</a>
   </div>
 </div>
 <button id="nav-burger" aria-label="Menu"><span></span><span></span><span></span></button>
@@ -117,103 +110,186 @@
   <a href="join.html">JOIN / SIGN UP</a>
 </div>
 
-<!-- HERO SLIDER — 8 slides, video backgrounds where available -->
-<section class="hero-slider" id="hero">
+<!-- HERO SLIDER — 8 slides, full-screen, exact axocreate layout -->
+<section id="hero-slider">
+<style>
+/* Nav override: logo left, pill right */
+#nav-outer {
+  justify-content: space-between !important;
+  padding: 20px 30px !important;
+  align-items: center;
+}
+#nav-logo { display: flex; align-items: center; pointer-events: all; }
+#nav-pill {
+  /* Keep pill styling from styles.css */
+  flex-shrink: 0;
+}
 
-  <!-- 1: Lose Count — Nike (VIDEO) -->
-  <div class="slide active">
-    <video class="slide-video" autoplay muted loop playsinline preload="auto">
+/* Hero slider */
+#hero-slider {
+  position: relative; width: 100%; height: 100vh; overflow: hidden; background: #000;
+}
+.hs-slide {
+  position: absolute; inset: 0; opacity: 0;
+  transition: opacity 0.9s cubic-bezier(0.4,0,0.2,1);
+  z-index: 0;
+}
+.hs-slide.hs-active { opacity: 1; z-index: 1; }
+.hs-video {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; pointer-events: none;
+}
+.hs-img {
+  position: absolute; inset: 0;
+  background-size: cover; background-position: center;
+}
+.hs-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(0,17,56,0) 22%, #000 100%);
+}
+.hs-content {
+  position: absolute; bottom: 80px; left: 0; right: 0;
+  display: flex; flex-direction: column; align-items: center;
+  text-align: center; z-index: 2; padding: 0 40px;
+}
+.hs-title {
+  font-family: 'StrechPro', sans-serif;
+  font-size: clamp(28px, 5vw, 68px);
+  font-weight: 600; text-transform: uppercase; color: #fff;
+  line-height: 1.1; max-width: 70%; margin: 0 0 30px 0;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.5);
+}
+.hs-btns { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
+.hs-btn {
+  font-family: 'MadeOuter', sans-serif; font-size: 15px; font-weight: 500;
+  color: #fff; border: 2px solid #fff; padding: 13px 28px;
+  background: transparent; text-decoration: none; letter-spacing: 0.05em;
+  text-transform: uppercase; transition: background 0.2s, color 0.2s;
+  white-space: nowrap;
+}
+.hs-btn:hover { background: #1076F8; border-color: #1076F8; }
+/* Side arrows */
+.hs-arr {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  z-index: 10; background: rgba(255,255,255,0.12);
+  border: 1.5px solid rgba(255,255,255,0.35); color: #fff;
+  width: 44px; height: 44px; font-size: 18px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.2s;
+}
+.hs-arr:hover { background: rgba(255,255,255,0.25); }
+.hs-arr.prev { left: 20px; } .hs-arr.next { right: 20px; }
+
+@media (max-width: 900px) {
+  .hs-title { max-width: 90%; font-size: clamp(22px, 6vw, 44px); }
+  .hs-content { bottom: 40px; padding: 0 20px; }
+  .hs-btn { font-size: 12px; padding: 10px 18px; }
+}
+</style>
+
+  <div class="hs-slide hs-active" data-index="0">
+    <video class="hs-video" autoplay muted loop playsinline preload="auto" poster="https://crtv.axocreate.com/wp-content/uploads/2026/03/WhatsApp-Image-2026-03-13-at-17.36.24-scaled.jpeg">
       <source src="https://crtv.axocreate.com/wp-content/uploads/2026/02/Lose-Count-%EF%BD%9C-Stronger-Than-One-%EF%BD%9C-Nike.mp4" type="video/mp4">
     </video>
-    <div class="slide-overlay">
-      <span class="slide-sub">JOIN "CREATING OUR MOTION"</span>
-      <h2 class="slide-title">Lose Count - Stronger Than One</h2>
-      <a href="https://www.youtube.com/watch?v=dqJ8oud7l2Q" target="_blank" class="slide-btn"><svg viewBox="0 0 16 16"><polygon points="4,2 14,8 4,14"/></svg>WATCH NOW</a>
+    <div class="hs-overlay"></div>
+    <div class="hs-content">
+      <h2 class="hs-title">Lose Count - Stronger Than One</h2>
+      <div class="hs-btns">
+        <a href="join.html" class="hs-btn">JOIN "CREATING OUR MOTION"</a>
+        <a href="https://www.youtube.com/watch?v=dqJ8oud7l2Q" target="_blank" class="hs-btn">WATCH NOW</a>
+      </div>
     </div>
   </div>
-
-  <!-- 2: Get To Know Me - Louis Lasa Tarbuck (YouTube — use thumbnail) -->
-  <div class="slide">
-    <img class="slide-img" src="https://crtv.axocreate.com/wp-content/uploads/2026/01/398143622_6735031366575353_3516649951948309757_n-e1773412953687.jpg" alt="">
-    <div class="slide-overlay">
-      <span class="slide-sub">JOIN "CREATING OUR MOTION"</span>
-      <h2 class="slide-title">Get To Know Me - Louis Lasa Tarbuck</h2>
-      <a href="https://www.youtube.com/watch?v=KV8XAK4Fn6A" target="_blank" class="slide-btn"><svg viewBox="0 0 16 16"><polygon points="4,2 14,8 4,14"/></svg>WATCH NOW</a>
+  <div class="hs-slide" data-index="1">
+    <div class="hs-img" style="background-image:url('https://crtv.axocreate.com/wp-content/uploads/2026/03/Screenshot-2026-03-13-at-1.49.18-PM-scaled.png')"></div>
+    <div class="hs-overlay"></div>
+    <div class="hs-content">
+      <h2 class="hs-title">Get To Know Me - Louis Lasa Tarbuck</h2>
+      <div class="hs-btns">
+        <a href="join.html" class="hs-btn">JOIN "CREATING OUR MOTION"</a>
+        <a href="https://www.youtube.com/watch?v=KV8XAK4Fn6A" target="_blank" class="hs-btn">WATCH NOW</a>
+      </div>
     </div>
   </div>
-
-  <!-- 3: JBEE 24'S (VIDEO) -->
-  <div class="slide">
-    <video class="slide-video" muted loop playsinline preload="none">
+  <div class="hs-slide" data-index="2">
+    <video class="hs-video"  muted loop playsinline preload="none" poster="https://crtv.axocreate.com/wp-content/uploads/2026/03/WhatsApp-Image-2026-03-13-at-17.36.37-scaled.jpeg">
       <source src="https://crtv.axocreate.com/wp-content/uploads/2026/02/JBEE-24s-Official-Video.mp4" type="video/mp4">
     </video>
-    <div class="slide-overlay">
-      <span class="slide-sub">JOIN "CREATING OUR MOTION"</span>
-      <h2 class="slide-title">JBEE — 24'S</h2>
-      <a href="https://www.youtube.com/watch?v=JBEE24" target="_blank" class="slide-btn"><svg viewBox="0 0 16 16"><polygon points="4,2 14,8 4,14"/></svg>WATCH NOW</a>
+    <div class="hs-overlay"></div>
+    <div class="hs-content">
+      <h2 class="hs-title">JBEE - 24'S</h2>
+      <div class="hs-btns">
+        <a href="join.html" class="hs-btn">JOIN "CREATING OUR MOTION"</a>
+        <a href="#" target="_blank" class="hs-btn">WATCH NOW</a>
+      </div>
     </div>
   </div>
-
-  <!-- 4: Get To Know Me - Nokuthulah H (YouTube) -->
-  <div class="slide">
-    <img class="slide-img" src="https://lh3.googleusercontent.com/d/1oNATfEX5LlIQRVqjQEvv7wBvxZlhWP_1" alt="">
-    <div class="slide-overlay">
-      <span class="slide-sub">JOIN "CREATING OUR MOTION"</span>
-      <h2 class="slide-title">Get To Know Me - Nokuthulah H</h2>
-      <a href="https://www.youtube.com/watch?v=xyVyj0M_llY" target="_blank" class="slide-btn"><svg viewBox="0 0 16 16"><polygon points="4,2 14,8 4,14"/></svg>WATCH NOW</a>
+  <div class="hs-slide" data-index="3">
+    <div class="hs-img" style="background-image:url('https://crtv.axocreate.com/wp-content/uploads/2026/03/Screenshot-2026-03-13-at-1.37.24-PM-scaled.png')"></div>
+    <div class="hs-overlay"></div>
+    <div class="hs-content">
+      <h2 class="hs-title">Get To Know Me - Nokuthulah H</h2>
+      <div class="hs-btns">
+        <a href="join.html" class="hs-btn">JOIN "CREATING OUR MOTION"</a>
+        <a href="https://www.youtube.com/watch?v=xyVyj0M_llY" target="_blank" class="hs-btn">WATCH NOW</a>
+      </div>
     </div>
   </div>
-
-  <!-- 5: UPSYCLE HYPEWEAR (VIDEO) -->
-  <div class="slide">
-    <video class="slide-video" muted loop playsinline preload="none">
+  <div class="hs-slide" data-index="4">
+    <video class="hs-video"  muted loop playsinline preload="none" poster="https://crtv.axocreate.com/wp-content/uploads/2026/01/398143622_6735031366575353_3516649951948309757_n-e1773412953687.jpg">
       <source src="https://crtv.axocreate.com/wp-content/uploads/2026/02/UPSYCLE-HYPEWEAR-VOL.1.mp4" type="video/mp4">
     </video>
-    <div class="slide-overlay">
-      <span class="slide-sub">JOIN "CREATING OUR MOTION"</span>
-      <h2 class="slide-title">UPSYCLE HYPEWEAR VOL 1 SHORT FILM</h2>
-      <a href="#" class="slide-btn"><svg viewBox="0 0 16 16"><polygon points="4,2 14,8 4,14"/></svg>WATCH NOW</a>
+    <div class="hs-overlay"></div>
+    <div class="hs-content">
+      <h2 class="hs-title">UPSYCLE HYPEWEAR VOL 1 SHORT FILM</h2>
+      <div class="hs-btns">
+        <a href="join.html" class="hs-btn">JOIN "CREATING OUR MOTION"</a>
+        <a href="#" target="_blank" class="hs-btn">WATCH NOW</a>
+      </div>
     </div>
   </div>
-
-  <!-- 6: Get To Know Me - James Olusegun (YouTube) -->
-  <div class="slide">
-    <img class="slide-img" src="https://lh3.googleusercontent.com/d/1HVEzxJFb1SY_jhy335GnRWWg_4wDhA5H" alt="">
-    <div class="slide-overlay">
-      <span class="slide-sub">JOIN "CREATING OUR MOTION"</span>
-      <h2 class="slide-title">Get To Know Me - James Olusegun</h2>
-      <a href="https://www.youtube.com/watch?v=sPs63uGzWuI" target="_blank" class="slide-btn"><svg viewBox="0 0 16 16"><polygon points="4,2 14,8 4,14"/></svg>WATCH NOW</a>
+  <div class="hs-slide" data-index="5">
+    <div class="hs-img" style="background-image:url('https://crtv.axocreate.com/wp-content/uploads/2026/03/Screenshot-2026-03-13-at-1.46.08-PM-scaled.png')"></div>
+    <div class="hs-overlay"></div>
+    <div class="hs-content">
+      <h2 class="hs-title">Get To Know Me - James Olusegun</h2>
+      <div class="hs-btns">
+        <a href="join.html" class="hs-btn">JOIN "CREATING OUR MOTION"</a>
+        <a href="https://www.youtube.com/watch?v=sPs63uGzWuI" target="_blank" class="hs-btn">WATCH NOW</a>
+      </div>
     </div>
   </div>
-
-  <!-- 7: Biig Piig (VIDEO) -->
-  <div class="slide">
-    <video class="slide-video" muted loop playsinline preload="none">
+  <div class="hs-slide" data-index="6">
+    <video class="hs-video"  muted loop playsinline preload="none" poster="https://crtv.axocreate.com/wp-content/uploads/2026/03/WhatsApp-Image-2026-03-13-at-17.36.53-scaled.jpeg">
       <source src="https://crtv.axocreate.com/wp-content/uploads/2026/02/Biig-Piig-Feels-Right-Official-Video.mp4" type="video/mp4">
     </video>
-    <div class="slide-overlay">
-      <span class="slide-sub">JOIN "CREATING OUR MOTION"</span>
-      <h2 class="slide-title">Biig Piig - Feels Right (Official Video)</h2>
-      <a href="https://www.youtube.com/watch?v=nsGbD-q9NIk" target="_blank" class="slide-btn"><svg viewBox="0 0 16 16"><polygon points="4,2 14,8 4,14"/></svg>WATCH NOW</a>
+    <div class="hs-overlay"></div>
+    <div class="hs-content">
+      <h2 class="hs-title">Biig Piig - Feels Right (Official Video)</h2>
+      <div class="hs-btns">
+        <a href="join.html" class="hs-btn">JOIN "CREATING OUR MOTION"</a>
+        <a href="https://www.youtube.com/watch?v=nsGbD-q9NIk" target="_blank" class="hs-btn">WATCH NOW</a>
+      </div>
     </div>
   </div>
-
-  <!-- 8: NEW GEN ENTERTAINMENT (VIDEO) -->
-  <div class="slide">
-    <video class="slide-video" muted loop playsinline preload="none">
+  <div class="hs-slide" data-index="7">
+    <video class="hs-video"  muted loop playsinline preload="none" poster="https://crtv.axocreate.com/wp-content/uploads/2026/03/b510acdb-add2-4458-867b-df42312025d0.jpg">
       <source src="https://crtv.axocreate.com/wp-content/uploads/2026/03/NEW-GEN-ENTERTAINMENT-TV-Dance-Your-Style-Cypher-Spain-Edition-zy-ooB1l5QE.mp4" type="video/mp4">
     </video>
-    <div class="slide-overlay">
-      <span class="slide-sub">JOIN "CREATING OUR MOTION"</span>
-      <h2 class="slide-title">NEW GEN ENTERTAINMENT — Dance Your Style Cypher</h2>
-      <a href="https://www.youtube.com/watch?v=5P87JlJQ8-M" target="_blank" class="slide-btn"><svg viewBox="0 0 16 16"><polygon points="4,2 14,8 4,14"/></svg>WATCH NOW</a>
+    <div class="hs-overlay"></div>
+    <div class="hs-content">
+      <h2 class="hs-title">NEW GEN ENTERTAINMENT - Dance Your Style Cypher</h2>
+      <div class="hs-btns">
+        <a href="join.html" class="hs-btn">JOIN "CREATING OUR MOTION"</a>
+        <a href="https://www.youtube.com/watch?v=5P87JlJQ8-M" target="_blank" class="hs-btn">WATCH NOW</a>
+      </div>
     </div>
   </div>
-
-  <button class="sl-arr prev" id="sl-prev">&#8592;</button>
-  <button class="sl-arr next" id="sl-next">&#8594;</button>
-  <div class="slider-dots" id="sl-dots"></div>
+  <button class="hs-arr prev" id="hs-prev">&#8592;</button>
+  <button class="hs-arr next" id="hs-next">&#8594;</button>
 </section>
+
+
 
 <!-- WHAT WE ARE — 50/50 split, text left, video right, no animations -->
 <section style="min-height:700px;display:flex;flex-direction:row;overflow:hidden;">
@@ -566,7 +642,7 @@
 
 
 <!-- BRAND TICKER -->
-<div class="ticker-row" style="background:#000;"><div class="ticker-track"><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span></div></div>
+</div>
 
 <!-- FOOTER — exact axocreate: black bg, 3-col, Strech Pro headings, logo centre -->
 <footer style="background:#000;padding:50px 20px;">
@@ -602,6 +678,34 @@
 </footer>
 
 <script>
+/* NAV */
+window.addEventListener('scroll',()=>{ document.getElementById('nav-outer').classList.toggle('scrolled',window.scrollY>60); });
+document.getElementById('nav-burger').addEventListener('click',()=>{ document.getElementById('mobile-nav').classList.add('open'); });
+document.getElementById('mob-close').addEventListener('click',()=>{ document.getElementById('mobile-nav').classList.remove('open'); });
+
+/* HERO SLIDER */
+(function(){
+  const slides = document.querySelectorAll('.hs-slide');
+  const vids = document.querySelectorAll('.hs-video');
+  let cur = 0, total = slides.length, timer;
+
+  function goTo(n) {
+    if(vids[cur]) vids[cur].pause();
+    slides[cur].classList.remove('hs-active');
+    cur = (n + total) % total;
+    slides[cur].classList.add('hs-active');
+    const v = vids[cur];
+    if(v){ v.currentTime=0; v.play().catch(()=>{}); }
+    clearInterval(timer);
+    timer = setInterval(()=>goTo(cur+1), 7000);
+  }
+
+  document.getElementById('hs-prev').addEventListener('click',()=>goTo(cur-1));
+  document.getElementById('hs-next').addEventListener('click',()=>goTo(cur+1));
+  timer = setInterval(()=>goTo(cur+1), 7000);
+})();
+
+
 /* PRELOADER — first visit only */
 (function(){
   if(sessionStorage.getItem('crtv_seen')){ const p=document.getElementById('preloader'); if(p)p.remove(); return; }
@@ -618,43 +722,6 @@ window.addEventListener('scroll',()=>{ document.getElementById('nav-outer').clas
 document.getElementById('nav-burger').addEventListener('click',()=>{ document.getElementById('mobile-nav').classList.add('open'); });
 document.getElementById('mob-close').addEventListener('click',()=>{ document.getElementById('mobile-nav').classList.remove('open'); });
 
-/* HERO SLIDER */
-(function(){
-  const slides=document.querySelectorAll('.slide');
-  const dotsEl=document.getElementById('sl-dots');
-  let cur=0, timer;
-
-  slides.forEach((_,i)=>{
-    const d=document.createElement('button');
-    d.className='dot'+(i===0?' active':'');
-    d.addEventListener('click',()=>goTo(i));
-    dotsEl.appendChild(d);
-  });
-  const dots=dotsEl.querySelectorAll('.dot');
-
-  function goTo(n){
-    // Pause current video
-    const curVid=slides[cur].querySelector('.slide-video');
-    if(curVid) curVid.pause();
-
-    slides[cur].classList.remove('active');
-    dots[cur].classList.remove('active');
-    cur=(n+slides.length)%slides.length;
-    slides[cur].classList.add('active');
-    dots[cur].classList.add('active');
-
-    // Play new slide video
-    const newVid=slides[cur].querySelector('.slide-video');
-    if(newVid){ newVid.currentTime=0; newVid.play().catch(()=>{}); }
-
-    clearInterval(timer);
-    timer=setInterval(()=>goTo(cur+1),7000);
-  }
-
-  document.getElementById('sl-prev').addEventListener('click',()=>goTo(cur-1));
-  document.getElementById('sl-next').addEventListener('click',()=>goTo(cur+1));
-  timer=setInterval(()=>goTo(cur+1),7000);
-})();
 </script>
 </body>
 </html>
