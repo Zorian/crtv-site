@@ -245,7 +245,6 @@ document.addEventListener('keydown',e=>{ if(!lb.classList.contains('open'))retur
   if(!logo) return;
   logo.addEventListener('click', function(e){
     e.preventDefault();
-    // Re-create and show preloader
     const existing = document.getElementById('preloader');
     if(existing) existing.remove();
     const p = document.createElement('div');
