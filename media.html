@@ -6,61 +6,96 @@
 <link rel="icon" href="assets/favicon.png" type="image/png">
 <link rel="stylesheet" href="styles.css">
 <style>
-/* ── MEDIA HERO ── */
+/* ── MEDIA HERO — centred, massive StrechPro ── */
 .media-hero {
-  min-height: 70vh; display: flex; flex-direction: column;
-  justify-content: flex-end; padding: 0 60px 90px;
-  background: #000; position: relative; overflow: hidden;
+  position: relative; width: 100%; min-height: 80vh; overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+  background: #000; text-align: center;
 }
 .media-hero-video {
   position: absolute; inset: 0; width: 100%; height: 100%;
-  object-fit: cover; filter: brightness(0.35); z-index: 0; pointer-events: none;
+  object-fit: cover; filter: brightness(0.45); z-index: 0; pointer-events: none;
 }
-.media-hero-content { position: relative; z-index: 2; max-width: 900px; }
+.media-hero-content { position: relative; z-index: 2; padding: 0 40px; }
 .media-hero h1 {
-  font-family: var(--font-display); font-size: clamp(42px, 7vw, 108px);
-  font-weight: 400; letter-spacing: 0.01em; text-transform: uppercase;
-  color: #fff; line-height: 0.95; margin-bottom: 18px;
+  font-family: 'StrechPro', sans-serif;
+  font-size: clamp(52px, 10vw, 140px);
+  font-weight: 700; letter-spacing: 0.02em; text-transform: uppercase;
+  color: #fff; line-height: 0.92; margin: 0 0 28px;
 }
 .media-hero-sub {
-  font-family: var(--font); font-size: 15px; font-weight: 300;
-  color: rgba(255,255,255,0.55); letter-spacing: 0.06em; text-transform: uppercase;
+  font-family: 'MadeOuter', sans-serif; font-size: 16px; font-weight: 300;
+  color: rgba(255,255,255,0.75); letter-spacing: 0.06em;
 }
 
-/* ── OUR WORK ── */
-.our-work { padding: 100px 60px; max-width: 1200px; margin: 0 auto; }
-.ow-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
-.ow-list { margin-top: 14px; }
-.ow-list li {
-  font-family: var(--font); font-size: 15px; font-weight: 300;
-  padding: 13px 0; border-bottom: 1px solid rgba(0,0,0,0.08); color: #555;
-  letter-spacing: 0.02em;
+/* ── OUR WORK — image left, content right ── */
+.our-work-split { display: flex; flex-direction: row; min-height: 600px; }
+.ow-img { width: 50%; position: relative; overflow: hidden; min-height: 500px; }
+.ow-img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.ow-text {
+  width: 50%; padding: 80px 70px; display: flex; flex-direction: column;
+  justify-content: center; gap: 20px; background: #fff;
 }
-.ow-list li:first-child { border-top: 1px solid rgba(0,0,0,0.08); }
-.ow-body { font-family: var(--font); font-size: 15px; font-weight: 300; color: #666; line-height: 1.75; }
+.ow-heading {
+  font-family: 'StrechPro', sans-serif; font-size: clamp(36px, 4.5vw, 62px);
+  font-weight: 700; text-transform: uppercase; color: #1076F8; line-height: 1.0; margin: 0;
+}
+.ow-quote {
+  font-family: 'MadeOuter', sans-serif; font-size: 17px; font-weight: 300;
+  font-style: italic; color: #111; margin: 0;
+}
+.ow-body { font-family: 'MadeOuter', sans-serif; font-size: 15px; color: #444; line-height: 1.75; margin: 0; }
+.ow-bullets { list-style: disc; padding-left: 20px; margin: 4px 0; }
+.ow-bullets li { font-family: 'MadeOuter', sans-serif; font-size: 15px; color: #444; line-height: 1.75; padding: 2px 0; }
 
-/* ── TRUSTED ── */
-.trusted-media { background: #0a0a0a; padding: 80px 0 10px; }
-.trusted-media-inner { max-width: 1200px; margin: 0 auto; padding: 0 60px 48px; }
+/* ── TRUSTED — full blue bg ── */
+.trusted-split {
+  background: #1076F8; display: flex; flex-direction: row;
+  padding: 80px 60px; gap: 60px; align-items: center;
+}
+.trusted-text { flex: 0 0 300px; }
+.trusted-heading {
+  font-family: 'StrechPro', sans-serif; font-size: clamp(24px, 3vw, 40px);
+  font-weight: 700; text-transform: uppercase; color: #fff; line-height: 1.05; margin: 0 0 20px;
+}
+.trusted-sub {
+  font-family: 'MadeOuter', sans-serif; font-size: 14px; font-weight: 300;
+  color: rgba(255,255,255,0.85); line-height: 1.7; margin: 0;
+}
+.trusted-logos { flex: 1; display: flex; flex-direction: column; gap: 40px; }
+.trusted-logos-row { display: flex; flex-direction: row; align-items: center; gap: 40px; flex-wrap: wrap; }
+.trusted-logos-row img { height: 44px; width: auto; object-fit: contain; opacity: 0.9; }
 
-/* ── CREATIVE APPROACH ── */
-.creative-approach { padding: 100px 60px; max-width: 1200px; margin: 0 auto; }
-.ca-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
-.ca-img { width: 100%; aspect-ratio: 4/5; object-fit: cover; display: block; }
+/* ── CREATIVE APPROACH — text left, full image right ── */
+.creative-split { display: flex; flex-direction: row; min-height: 700px; }
+.ca-text {
+  width: 50%; padding: 80px 70px; display: flex; flex-direction: column;
+  justify-content: center; gap: 20px; background: #fff;
+}
+.ca-heading {
+  font-family: 'StrechPro', sans-serif; font-size: clamp(36px, 4.5vw, 62px);
+  font-weight: 700; text-transform: uppercase; color: #1076F8; line-height: 1.0; margin: 0;
+}
+.ca-quote { font-family: 'MadeOuter', sans-serif; font-size: 17px; font-weight: 300; font-style: italic; color: #111; margin: 0; }
+.ca-body { font-family: 'MadeOuter', sans-serif; font-size: 15px; color: #444; line-height: 1.75; margin: 0; }
+.ca-img { width: 50%; position: relative; overflow: hidden; min-height: 600px; }
+.ca-img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 
 /* ── GALLERY ── */
 .gallery-section { padding: 20px 60px 100px; }
-.gallery-label {
-  font-family: var(--font); font-size: 11px; font-weight: 300;
-  letter-spacing: 0.35em; text-transform: uppercase; color: #aaa; margin-bottom: 24px;
-}
+.gallery-label { font-family: var(--font); font-size: 11px; font-weight: 300; letter-spacing: 0.35em; text-transform: uppercase; color: #aaa; margin-bottom: 24px; }
 
-/* ── MEDIA RESPONSIVE ── */
 @media (max-width: 900px) {
-  .media-hero { padding: 0 24px 60px; min-height: 60vh; }
-  .our-work, .creative-approach, .gallery-section { padding-left: 24px; padding-right: 24px; }
-  .trusted-media-inner { padding-left: 24px; padding-right: 24px; }
-  .ow-grid, .ca-grid { grid-template-columns: 1fr; gap: 40px; }
+  .media-hero h1 { font-size: clamp(42px, 12vw, 80px); }
+  .our-work-split, .creative-split { flex-direction: column; }
+  .ow-img, .ow-text, .ca-img, .ca-text { width: 100%; }
+  .ow-img { min-height: 300px; }
+  .ca-img { min-height: 320px; order: 2; }
+  .ca-text { order: 1; padding: 50px 24px; }
+  .ow-text { padding: 50px 24px; }
+  .trusted-split { flex-direction: column; padding: 50px 24px; gap: 40px; }
+  .trusted-text { flex: none; }
+  .gallery-section { padding-left: 24px; padding-right: 24px; }
 }
 </style>
 </head>
@@ -97,85 +132,75 @@
   <a href="join.html">JOIN / SIGN UP</a>
 </div>
 
-<!-- MEDIA HERO -->
+<!-- MEDIA HERO — centred, massive -->
 <section class="media-hero">
   <video class="media-hero-video" autoplay muted loop playsinline preload="auto">
     <source src="https://pub-a9f22cf5804840608cb8ba43afc33a34.r2.dev/media-hero.mov" type="video/mp4">
   </video>
   <div class="media-hero-content">
-    <h1>We tell stories<br>that move culture.</h1>
+    <h1>WE TELL STORIES<br>THAT MOVE<br>CULTURE.</h1>
     <p class="media-hero-sub">Explore the creativity of our talented creators.</p>
   </div>
 </section>
 
-<!-- OUR WORK -->
-<section>
-  <div class="our-work">
-    <div class="ow-grid">
-      <div>
-        <span class="eyebrow">OUR WORK</span>
-        <h2 class="h-lg" style="margin-bottom:16px;">"Film, fashion,<br>music &amp; movement."</h2>
-      </div>
-      <div>
-        <p class="ow-body" style="margin-bottom:8px;">We produce high-impact visual content across:</p>
-        <ul class="ow-list">
-          <li>Music videos</li>
-          <li>Commercials</li>
-          <li>Short films</li>
-          <li>Documentary storytelling</li>
-        </ul>
-        <p class="ow-body" style="margin-top:18px;">Our work is driven by authenticity, emotion, and cultural relevance.</p>
-      </div>
+<!-- OUR WORK — image left, content right -->
+<section class="our-work-split">
+  <div class="ow-img">
+    <img src="https://lh3.googleusercontent.com/d/1Oc0mZabmQTBvjeVk0KjbJo6jZ-RkTx7u" alt="CRTV Hub Our Work">
+  </div>
+  <div class="ow-text">
+    <h2 class="ow-heading">OUR WORK</h2>
+    <p class="ow-quote">"Film, fashion, music &amp; movement."</p>
+    <p class="ow-body">We produce high-impact visual content across:</p>
+    <ul class="ow-bullets">
+      <li>Music videos</li>
+      <li>Commercials</li>
+      <li>Short films</li>
+      <li>Documentary storytelling</li>
+    </ul>
+    <p class="ow-body">Our work is driven by authenticity, emotion, and cultural relevance.</p>
+  </div>
+</section>
+
+<!-- TRUSTED — blue background -->
+<section class="trusted-split">
+  <div class="trusted-text">
+    <h2 class="trusted-heading">TRUSTED BY GLOBAL BRANDS &amp; PLATFORMS.</h2>
+    <p class="trusted-sub">We've worked with artists, brands, and organisations that align with culture, creativity, and innovation, delivering stories that resonate worldwide.</p>
+  </div>
+  <div class="trusted-logos">
+    <div class="trusted-logos-row">
+      <img src="assets/logos/brand-2.png" alt="">
+      <img src="assets/logos/brand-3.png" alt="">
+      <img src="assets/logos/brand-4.png" alt="">
+      <img src="assets/logos/brand-5.png" alt="">
+      <img src="assets/logos/brand-7.png" alt="">
+      <img src="assets/logos/brand-8.png" alt="">
+    </div>
+    <div class="trusted-logos-row">
+      <img src="assets/logos/brand-9.png" alt="">
+      <img src="assets/logos/brand-10.png" alt="">
+      <img src="assets/logos/brand-11.png" alt="">
+      <img src="assets/logos/brand-12.png" alt="">
+      <img src="assets/logos/brand-6.png" alt="">
+      <img src="assets/logos/brand-1.png" alt="">
     </div>
   </div>
 </section>
 
-<!-- TRUSTED + CAROUSELS -->
-<section class="trusted-media">
-  <div class="trusted-media-inner">
-    <h2 class="h-md" style="color:#fff;margin-bottom:14px;">Trusted by global brands &amp; platforms.</h2>
-    <p class="body-text" style="color:rgba(255,255,255,0.5);max-width:600px;margin-bottom:0;">
-      We've worked with artists, brands, and organisations that align with culture, creativity, and innovation, delivering stories that resonate worldwide.
-    </p>
-  </div>
-  <div class="brands-carousel">
-    <div class="brands-track">
-      <img src="assets/logos/brand-2.png" alt="Subway">
-      <img src="assets/logos/brand-3.png" alt="Levis">
-      <img src="assets/logos/brand-4.png" alt="Red Bull">
-      <img src="assets/logos/brand-5.png" alt="Nike">
-      <img src="assets/logos/brand-7.png" alt="Selfridges">
-      <img src="assets/logos/brand-8.png" alt="Adidas">
-      <img src="assets/logos/brand-2.png" alt=""><img src="assets/logos/brand-3.png" alt=""><img src="assets/logos/brand-4.png" alt=""><img src="assets/logos/brand-5.png" alt=""><img src="assets/logos/brand-7.png" alt=""><img src="assets/logos/brand-8.png" alt="">
-    </div>
-  </div>
-  <div style="height:10px;background:#0a0a0a;"></div>
-  <div class="brands-carousel">
-    <div class="brands-track reverse">
-      <img src="assets/logos/brand-9.png" alt=""><img src="assets/logos/brand-10.png" alt=""><img src="assets/logos/brand-11.png" alt=""><img src="assets/logos/brand-12.png" alt=""><img src="assets/logos/brand-6.png" alt=""><img src="assets/logos/brand-1.png" alt="">
-      <img src="assets/logos/brand-9.png" alt=""><img src="assets/logos/brand-10.png" alt=""><img src="assets/logos/brand-11.png" alt=""><img src="assets/logos/brand-12.png" alt=""><img src="assets/logos/brand-6.png" alt=""><img src="assets/logos/brand-1.png" alt="">
-    </div>
-  </div>
-</section>
+<!-- TICKER -->
+<div class="ticker-row"><div class="ticker-track"><span class="ticker-item">Podcast</span><span class="ticker-item">*</span><span class="ticker-item">Music</span><span class="ticker-item">*</span><span class="ticker-item">Live</span><span class="ticker-item">*</span><span class="ticker-item">Podcast</span><span class="ticker-item">*</span><span class="ticker-item">Music</span><span class="ticker-item">*</span><span class="ticker-item">Live</span><span class="ticker-item">*</span><span class="ticker-item">Podcast</span><span class="ticker-item">*</span><span class="ticker-item">Music</span><span class="ticker-item">*</span><span class="ticker-item">Live</span><span class="ticker-item">*</span><span class="ticker-item">Podcast</span><span class="ticker-item">*</span><span class="ticker-item">Music</span><span class="ticker-item">*</span><span class="ticker-item">Live</span><span class="ticker-item">*</span></div></div>
+<div class="ticker-row reverse"><div class="ticker-track"><span class="ticker-item">Podcast</span><span class="ticker-item">*</span><span class="ticker-item">Music</span><span class="ticker-item">*</span><span class="ticker-item">Live</span><span class="ticker-item">*</span><span class="ticker-item">Podcast</span><span class="ticker-item">*</span><span class="ticker-item">Music</span><span class="ticker-item">*</span><span class="ticker-item">Live</span><span class="ticker-item">*</span><span class="ticker-item">Podcast</span><span class="ticker-item">*</span><span class="ticker-item">Music</span><span class="ticker-item">*</span><span class="ticker-item">Live</span><span class="ticker-item">*</span><span class="ticker-item">Podcast</span><span class="ticker-item">*</span><span class="ticker-item">Music</span><span class="ticker-item">*</span><span class="ticker-item">Live</span><span class="ticker-item">*</span></div></div>
 
-<!-- PODCAST TICKER -->
-<div class="ticker-row"><div class="ticker-track"><span class="ticker-item">Podcast</span><span class="ticker-item">*</span><span class="ticker-item">Music</span><span class="ticker-item">*</span><span class="ticker-item">Live</span><span class="ticker-item">*</span><span class="ticker-item">Podcast</span><span class="ticker-item">*</span><span class="ticker-item">Music</span><span class="ticker-item">*</span><span class="ticker-item">Live</span><span class="ticker-item">*</span><span class="ticker-item">Podcast</span><span class="ticker-item">*</span><span class="ticker-item">Music</span><span class="ticker-item">*</span><span class="ticker-item">Live</span><span class="ticker-item">*</span><span class="ticker-item">Podcast</span><span class="ticker-item">*</span><span class="ticker-item">Music</span><span class="ticker-item">*</span><span class="ticker-item">Live</span><span class="ticker-item">*</span><span class="ticker-item">Podcast</span><span class="ticker-item">*</span><span class="ticker-item">Music</span><span class="ticker-item">*</span><span class="ticker-item">Live</span><span class="ticker-item">*</span></div></div>
-<div class="ticker-row reverse"><div class="ticker-track"><span class="ticker-item">Podcast</span><span class="ticker-item">*</span><span class="ticker-item">Music</span><span class="ticker-item">*</span><span class="ticker-item">Live</span><span class="ticker-item">*</span><span class="ticker-item">Podcast</span><span class="ticker-item">*</span><span class="ticker-item">Music</span><span class="ticker-item">*</span><span class="ticker-item">Live</span><span class="ticker-item">*</span><span class="ticker-item">Podcast</span><span class="ticker-item">*</span><span class="ticker-item">Music</span><span class="ticker-item">*</span><span class="ticker-item">Live</span><span class="ticker-item">*</span><span class="ticker-item">Podcast</span><span class="ticker-item">*</span><span class="ticker-item">Music</span><span class="ticker-item">*</span><span class="ticker-item">Live</span><span class="ticker-item">*</span><span class="ticker-item">Podcast</span><span class="ticker-item">*</span><span class="ticker-item">Music</span><span class="ticker-item">*</span><span class="ticker-item">Live</span><span class="ticker-item">*</span></div></div>
-
-<!-- CREATIVE APPROACH -->
-<section>
-  <div class="creative-approach">
-    <div class="ca-grid">
-      <div>
-        <span class="eyebrow">CREATIVE APPROACH</span>
-        <h2 class="h-lg" style="margin-bottom:16px;">"Story first.<br>Always."</h2>
-        <p class="body-text">Every project starts with intention.<br>
-        We don't chase trends, we document moments, people, and movements that matter.</p>
-      </div>
-      <div>
-        <img class="ca-img" src="https://lh3.googleusercontent.com/d/1DfiYjBxVvfvsBYZ3hebJWX6kGAhgN-LS" alt="CRTV Hub Creative">
-      </div>
-    </div>
+<!-- CREATIVE APPROACH — text left, full image right -->
+<section class="creative-split">
+  <div class="ca-text">
+    <h2 class="ca-heading">CREATIVE<br>APPROACH</h2>
+    <p class="ca-quote">"Story first. Always."</p>
+    <p class="ca-body">Every project starts with intention.<br>We don't chase trends, we document moments, people, and movements that matter.</p>
+  </div>
+  <div class="ca-img">
+    <img src="https://lh3.googleusercontent.com/d/1DfiYjBxVvfvsBYZ3hebJWX6kGAhgN-LS" alt="CRTV Hub Creative Approach">
   </div>
 </section>
 
@@ -235,8 +260,8 @@
 </div>
 
 <!-- BRAND TICKER -->
-<div class="ticker-row" style="background:#000;"><div class="ticker-track"><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span></div></div>
-<div class="ticker-row reverse" style="background:#000;"><div class="ticker-track"><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span></div></div>
+<div class="ticker-row" style="background:#000;"><div class="ticker-track"><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span></div></div>
+<div class="ticker-row reverse" style="background:#000;"><div class="ticker-track"><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span><span class="ticker-item">THE CRTV HUB</span><span class="ticker-item">*</span></div></div>
 
 <!-- FOOTER -->
 <footer style="background:#000;padding:40px 30px 50px;">
@@ -265,7 +290,6 @@
 </footer>
 
 <script>
-/* PRELOADER */
 (function(){
   if(sessionStorage.getItem('crtv_seen')){ const p=document.getElementById('preloader'); if(p)p.remove(); return; }
   const preloader=document.getElementById('preloader'), circle=document.getElementById('preloader-circle');
@@ -275,17 +299,11 @@
   circle.addEventListener('click',exit);
   circle.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' ')exit(); });
 })();
-
-/* NAV */
 window.addEventListener('scroll',()=>{ document.getElementById('nav-outer').classList.toggle('scrolled',window.scrollY>60); });
 document.getElementById('nav-burger').addEventListener('click',()=>{ document.getElementById('mobile-nav').classList.add('open'); });
 document.getElementById('mob-close').addEventListener('click',()=>{ document.getElementById('mobile-nav').classList.remove('open'); });
-
-/* LIGHTBOX */
 const items=Array.from(document.querySelectorAll('.masonry-item'));
-const lb=document.getElementById('lightbox');
-const lbImg=document.getElementById('lb-img');
-const lbCount=document.getElementById('lb-count');
+const lb=document.getElementById('lightbox'),lbImg=document.getElementById('lb-img'),lbCount=document.getElementById('lb-count');
 let idx=0;
 function showLB(){ lbImg.style.opacity='.4'; lbImg.src=items[idx].dataset.src; lbImg.onload=()=>lbImg.style.opacity='1'; lbCount.textContent=(idx+1)+' / '+items.length; }
 function openLB(i){ idx=i; showLB(); lb.classList.add('open'); document.body.style.overflow='hidden'; }
@@ -295,12 +313,7 @@ document.getElementById('lb-close').addEventListener('click',closeLB);
 document.getElementById('lb-prev').addEventListener('click',()=>{ idx=(idx-1+items.length)%items.length; showLB(); });
 document.getElementById('lb-next').addEventListener('click',()=>{ idx=(idx+1)%items.length; showLB(); });
 lb.addEventListener('click',e=>{ if(e.target===lb)closeLB(); });
-document.addEventListener('keydown',e=>{
-  if(!lb.classList.contains('open'))return;
-  if(e.key==='Escape')closeLB();
-  if(e.key==='ArrowLeft'){ idx=(idx-1+items.length)%items.length; showLB(); }
-  if(e.key==='ArrowRight'){ idx=(idx+1)%items.length; showLB(); }
-});
+document.addEventListener('keydown',e=>{ if(!lb.classList.contains('open'))return; if(e.key==='Escape')closeLB(); if(e.key==='ArrowLeft'){ idx=(idx-1+items.length)%items.length; showLB(); } if(e.key==='ArrowRight'){ idx=(idx+1)%items.length; showLB(); } });
 </script>
 </body>
 </html>
