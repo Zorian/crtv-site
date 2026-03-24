@@ -276,6 +276,7 @@ footer { background: #fff; border-top: 1px solid rgba(0,0,0,0.06); }
 .footer-bottom span { font-family: var(--font); font-size: 11px; font-weight: 300; letter-spacing: 0.1em; color: #aaa; text-transform: uppercase; }
 
 /* ─── RESPONSIVE ─── */
+#mobile-scroll-bar { display: none; }
 @media (max-width: 900px) {
   #nav-outer { display: none !important; }
   .explore-section { display: none !important; }
@@ -318,10 +319,7 @@ footer { background: #fff; border-top: 1px solid rgba(0,0,0,0.06); }
 /* ─── SHARED PRELOADER SCRIPT UTILITY ─── */
 /* sessionStorage key: crtv_preloader_seen */
 
-#nav-logo {
-  display: flex; align-items: center; pointer-events: all;
-  flex-shrink: 0;
-}
+
 
 /* ── FOOTER MOBILE ── */
 .footer-grid {
