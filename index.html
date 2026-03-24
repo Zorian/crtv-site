@@ -877,14 +877,14 @@ document.getElementById('mob-close').addEventListener('click',()=>{ document.get
     });
   })();
 
-  /* Seek Upsycle slide video to street scene (~3s) */
+  /* Seek Upsycle slide video to 22s */
   (function(){
     const v = document.getElementById('upsycle-vid');
     if(!v) return;
-    v.addEventListener('canplay', function seek(){
-      if(v.currentTime < 22){ v.currentTime = 22; }
-      v.removeEventListener('canplay', seek);
-    }, {once: true});
+    function seekTo(){ v.currentTime = 22; }
+    v.addEventListener('loadedmetadata', seekTo, {once:true});
+    v.addEventListener('canplay', function(){ if(v.currentTime < 20){ v.currentTime = 22; } }, {once:true});
+    if(v.readyState >= 1){ seekTo(); }
   })();
 
   /* Mobile scroll bar */
