@@ -921,6 +921,13 @@ document.getElementById('mob-close').addEventListener('click',()=>{ document.get
     if(!v) return;
     v.addEventListener('canplay', function(){ if(v.currentTime < 19){ v.currentTime = 19; } }, {once:true});
   })();
+
+  /* Seek Nokuthulah video to 24s */
+  (function(){
+    var v = document.getElementById('noku-vid');
+    if(!v) return;
+    v.addEventListener('canplay', function(){ if(v.currentTime < 24){ v.currentTime = 24; } }, {once:true});
+  })();
 </script>
 </body>
 </html>
