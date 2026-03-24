@@ -233,7 +233,7 @@
 </style>
 
   <div class="hs-slide hs-active" data-index="0">
-    <video class="hs-video" id="nike-vid" autoplay preload="auto" muted loop playsinline poster="https://pub-a9f22cf5804840608cb8ba43afc33a34.r2.dev/photo-01.jpg">
+    <video class="hs-video" id="nike-vid" preload="auto" muted loop playsinline poster="https://pub-a9f22cf5804840608cb8ba43afc33a34.r2.dev/photo-01.jpg">
       <source src="https://pub-a9f22cf5804840608cb8ba43afc33a34.r2.dev/slide1-nike.mp4" type="video/mp4">
     </video>
     <div class="hs-overlay"></div>
@@ -749,12 +749,9 @@ document.getElementById('mob-close').addEventListener('click',()=>{ document.get
     const v = getVid(slide);
     if(!v) return;
     var t = slideStartTimes[v.id] || 0;
-    if(v.preload === 'none' || v.readyState === 0){
-      v.preload = 'auto';
-      v.load();
-    }
-    if(v.readyState >= 1){ v.currentTime = t; v.play().catch(()=>{}); }
-    else { v.addEventListener('loadedmetadata', function(){ v.currentTime = t; v.play().catch(()=>{}); }, {once:true}); }
+    function seekAndPlay(){ v.currentTime = t; v.play().catch(()=>{}); }
+    if(v.readyState >= 1){ seekAndPlay(); }
+    else { v.preload = 'auto'; v.load(); v.addEventListener('loadedmetadata', seekAndPlay, {once:true}); }
   }
 
   function goTo(n){
