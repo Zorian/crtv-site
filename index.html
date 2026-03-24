@@ -199,38 +199,9 @@
 .hs-arr.prev { left: 10px; } .hs-arr.next { right: 10px; }
 
 @media (max-width: 900px) {
-  .hs-content {
-    bottom: auto;
-    top: 50%;
-    transform: translateY(-50%);
-    padding: 0 60px;
-  }
-  .hs-title {
-    max-width: 100%;
-    font-size: clamp(18px, 5vw, 28px);
-    margin: 0 0 20px 0;
-  }
-  .hs-btns { flex-direction: column; align-items: center; gap: 10px; width: 100%; }
-  .hs-btn {
-    font-size: 11px;
-    padding: 12px 20px;
-    width: 100%;
-    text-align: center;
-    justify-content: center;
-    white-space: normal;
-  }
-  .hs-btn:first-child {
-    background: #1076F8;
-    border-color: #1076F8;
-    font-size: 13px;
-    padding: 15px 20px;
-  }
-  .hs-btn:last-child {
-    background: transparent;
-    border-color: rgba(255,255,255,0.6);
-    font-size: 11px;
-    padding: 11px 20px;
-  }
+  .hs-title { max-width: 90%; font-size: clamp(22px, 6vw, 44px); }
+  .hs-content { bottom: 40px; padding: 0 20px; }
+  .hs-btn { font-size: 12px; padding: 10px 18px; }
 }
 /* Homepage mobile: logo top-left, burger top-right, logo hides on scroll */
 @media (max-width: 900px) {
@@ -734,7 +705,7 @@
 
 <!-- FOOTER -->
 <footer style="background:#000;padding:80px 40px 60px;text-align:center;">
-  <img src="https://pub-a9f22cf5804840608cb8ba43afc33a34.r2.dev/logo.png" alt="THE CRTV HUB" style="width:110px;height:auto;margin-bottom:50px;">
+  <img src="https://pub-a9f22cf5804840608cb8ba43afc33a34.r2.dev/logo.png" alt="THE CRTV HUB" style="width:110px;height:auto;margin-bottom:50px;display:block;margin-left:auto;margin-right:auto;">
   <div style="margin-bottom:40px;">
     <h5 class="footer-h" style="text-align:center;margin-bottom:20px;">QUICK LINKS</h5>
     <div style="display:flex;justify-content:center;gap:32px;flex-wrap:wrap;">
