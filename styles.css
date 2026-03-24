@@ -206,7 +206,7 @@ ul { list-style: none; }
   border-bottom: 1px solid rgba(255,255,255,0.1);
   background: #1076F8;
 }
-#mobile-nav a:nth-child(even) { background: #001138; }
+#mobile-nav a.active { background: #001138; }
 #mobile-nav a:first-of-type { border-top: 1px solid rgba(255,255,255,0.1); }
 #mob-close {
   position: absolute; top: 16px; right: 16px;
