@@ -286,7 +286,7 @@
   </div>
   <div class="hs-slide" data-index="4">
     <video class="hs-video" id="upsycle-vid" preload="none" muted loop playsinline poster="https://pub-a9f22cf5804840608cb8ba43afc33a34.r2.dev/poster-slide5.jpg">
-      <source src="https://pub-a9f22cf5804840608cb8ba43afc33a34.r2.dev/slide5-upsycle.mp4" type="video/mp4">
+      <source src="https://drive.google.com/uc?export=download&id=17-RaObJG3_aoXoQKEEC0Kc4zITVB34JcAb8u0Izp3i8" type="video/mp4">
     </video>
     <div class="hs-overlay"></div>
     <div class="hs-content">
@@ -872,27 +872,11 @@ document.getElementById('mob-close').addEventListener('click',()=>{ document.get
   });
 })();
 
-  /* Seek Nike slide video to action scene */
-  (function(){
-    const v = document.getElementById('nike-vid');
-    if(!v) return;
-    v.addEventListener('canplay', function seek(){
-      if(v.currentTime < 19){ v.currentTime = 19; }
-      v.removeEventListener('canplay', seek);
-    });
-  })();
 
 
 
-  /* Seek Upsycle slide video to street scene (~3s) */
-  (function(){
-    const v = document.getElementById('upsycle-vid');
-    if(!v) return;
-    v.addEventListener('canplay', function seek(){
-      if(v.currentTime < 10){ v.currentTime = 10; }
-      v.removeEventListener('canplay', seek);
-    }, {once: true});
-  })();
+
+  /* Mobile scroll bar */
   (function(){
     var bar = document.getElementById('mobile-scroll-bar');
     var sbBurger = document.getElementById('scroll-bar-burger');
@@ -910,38 +894,7 @@ document.getElementById('mob-close').addEventListener('click',()=>{ document.get
     }
   })();
 
-  /* Seek Louis video to graffiti/face scene */
-  (function(){
-    var v = document.getElementById('louis-vid');
-    if(!v) return;
-    v.addEventListener('canplay', function(){ if(v.currentTime < 2){ v.currentTime = 2; } }, {once:true});
-  })();
-  /* Seek James video to sunglasses/newspaper scene */
-  (function(){
-    var v = document.getElementById('james-vid');
-    if(!v) return;
-    v.addEventListener('canplay', function(){ if(v.currentTime < 6){ v.currentTime = 6; } }, {once:true});
-  })();
-  /* Seek Biig Piig video to dancing night scene */
-  (function(){
-    var v = document.getElementById('biigpiig-vid');
-    if(!v) return;
-    v.addEventListener('canplay', function(){ if(v.currentTime < 19){ v.currentTime = 19; } }, {once:true});
-  })();
 
-  /* Seek Nokuthulah video to 24s */
-  (function(){
-    var v = document.getElementById('noku-vid');
-    if(!v) return;
-    v.addEventListener('canplay', function(){ if(v.currentTime < 24){ v.currentTime = 24; } }, {once:true});
-  })();
-
-  /* Seek Newgen Cypher video to 1s */
-  (function(){
-    var v = document.getElementById('newgen-vid');
-    if(!v) return;
-    v.addEventListener('canplay', function(){ if(v.currentTime < 1){ v.currentTime = 1; } }, {once:true});
-  })();
 </script>
 </body>
 </html>
