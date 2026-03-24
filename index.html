@@ -807,6 +807,7 @@ document.getElementById('mob-close').addEventListener('click',()=>{ document.get
     setTimeout(()=>{ preloader.classList.add('fade-out'); setTimeout(()=>preloader.remove(),400); },900);
   }
   circle.addEventListener('click',exit);
+  circle.addEventListener('touchstart',function(e){e.preventDefault();exit();},{passive:false});
   circle.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' ')exit(); });
 })();
 
@@ -861,6 +862,7 @@ document.getElementById('mob-close').addEventListener('click',()=>{ document.get
       setTimeout(()=>{ p.classList.add('fade-out'); setTimeout(()=>p.remove(),400); },900);
     }
     circle.addEventListener('click',exit);
+  circle.addEventListener('touchstart',function(e){e.preventDefault();exit();},{passive:false});
     circle.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' ')exit(); });
   });
 })();
