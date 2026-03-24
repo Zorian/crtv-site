@@ -119,6 +119,35 @@
   .join-hero h1 { padding: 0 24px; }
 }
 </style>
+<style>
+/* Mobile: logo top-left, burger top-right, logo hides on scroll */
+@media (max-width: 900px) {
+  #nav-outer {
+    display: flex !important;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 20px;
+    background: transparent !important;
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 10000;
+    pointer-events: none;
+    animation: none !important;
+    transform: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    width: auto !important;
+  }
+  #nav-outer > * { pointer-events: all; }
+  #nav-outer.scrolled { background: transparent !important; border-radius: 0 !important; box-shadow: none !important; padding: 14px 20px !important; }
+  #nav-outer.scrolled #nav-pill { display: none !important; }
+  #nav-outer.scrolled #nav-logo { opacity: 0; pointer-events: none; }
+  #nav-pill { display: none !important; }
+  #nav-logo { display: flex !important; opacity: 1; transition: opacity 0.3s; }
+  #nav-logo img { width: 60px; height: 60px; }
+  #nav-burger { display: flex !important; position: fixed; top: 16px; right: 16px; z-index: 10001; }
+}
+</style>
 </head>
 <body>
 <!-- MOBILE SCROLL BAR -->
