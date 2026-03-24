@@ -741,33 +741,18 @@ document.getElementById('mob-close').addEventListener('click',()=>{ document.get
 
   function getVid(slide){ return slide.querySelector('.hs-video'); }
 
-  // Per-slide start times (seconds)
-  var slideStartTimes = {
-    'nike-vid': 19,
-    'louis-vid': 2,
-    'upsycle-vid': 22,
-    'noku-vid': 24,
-    'james-vid': 6,
-    'biigpiig-vid': 13
-  };
+  var slideStartTimes = {'nike-vid':19,'louis-vid':2,'upsycle-vid':22,'noku-vid':24,'james-vid':6,'biigpiig-vid':13};
 
   function loadAndPlay(slide){
     const v = getVid(slide);
     if(!v) return;
-    var startTime = slideStartTimes[v.id] || 0;
+    var t = slideStartTimes[v.id] || 0;
     if(v.preload === 'none' || v.readyState === 0){
       v.preload = 'auto';
       v.load();
     }
-    function doSeekAndPlay(){
-      v.currentTime = startTime;
-      v.play().catch(()=>{});
-    }
-    if(v.readyState >= 1){
-      doSeekAndPlay();
-    } else {
-      v.addEventListener('loadedmetadata', doSeekAndPlay, {once:true});
-    }
+    if(v.readyState >= 1){ v.currentTime = t; v.play().catch(()=>{}); }
+    else { v.addEventListener('loadedmetadata', function(){ v.currentTime = t; v.play().catch(()=>{}); }, {once:true}); }
   }
 
   function goTo(n){
@@ -884,14 +869,24 @@ document.getElementById('mob-close').addEventListener('click',()=>{ document.get
   });
 })();
 
-  /* Seek Nike video to 19s */
+  /* Seek Nike slide video to action scene */
   (function(){
-    var v = document.getElementById('nike-vid');
+    const v = document.getElementById('nike-vid');
     if(!v) return;
-    function seekTo(){ v.currentTime = 19; }
-    v.addEventListener('loadedmetadata', seekTo, {once:true});
-    v.addEventListener('canplay', function(){ if(v.currentTime < 17){ v.currentTime = 19; } }, {once:true});
-    if(v.readyState >= 1){ seekTo(); }
+    v.addEventListener('canplay', function seek(){
+      if(v.currentTime < 19){ v.currentTime = 19; }
+      v.removeEventListener('canplay', seek);
+    });
+  })();
+
+  /* Seek Upsycle slide video to street scene (~3s) */
+  (function(){
+    const v = document.getElementById('upsycle-vid');
+    if(!v) return;
+    v.addEventListener('canplay', function seek(){
+      if(v.currentTime < 10){ v.currentTime = 10; }
+      v.removeEventListener('canplay', seek);
+    }, {once: true});
   })();
 
   /* Mobile scroll bar */
@@ -912,14 +907,37 @@ document.getElementById('mob-close').addEventListener('click',()=>{ document.get
     }
   })();
 
-  /* Seek Newgen Cypher video to 2s */
+  /* Seek Louis video to graffiti/face scene */
+  (function(){
+    var v = document.getElementById('louis-vid');
+    if(!v) return;
+    v.addEventListener('canplay', function(){ if(v.currentTime < 2){ v.currentTime = 2; } }, {once:true});
+  })();
+  /* Seek James video to sunglasses/newspaper scene */
+  (function(){
+    var v = document.getElementById('james-vid');
+    if(!v) return;
+    v.addEventListener('canplay', function(){ if(v.currentTime < 6){ v.currentTime = 6; } }, {once:true});
+  })();
+  /* Seek Biig Piig video to dancing night scene */
+  (function(){
+    var v = document.getElementById('biigpiig-vid');
+    if(!v) return;
+    v.addEventListener('canplay', function(){ if(v.currentTime < 19){ v.currentTime = 19; } }, {once:true});
+  })();
+
+  /* Seek Nokuthulah video to 24s */
+  (function(){
+    var v = document.getElementById('noku-vid');
+    if(!v) return;
+    v.addEventListener('canplay', function(){ if(v.currentTime < 24){ v.currentTime = 24; } }, {once:true});
+  })();
+
+  /* Seek Newgen Cypher video to 1s */
   (function(){
     var v = document.getElementById('newgen-vid');
     if(!v) return;
-    function seekTo_louis-vid(){ v.currentTime = 2; }
-    v.addEventListener('loadedmetadata', seekTo_louis-vid, {once:true});
-    v.addEventListener('canplay', function(){ if(v.currentTime < 0){ v.currentTime = 2; } }, {once:true});
-    if(v.readyState >= 1){ seekTo_louis-vid(); }
+    v.addEventListener('canplay', function(){ if(v.currentTime < 1){ v.currentTime = 1; } }, {once:true});
   })();
 </script>
 </body>
