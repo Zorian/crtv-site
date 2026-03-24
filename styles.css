@@ -273,6 +273,7 @@ footer { background: #fff; border-top: 1px solid rgba(0,0,0,0.06); }
 /* ─── RESPONSIVE ─── */
 @media (max-width: 900px) {
   #nav-outer { display: none !important; }
+  .explore-section { display: none !important; }
   #nav-logo { display: none !important; }
   #nav-burger {
     display: flex;
