@@ -45,6 +45,13 @@
 </style>
 </head>
 <body>
+<!-- MOBILE SCROLL BAR -->
+<div id="mobile-scroll-bar">
+  <a href="index.html"><img src="https://pub-a9f22cf5804840608cb8ba43afc33a34.r2.dev/logo.png" alt="CRTV Hub"></a>
+  <button id="scroll-bar-burger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</div>
 
 
 <!-- NAV -->
@@ -158,6 +165,23 @@ window.addEventListener('scroll',()=>{ document.getElementById('nav-outer').clas
 document.getElementById('nav-burger').addEventListener('click',()=>{ document.getElementById('mobile-nav').classList.add('open'); });
 document.getElementById('mob-close').addEventListener('click',()=>{ document.getElementById('mobile-nav').classList.remove('open'); });
 
+
+  /* Mobile scroll bar */
+  (function(){
+    var bar = document.getElementById('mobile-scroll-bar');
+    var sbBurger = document.getElementById('scroll-bar-burger');
+    if(!bar) return;
+    window.addEventListener('scroll', function(){
+      if(window.innerWidth <= 900){
+        bar.classList.toggle('visible', window.scrollY > 80);
+      }
+    });
+    if(sbBurger){
+      sbBurger.addEventListener('click', function(){
+        document.getElementById('mobile-nav').classList.add('open');
+      });
+    }
+  })();
 </script>
 </body>
 </html>
