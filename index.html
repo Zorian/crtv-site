@@ -880,7 +880,7 @@ document.getElementById('mob-close').addEventListener('click',()=>{ document.get
     const v = document.getElementById('upsycle-vid');
     if(!v) return;
     v.addEventListener('canplay', function seek(){
-      if(v.currentTime < 3){ v.currentTime = 3; }
+      if(v.currentTime < 8){ v.currentTime = 8; }
       v.removeEventListener('canplay', seek);
     }, {once: true});
   })();
@@ -900,6 +900,25 @@ document.getElementById('mob-close').addEventListener('click',()=>{ document.get
         document.getElementById('mobile-nav').classList.add('open');
       });
     }
+  })();
+
+  /* Seek Louis video to graffiti/face scene */
+  (function(){
+    var v = document.getElementById('louis-vid');
+    if(!v) return;
+    v.addEventListener('canplay', function(){ if(v.currentTime < 5){ v.currentTime = 5; } }, {once:true});
+  })();
+  /* Seek James video to sunglasses/newspaper scene */
+  (function(){
+    var v = document.getElementById('james-vid');
+    if(!v) return;
+    v.addEventListener('canplay', function(){ if(v.currentTime < 4){ v.currentTime = 4; } }, {once:true});
+  })();
+  /* Seek Biig Piig video to dancing night scene */
+  (function(){
+    var v = document.getElementById('biigpiig-vid');
+    if(!v) return;
+    v.addEventListener('canplay', function(){ if(v.currentTime < 6){ v.currentTime = 6; } }, {once:true});
   })();
 </script>
 </body>
