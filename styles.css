@@ -186,9 +186,11 @@ ul { list-style: none; }
 
 /* Mobile burger - hidden on desktop */
 #nav-burger {
-  display: none; position: fixed; top: 20px; right: 24px; z-index: 1001;
-  flex-direction: column; gap: 5px; cursor: pointer; background: rgba(0,0,0,0.6);
-  border: none; padding: 10px; border-radius: 6px;
+  display: none; position: fixed; top: 16px; right: 16px; z-index: 10002;
+  flex-direction: column; gap: 5px; cursor: pointer;
+  background: rgba(30,30,30,0.85); backdrop-filter: blur(4px);
+  border: none; padding: 12px; border-radius: 8px;
+  width: 46px; height: 46px; align-items: center; justify-content: center;
 }
 #nav-burger span { display: block; width: 22px; height: 2px; background: #fff; }
 
@@ -202,15 +204,18 @@ ul { list-style: none; }
 #mobile-nav a {
   font-family: var(--font); font-size: 20px; letter-spacing: 0.12em;
   text-transform: uppercase; color: #fff; text-decoration: none;
-  width: 100%; text-align: center; padding: 22px 0;
-  border-bottom: 1px solid rgba(255,255,255,0.15);
+  width: 100%; text-align: center; padding: 26px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  background: #1076F8;
 }
-#mobile-nav a:first-of-type { border-top: 1px solid rgba(255,255,255,0.15); }
+#mobile-nav a:nth-child(even) { background: #001138; }
+#mobile-nav a:first-of-type { border-top: 1px solid rgba(255,255,255,0.1); }
 #mob-close {
-  position: absolute; top: 20px; right: 20px;
-  background: rgba(255,255,255,0.15); border: none; color: #fff;
-  font-size: 22px; cursor: pointer; width: 48px; height: 48px;
+  position: absolute; top: 16px; right: 16px;
+  background: rgba(100,100,100,0.7); border: none; color: #fff;
+  font-size: 20px; cursor: pointer; width: 48px; height: 48px;
   border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  z-index: 10003;
 }
 
 /* ─── TICKER ─── */
