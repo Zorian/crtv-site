@@ -931,11 +931,11 @@ document.getElementById('mob-close').addEventListener('click',()=>{ document.get
     v.addEventListener('canplay', function(){ if(v.currentTime < 24){ v.currentTime = 24; } }, {once:true});
   })();
 
-  /* Seek Newgen Cypher video to 1s */
+  /* Seek Newgen Cypher video to 2s */
   (function(){
     var v = document.getElementById('newgen-vid');
     if(!v) return;
-    v.addEventListener('canplay', function(){ if(v.currentTime < 1){ v.currentTime = 1; } }, {once:true});
+    v.addEventListener('canplay', function(){ if(v.currentTime < 2){ v.currentTime = 2; } }, {once:true});
   })();
 </script>
 </body>
