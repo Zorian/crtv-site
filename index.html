@@ -199,15 +199,9 @@
 .hs-arr.prev { left: 10px; } .hs-arr.next { right: 10px; }
 
 @media (max-width: 900px) {
-  .hs-content {
-    bottom: auto;
-    top: 50%;
-    transform: translateY(-50%);
-    padding: 0 24px;
-  }
-  .hs-title { max-width: 95%; font-size: clamp(20px, 6vw, 36px); }
-  .hs-btns { flex-direction: column; align-items: center; gap: 12px; width: 100%; }
-  .hs-btn { font-size: 13px; padding: 14px 20px; width: 100%; text-align: center; justify-content: center; }
+  .hs-title { max-width: 90%; font-size: clamp(22px, 6vw, 44px); }
+  .hs-content { bottom: 40px; padding: 0 20px; }
+  .hs-btn { font-size: 12px; padding: 10px 18px; }
 }
 /* Homepage mobile: logo top-left, burger top-right, logo hides on scroll */
 @media (max-width: 900px) {
@@ -234,7 +228,7 @@
   #nav-pill { display: none !important; }
   #nav-logo { display: flex !important; opacity: 1; transition: opacity 0.3s; }
   #nav-logo img { width: 60px; height: 60px; }
-  #nav-burger { display: flex !important; position: fixed; top: 14px; right: 14px; z-index: 10001; flex-direction: column; gap: 5px; align-items: center; justify-content: center; width: 52px; height: 52px; border-radius: 50%; background: rgba(30,40,60,0.45); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.15); box-shadow: 0 2px 12px rgba(0,0,0,0.25); cursor: pointer; padding: 0; }
+  #nav-burger { display: flex !important; position: fixed; top: 14px; right: 14px; z-index: 10001; flex-direction: column; gap: 5px; align-items: center; justify-content: center; width: 70px; height: 70px; border-radius: 50%; background: rgba(30,40,60,0.55); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.18); box-shadow: 0 4px 20px rgba(0,0,0,0.35); cursor: pointer; padding: 0; }
 }
 </style>
 
@@ -710,27 +704,23 @@
 
 
 <!-- FOOTER -->
-<footer style="background:#000;padding:50px 40px;">
-  <div class="footer-grid">
-    <div class="footer-logo-wrap">
-      <img src="https://pub-a9f22cf5804840608cb8ba43afc33a34.r2.dev/logo.png" alt="THE CRTV HUB" style="width:90px;height:auto;">
+<footer style="background:#000;padding:80px 40px 60px;text-align:center;">
+  <img src="https://pub-a9f22cf5804840608cb8ba43afc33a34.r2.dev/logo.png" alt="THE CRTV HUB" style="width:110px;height:auto;margin-bottom:50px;">
+  <div style="margin-bottom:40px;">
+    <h5 class="footer-h" style="text-align:center;margin-bottom:20px;">QUICK LINKS</h5>
+    <div style="display:flex;justify-content:center;gap:32px;flex-wrap:wrap;">
+      <a href="index.html" style="font-family:var(--font);font-size:14px;font-weight:300;letter-spacing:0.15em;text-transform:uppercase;color:#fff;text-decoration:none;">HOME</a>
+      <a href="media.html" style="font-family:var(--font);font-size:14px;font-weight:300;letter-spacing:0.15em;text-transform:uppercase;color:#fff;text-decoration:none;">MEDIA</a>
+      <a href="events.html" style="font-family:var(--font);font-size:14px;font-weight:300;letter-spacing:0.15em;text-transform:uppercase;color:#fff;text-decoration:none;">EVENTS</a>
+      <a href="join.html" style="font-family:var(--font);font-size:14px;font-weight:300;letter-spacing:0.15em;text-transform:uppercase;color:#fff;text-decoration:none;">JOIN/SIGNUP</a>
     </div>
-    <div>
-      <h5 class="footer-h">QUICK LINKS</h5>
-      <div class="footer-links">
-        <a href="index.html">HOME</a>
-        <a href="media.html">MEDIA</a>
-        <a href="events.html">EVENTS</a>
-        <a href="join.html">JOIN/SIGNUP</a>
-      </div>
-    </div>
-    <div class="footer-col-right">
-      <h5 class="footer-h">STAY CONNECTED</h5>
-      <div class="footer-links" style="align-items:flex-end;">
-        <a href="http://tiktok.com/@thecreativehubagency" target="_blank">TIKTOK</a>
-        <a href="https://www.instagram.com/thecrtvhubuk" target="_blank">INSTAGRAM</a>
-        <a href="https://www.youtube.com/@thecrtvhub" target="_blank">YOUTUBE</a>
-      </div>
+  </div>
+  <div>
+    <h5 class="footer-h" style="text-align:center;margin-bottom:20px;">STAY CONNECTED</h5>
+    <div style="display:flex;justify-content:center;gap:32px;flex-wrap:wrap;">
+      <a href="http://tiktok.com/@thecreativehubagency" target="_blank" style="font-family:var(--font);font-size:14px;font-weight:300;letter-spacing:0.15em;text-transform:uppercase;color:#fff;text-decoration:none;">TIKTOK</a>
+      <a href="https://www.instagram.com/thecrtvhubuk" target="_blank" style="font-family:var(--font);font-size:14px;font-weight:300;letter-spacing:0.15em;text-transform:uppercase;color:#fff;text-decoration:none;">INSTAGRAM</a>
+      <a href="https://www.youtube.com/@thecrtvhub" target="_blank" style="font-family:var(--font);font-size:14px;font-weight:300;letter-spacing:0.15em;text-transform:uppercase;color:#fff;text-decoration:none;">YOUTUBE</a>
     </div>
   </div>
 </footer>
