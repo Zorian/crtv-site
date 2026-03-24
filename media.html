@@ -373,6 +373,7 @@ document.addEventListener('keydown',e=>{ if(!lb.classList.contains('open'))retur
     window.addEventListener('scroll', function(){
       if(window.innerWidth <= 900){
         bar.classList.toggle('visible', window.scrollY > 80);
+      document.body.classList.toggle('mob-scrolled', window.scrollY > 80);
       }
     });
     if(sbBurger){
