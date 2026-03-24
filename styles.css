@@ -201,6 +201,8 @@ body.mob-scrolled #nav-burger { opacity: 0 !important; pointer-events: none !imp
   flex-direction: column; align-items: center; justify-content: center; gap: 0;
 }
 #mobile-nav.open { display: flex; }
+#mobile-nav.open ~ #nav-burger,
+body.menu-open #nav-burger { display: none !important; }
 #mobile-nav a {
   font-family: var(--font); font-size: 20px; letter-spacing: 0.12em;
   text-transform: uppercase; color: #fff; text-decoration: none;
