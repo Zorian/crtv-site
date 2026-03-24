@@ -867,14 +867,14 @@ document.getElementById('mob-close').addEventListener('click',()=>{ document.get
   });
 })();
 
-  /* Seek Nike slide video to action scene */
+  /* Seek Nike video to 19s */
   (function(){
-    const v = document.getElementById('nike-vid');
+    var v = document.getElementById('nike-vid');
     if(!v) return;
-    v.addEventListener('canplay', function seek(){
-      if(v.currentTime < 19){ v.currentTime = 19; }
-      v.removeEventListener('canplay', seek);
-    });
+    function seekTo(){ v.currentTime = 19; }
+    v.addEventListener('loadedmetadata', seekTo, {once:true});
+    v.addEventListener('canplay', function(){ if(v.currentTime < 17){ v.currentTime = 19; } }, {once:true});
+    if(v.readyState >= 1){ seekTo(); }
   })();
 
   /* Seek Upsycle slide video to 22s */
@@ -909,33 +909,48 @@ document.getElementById('mob-close').addEventListener('click',()=>{ document.get
   (function(){
     var v = document.getElementById('louis-vid');
     if(!v) return;
-    v.addEventListener('canplay', function(){ if(v.currentTime < 2){ v.currentTime = 2; } }, {once:true});
+    function seekTo_louis-vid(){ v.currentTime = 2; }
+    v.addEventListener('loadedmetadata', seekTo_louis-vid, {once:true});
+    v.addEventListener('canplay', function(){ if(v.currentTime < 0){ v.currentTime = 2; } }, {once:true});
+    if(v.readyState >= 1){ seekTo_louis-vid(); }
   })();
   /* Seek James video to sunglasses/newspaper scene */
   (function(){
     var v = document.getElementById('james-vid');
     if(!v) return;
-    v.addEventListener('canplay', function(){ if(v.currentTime < 6){ v.currentTime = 6; } }, {once:true});
+    function seekTo_james-vid(){ v.currentTime = 6; }
+    v.addEventListener('loadedmetadata', seekTo_james-vid, {once:true});
+    v.addEventListener('canplay', function(){ if(v.currentTime < 4){ v.currentTime = 6; } }, {once:true});
+    if(v.readyState >= 1){ seekTo_james-vid(); }
   })();
   /* Seek Biig Piig video to dancing night scene */
   (function(){
     var v = document.getElementById('biigpiig-vid');
     if(!v) return;
-    v.addEventListener('canplay', function(){ if(v.currentTime < 19){ v.currentTime = 19; } }, {once:true});
+    function seekBiig(){ v.currentTime = 13; }
+    v.addEventListener('loadedmetadata', seekBiig, {once:true});
+    v.addEventListener('canplay', function(){ if(v.currentTime < 11){ v.currentTime = 13; } }, {once:true});
+    if(v.readyState >= 1){ seekBiig(); }
   })();
 
   /* Seek Nokuthulah video to 24s */
   (function(){
     var v = document.getElementById('noku-vid');
     if(!v) return;
-    v.addEventListener('canplay', function(){ if(v.currentTime < 24){ v.currentTime = 24; } }, {once:true});
+    function seekTo_noku-vid(){ v.currentTime = 24; }
+    v.addEventListener('loadedmetadata', seekTo_noku-vid, {once:true});
+    v.addEventListener('canplay', function(){ if(v.currentTime < 22){ v.currentTime = 24; } }, {once:true});
+    if(v.readyState >= 1){ seekTo_noku-vid(); }
   })();
 
   /* Seek Newgen Cypher video to 2s */
   (function(){
     var v = document.getElementById('newgen-vid');
     if(!v) return;
-    v.addEventListener('canplay', function(){ if(v.currentTime < 2){ v.currentTime = 2; } }, {once:true});
+    function seekTo_louis-vid(){ v.currentTime = 2; }
+    v.addEventListener('loadedmetadata', seekTo_louis-vid, {once:true});
+    v.addEventListener('canplay', function(){ if(v.currentTime < 0){ v.currentTime = 2; } }, {once:true});
+    if(v.readyState >= 1){ seekTo_louis-vid(); }
   })();
 </script>
 </body>
