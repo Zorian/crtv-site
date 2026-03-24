@@ -880,7 +880,7 @@ document.getElementById('mob-close').addEventListener('click',()=>{ document.get
     const v = document.getElementById('upsycle-vid');
     if(!v) return;
     v.addEventListener('canplay', function seek(){
-      if(v.currentTime < 8){ v.currentTime = 8; }
+      if(v.currentTime < 10){ v.currentTime = 10; }
       v.removeEventListener('canplay', seek);
     }, {once: true});
   })();
