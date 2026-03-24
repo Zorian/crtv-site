@@ -882,7 +882,7 @@ document.getElementById('mob-close').addEventListener('click',()=>{ document.get
     const v = document.getElementById('upsycle-vid');
     if(!v) return;
     v.addEventListener('canplay', function seek(){
-      if(v.currentTime < 16){ v.currentTime = 16; }
+      if(v.currentTime < 22){ v.currentTime = 22; }
       v.removeEventListener('canplay', seek);
     }, {once: true});
   })();
